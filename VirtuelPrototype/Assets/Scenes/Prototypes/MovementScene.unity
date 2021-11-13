@@ -710,3 +710,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneRoot: {fileID: 1714877496}
   _controllerRoot: {fileID: 0}
+  _camRoot: {fileID: 48625349}
