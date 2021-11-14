@@ -35,6 +35,7 @@ public class SceneController : Controller
                 if (cameraGameObjekt)
                 {
                     CameraController cameraController = cameraGameObjekt.AddComponent<CameraController>();
+                    cameraController.AddCammRootGameObject(_camRoot);
                     GameObject character = null;
                     if (_sceneRoot)
                     {

@@ -21,26 +21,16 @@ public class MovementController : Controller
     [SerializeField]
     private LayerMask _groundMask;
     [SerializeField]
-    private float _sensitivity = 2f;
-    [SerializeField]
     private Transform _camera;
-    [SerializeField]
-    private float _panSpeed = 6f;
     [SerializeField]
     private float _turnSmoothTime = 0.1f;
     [SerializeField]
     private float _turnSmoothVelocity;
 
-    Vector3 _velocity;
-    [SerializeField]
-    private const float Y_ANGLE_MIN = -120.0f;
-    [SerializeField]
-    private const float Y_ANGLE_MAX = 80.0f;
 
-    private float _currentX = 0.0f;
-    private float _currentY = 0.0f;
-    [SerializeField]
-    private float _distance = 5.0f;
+
+
+    Vector3 _velocity;
 
     private void Start()
     {
@@ -50,16 +40,19 @@ public class MovementController : Controller
     }
     private void Update()
     {
-        if (IsGrounded() && _velocity.y < 0)
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        if (direction.magnitude >= 0.1f)
         {
-            _velocity.y = -2f;
+            float targetAngle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + _camera.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            _characterController.Move(moveDirection * _speed * Time.deltaTime);
         }
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        _characterController.Move(move * _speed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -69,26 +62,11 @@ public class MovementController : Controller
 
         _characterController.Move(_velocity * Time.deltaTime);
 
-        if (_camera)
-        {
-            _currentX += Input.GetAxis("Mouse X") * _panSpeed;
-            _currentY += Input.GetAxis("Mouse Y") * _panSpeed;
-
-            _currentY = Mathf.Clamp(_currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
-
-            Vector3 panDirection = new Vector3(0, 0, -_distance);
-            Quaternion rotation = Quaternion.Euler(_currentY, _currentX, 0);
-            _camera.position = transform.position + rotation * panDirection;
-
-            _camera.LookAt(transform.position);
-
-        }
 
     }
     public bool IsGrounded()
     {
         return Physics.CheckBox(_groundCheck.position, new Vector3(_boxCollider.size.x / 2, _boxCollider.size.y / 2, _boxCollider.size.z / 2), _boxCollider.transform.rotation, _groundMask);
-        // return Physics.CheckSphere(_groundCheck.position, _groundDistance,_groundMask);
     }
     public void HandleInitGround(GameObject sceneRoot)
     {
