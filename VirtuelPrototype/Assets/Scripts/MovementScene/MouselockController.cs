@@ -8,7 +8,7 @@ public class MouselockController : Controller
     void Start()
     {
         // Cursor.visible = false;
-        // Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

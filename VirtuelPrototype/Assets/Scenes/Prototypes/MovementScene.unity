@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 459656175}
   - component: {fileID: 459656176}
   m_Layer: 0
-  m_Name: MouseLock
+  m_Name: Mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

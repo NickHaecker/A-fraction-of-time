@@ -53,7 +53,8 @@ public class MovementController : Controller
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _characterController.Move(moveDirection * _speed * Time.deltaTime);
         }
-
+        // Debug.Log(IsGrounded());
+        // Debug.Log(_boxCollider);
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
