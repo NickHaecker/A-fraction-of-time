@@ -12,7 +12,8 @@ public abstract class Controller : MonoBehaviour
 
 
 
-    public void InitSceneRoot(GameObject sceneRoot){
+    public void InitSceneRoot(GameObject sceneRoot)
+    {
         _sceneRoot = sceneRoot;
         OnSceneRootInit?.Invoke();
     }
