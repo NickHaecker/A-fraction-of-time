@@ -15,7 +15,6 @@ public class CameraController : Controller
 
     private void Start()
     {
-        // _cinemachineFreeLook = 
         if (_camRoot)
         {
             _cinemachineFreeLook = _camRoot.GetComponentInChildren<CinemachineFreeLook>();
@@ -30,15 +29,13 @@ public class CameraController : Controller
     {
         if (_cinemachineFreeLook)
         {
-            _cinemachineFreeLook.Follow = target;
-            _cinemachineFreeLook.LookAt = target;
+            _cinemachineFreeLook.m_Follow = target;
+            _cinemachineFreeLook.m_LookAt = target;
         }
     }
 
     public void HandleNewTarget(GameObject newTarget)
     {
-        MovementController movementController = newTarget.GetComponent<MovementController>();
-        movementController.HandleSelectCamera(this.gameObject);
         target = newTarget.transform;
         HandleChangeNewTarget();
     }
