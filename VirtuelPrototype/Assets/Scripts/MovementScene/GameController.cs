@@ -5,7 +5,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class GameData : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     [SerializeField]
     private static PlayerData _data;
@@ -23,7 +23,7 @@ public class GameData : MonoBehaviour
         }
     }
     [SerializeField]
-    public List<String> _scenes = new List<String>();
+    public List<SceneData> _scenes = new List<SceneData>();
     [SerializeField]
     public String _activeScene = "MovementScene";
 
@@ -37,7 +37,7 @@ public class GameData : MonoBehaviour
 
     void Start()
     {
-        OnChangeScene += OnHandleChangeScene;
+        OnChangeScene += HandleChangeScene;
         DontDestroyOnLoad(this);
         if (OnChangeScene != null)
         {
@@ -45,32 +45,44 @@ public class GameData : MonoBehaviour
         }
 
     }
-    private void OnHandleChangeScene(String scene)
+    private void HandleChangeScene(String scene)
     {
         _activeScene = scene;
         SceneManager.LoadSceneAsync(scene);
-        SceneManager.sceneLoaded += OnInitSceneController;
+        SceneManager.sceneLoaded += HandleLoadSceneController;
     }
-    private void OnInitSceneController(Scene scene, LoadSceneMode mode)
+    private void HandleLoadSceneController(Scene scene, LoadSceneMode mode)
     {
         if (scene != null)
         {
             GameObject[] rootObjects = scene.GetRootGameObjects();
-            foreach (GameObject gO in rootObjects)
+            foreach (GameObject gameObject in rootObjects)
             {
-                if (gO.name == _controllerRootName)
+                if (gameObject.name == _controllerRootName)
                 {
-                    SceneController sceneController = gO.GetComponent<SceneController>();
+                    SceneController sceneController = gameObject.GetComponent<SceneController>();
                     if (sceneController)
                     {
-                        sceneController.SetGameData(this);
-
+                        sceneController.OnInitSceneWithData += sceneController.HandleDataInit;
+                        sceneController.OnInitSceneWithData?.Invoke(GetSceneDataOfActiveScene(), this.GetComponent<GameController>());
                     }
                 }
 
 
             }
         }
+    }
+    private SceneData GetSceneDataOfActiveScene()
+    {
+        SceneData data = null;
+        foreach (SceneData sceneData in _scenes)
+        {
+            if (sceneData.NAME == _activeScene)
+            {
+                data = sceneData;
+            }
+        }
+        return data;
     }
 
 }

@@ -10,60 +10,40 @@ public class SceneController : Controller
 
     [SerializeField]
     private GameObject _camRoot = null;
-
     [SerializeField]
-    private List<GameObject> _character = new List<GameObject>();
-    private GameData _gameData = null;
+    private SceneData _sceneData = null;
+    [SerializeField]
+    private List<GameObject> _createdPlayer = new List<GameObject>();
+    [SerializeField]
+    private PlayerController _currentCharacter = null;
+
+    public Action<SceneData, GameController> OnInitSceneWithData;
 
     public Action<GameObject> OnInstantiateCharacter;
 
+    private GameController _gameController = null;
 
-    private void Start()
+    public void HandleDataInit(SceneData data, GameController gameController)
     {
-        CameraController cameraController = null;
-        GameObject character = null;
-        GameObject spawn = null;
-        MovementController movementController = null;
-        if (_controllerRoot == null)
+        _sceneData = data;
+        _gameController = gameController;
+    }
+
+    private void Awake()
+    {
+        if (!_controllerRoot)
         {
-            _controllerRoot = this.gameObject;
+            _controllerRoot = gameObject;
         }
-        if (_sceneRoot != null)
+    }
+    private void InitController()
+    {
+        if (_sceneRoot)
         {
             Controller[] controller = _controllerRoot.GetComponentsInChildren<Controller>();
             foreach (Controller c in controller)
             {
                 c.InitSceneRoot(_sceneRoot);
-            }
-
-            for (int i = 0; i < _sceneRoot.transform.childCount; i++)
-            {
-                GameObject child = _sceneRoot.transform.GetChild(i).gameObject;
-
-                if (child.name == "Spawn")
-                {
-
-                    spawn = child;
-                }
-            }
-
-            foreach (String name in GameData.Player._playableCharacter)
-            {
-                if (name == "Character")
-                {
-                    foreach (CharacterData ch in _gameData._character.CHARACTER)
-                    {
-                        if (name == ch.NAME)
-                        {
-                            if (spawn)
-                            {
-                                character = Instantiate(ch.PREFAB, spawn.transform.position, ch.PREFAB.transform.rotation, _sceneRoot.transform);
-                                movementController = character.AddComponent<MovementController>();
-                                movementController.HandleInitGround(_sceneRoot);
-                            }
-                        }
-                    }
-                }
             }
         }
         if (_camRoot != null)
@@ -75,24 +55,67 @@ public class SceneController : Controller
                 if (cameraGameObjekt)
                 {
 
-                    cameraController = cameraGameObjekt.AddComponent<CameraController>();
+                    CameraController cameraController = cameraGameObjekt.AddComponent<CameraController>();
                     cameraController.AddCammRootGameObject(_camRoot);
-                    if (character != null)
+                    OnInstantiateCharacter += cameraController.HandleCreateCharacter;
+
+                }
+            }
+        }
+    }
+
+    private void InitPlayer()
+    {
+        if (_sceneRoot)
+        {
+            GameObject spawn = GetChildInRoot(_sceneRoot, "Spawn");
+            foreach (String name in GameController.Player._playableCharacter)
+            {
+                foreach (CharacterData ch in _gameController._character.CHARACTER)
+                {
+                    if (name == ch.NAME)
                     {
-                        cameraController.HandleNewTarget(character);
-                        movementController.HandleSelectCamera(cameraGameObjekt);
+                        if (spawn)
+                        {
+                            Camera camera = _camRoot.GetComponentInChildren<Camera>();
+                            GameObject cameraGameObjekt = camera.gameObject;
+                            GameObject character = Instantiate(ch.PREFAB, spawn.transform.position, ch.PREFAB.transform.rotation, _sceneRoot.transform);
+                            PlayerController cC = character.AddComponent<PlayerController>();
+                            cC.InitPlayer(ch);
+                            cC.Ref(cameraGameObjekt);
+                            _currentCharacter = cC;
+                            _createdPlayer.Add(character);
+                            OnInstantiateCharacter?.Invoke(character);
+                        }
                     }
                 }
             }
         }
     }
+    private GameObject GetChildInRoot(GameObject root, String child)
+    {
+        GameObject ch = null;
+        for (int i = 0; i < root.transform.childCount; i++)
+        {
+            GameObject c = _sceneRoot.transform.GetChild(i).gameObject;
+
+            if (c.name == child)
+            {
+
+                ch = c;
+            }
+        }
+        return ch;
+    }
+
+    private void Start()
+    {
+        InitController();
+        InitPlayer();
+
+    }
     private void Update()
     {
 
     }
-    public void SetGameData(GameData data)
-    {
-        _gameData = data;
-    }
-
 }

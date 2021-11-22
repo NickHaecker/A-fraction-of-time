@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2145067642}
   - component: {fileID: 2145067641}
   m_Layer: 0
-  m_Name: GameData
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,11 +149,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2145067640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d33ae24007e56ba439cc36ed04efceb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 982da0a4e54ca0c48b3ffa37348a3cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _scenes:
-  - MovementScene
+  - {fileID: 11400000, guid: 3aa536c4891a326428095f529452069f, type: 2}
   _activeScene: MovementScene
   _character: {fileID: 11400000, guid: 399e45fefd5f9f94ab6fd97fde77fba4, type: 2}
   _controllerRootName: ----CONTROLLER----

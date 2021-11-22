@@ -747,7 +747,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790051673}
-  m_LocalRotation: {x: 0.4129276, y: 0.00000001567095, z: -0.000000007104988, w: 0.9107639}
+  m_LocalRotation: {x: 0.41292706, y: 0.000000015670928, z: -0.000000007104966, w: 0.9107641}
   m_LocalPosition: {x: -9.749079, y: 3.3250506, z: 2.5486836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1319,7 +1319,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855364197}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.00000047683716, y: -2.7533531e-14, z: 1.5987212e-14, w: 1}
   m_LocalPosition: {x: -9.749079, y: 3.3250506, z: 2.5486836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1506,6 +1506,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneRoot: {fileID: 1714877496}
-  _controllerRoot: {fileID: 0}
+  _controllerRoot: {fileID: 1946328987}
   _camRoot: {fileID: 48625349}
-  _character: []
+  _sceneData: {fileID: 0}
+  _createdPlayer: []
+  _currentCharacter: {fileID: 0}
