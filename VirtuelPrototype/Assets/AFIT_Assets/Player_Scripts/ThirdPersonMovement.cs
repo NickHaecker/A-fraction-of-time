@@ -52,6 +52,7 @@ public class ThirdPersonMovement : MonoBehaviour
         //Jumping
         if (Input.GetButtonDown("Jump") && isGrounded) {
             fallVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            
         }
 
         

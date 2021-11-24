@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &9279258 stripped
@@ -192,9 +196,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1023644733}
     m_Modifications:
+    - target: {fileID: 1055935985920054, guid: 77cccaa59bd0e4d7791d68500ac4e6bd, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1368327721450598, guid: 77cccaa59bd0e4d7791d68500ac4e6bd, type: 3}
       propertyPath: m_Name
       value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368327721450598, guid: 77cccaa59bd0e4d7791d68500ac4e6bd, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1767612491518758, guid: 77cccaa59bd0e4d7791d68500ac4e6bd, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4833472058425140, guid: 77cccaa59bd0e4d7791d68500ac4e6bd, type: 3}
       propertyPath: m_RootOrder
@@ -334,6 +350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &52596424 stripped
@@ -351,6 +371,22 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 60bf624e8d864f34b886c9f4841258c8, type: 3}
       propertyPath: m_Name
       value: Plant_i_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60bf624e8d864f34b886c9f4841258c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 60bf624e8d864f34b886c9f4841258c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 60bf624e8d864f34b886c9f4841258c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 60bf624e8d864f34b886c9f4841258c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60bf624e8d864f34b886c9f4841258c8, type: 3}
       propertyPath: m_RootOrder
@@ -453,6 +489,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &54169914 stripped
@@ -470,6 +510,10 @@ PrefabInstance:
     - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_Name
       value: WoodenBarbedWireBarrier_33_v1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6592458862164998266, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_RootOrder
@@ -522,6 +566,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6592458862164998266, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
   m_PrefabInstance: {fileID: 59654440}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &61808168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1368508307992348, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+  m_PrefabInstance: {fileID: 820920434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &61808172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61808168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13111499, y: 1.3526814, z: 0.29937607}
+  m_Center: {x: 0.0000000037253036, y: 0.1078113, z: 0.00762506}
 --- !u!1001 &64338394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -577,8 +639,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: SandBagWall_04_v2
       objectReference: {fileID: 0}
+    - target: {fileID: 3052786145037884313, guid: 54d8b5f898d226149905f2836c474e9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d8b5f898d226149905f2836c474e9b, type: 3}
+--- !u!1 &69860646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1830473716910412, guid: ea375b89807624fa68002ee1c30f1d84, type: 3}
+  m_PrefabInstance: {fileID: 1694666651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &69860649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69860646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5199999, y: 3.0000014, z: 0.52001077}
+  m_Center: {x: 0, y: 1.4999998, z: -0.0000054240227}
 --- !u!1001 &71931544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -634,6 +718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &71931545 stripped
@@ -641,6 +729,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2739574995243696385, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
   m_PrefabInstance: {fileID: 71931544}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &83714783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1585953380229898, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+  m_PrefabInstance: {fileID: 820920434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &83714787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83714783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5870848, y: 1.397689, z: 2.6013825}
+  m_Center: {x: 0.00000023841864, y: -0.000002026558, z: 0.0000007152564}
 --- !u!1001 &94711295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -651,6 +757,10 @@ PrefabInstance:
     - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_Name
       value: Wall (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_RootOrder
@@ -762,6 +872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &100549454 stripped
@@ -779,6 +893,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -852,7 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 129680701}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,6 +1055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &203700725 stripped
@@ -954,6 +1076,10 @@ PrefabInstance:
     - target: {fileID: 1256858306203008, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256858306203008, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4156798437703472, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
       propertyPath: m_RootOrder
@@ -1055,6 +1181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrick (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1117,6 +1247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: island_bush_palm
       objectReference: {fileID: 0}
+    - target: {fileID: 1375530196496570, guid: 892659dbc7d1e4e178738dbf50cd4bd5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4947090025357322, guid: 892659dbc7d1e4e178738dbf50cd4bd5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1173,6 +1307,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -1248,6 +1386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrick (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1309,6 +1451,18 @@ PrefabInstance:
     - target: {fileID: 1007825027520974, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
       propertyPath: m_Name
       value: Ceiling
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007825027520974, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232987325651958, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776400477872690, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4499804091262220, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
       propertyPath: m_RootOrder
@@ -1384,6 +1538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1456,7 +1614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 276157543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1495,6 +1653,22 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ca2a55a5dc0eb3e45a338ecd48ebf726, type: 3}
       propertyPath: m_Name
       value: Plant_i_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ca2a55a5dc0eb3e45a338ecd48ebf726, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ca2a55a5dc0eb3e45a338ecd48ebf726, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ca2a55a5dc0eb3e45a338ecd48ebf726, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: ca2a55a5dc0eb3e45a338ecd48ebf726, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca2a55a5dc0eb3e45a338ecd48ebf726, type: 3}
       propertyPath: m_RootOrder
@@ -1597,6 +1771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &310591863 stripped
@@ -1659,6 +1837,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &310744620 stripped
@@ -1676,6 +1858,10 @@ PrefabInstance:
     - target: {fileID: 1058868410077390, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
       propertyPath: m_Name
       value: WallWIndow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058868410077390, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4022533111538854, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
       propertyPath: m_RootOrder
@@ -1738,6 +1924,10 @@ PrefabInstance:
     - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_Name
       value: WoodenBarbedWireBarrier_33_v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6592458862164998266, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_RootOrder
@@ -1845,6 +2035,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &347855785 stripped
@@ -1907,6 +2101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &362066167 stripped
@@ -1924,6 +2122,10 @@ PrefabInstance:
     - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_Name
       value: WallBrick (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
@@ -1983,9 +2185,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1441294406}
     m_Modifications:
+    - target: {fileID: 1167137927532566, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288817698222374, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339442480882462, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439483243301174, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1589611549968132, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
       propertyPath: m_Name
       value: Caravan_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589611549968132, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589611549968132, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600170128961110, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4388551147282322, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
       propertyPath: m_RootOrder
@@ -2033,6 +2263,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e9164e00a4d5db48a745b14934ecaa9, type: 3}
+--- !u!1 &386914096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1849982299386046, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+  m_PrefabInstance: {fileID: 820920434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &386914100
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386914096}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0762261, y: 1.7110217, z: 0.08400623}
+  m_Center: {x: -0.000000009313325, y: -0.8555107, z: 0.0000021569426}
 --- !u!1001 &403575302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2043,6 +2291,18 @@ PrefabInstance:
     - target: {fileID: 1007825027520974, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
       propertyPath: m_Name
       value: Ceiling
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007825027520974, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232987325651958, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776400477872690, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4499804091262220, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
       propertyPath: m_RootOrder
@@ -2107,11 +2367,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4499804091262220, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
   m_PrefabInstance: {fileID: 403575302}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &434349595 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-  m_PrefabInstance: {fileID: 1156323033}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &459656174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,6 +2426,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -2246,6 +2505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2319,6 +2582,10 @@ PrefabInstance:
     - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_Name
       value: WallBrick (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
@@ -2424,7 +2691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 522089677}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2458,6 +2725,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -2577,6 +2848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &552334354 stripped
@@ -2594,6 +2869,10 @@ PrefabInstance:
     - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_Name
       value: Floor1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_RootOrder
@@ -2656,6 +2935,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -2901,6 +3184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &590171321 stripped
@@ -2917,7 +3204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591873855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarbedWire (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2953,7 +3240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 611956314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarbedWire (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2990,6 +3277,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -3109,6 +3400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &644445613 stripped
@@ -3131,6 +3426,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -3195,6 +3494,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
   m_PrefabInstance: {fileID: 650036635}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &650858091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650858092}
+  m_Layer: 0
+  m_Name: ---PLAYER---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &650858092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650858091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.3736773, y: -3.2323895, z: -4.2610536}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2072236447}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &657376528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3205,6 +3535,10 @@ PrefabInstance:
     - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_Name
       value: WallBrick (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
@@ -3270,7 +3604,7 @@ GameObject:
   - component: {fileID: 682033684}
   - component: {fileID: 682033683}
   - component: {fileID: 682033686}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3381,6 +3715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3436,6 +3774,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
   m_PrefabInstance: {fileID: 682995596}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &692788454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1776400477872690, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+  m_PrefabInstance: {fileID: 403575302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &692788458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692788454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9999995, y: 0.10932463, z: 2.9999995}
+  m_Center: {x: 0.0000004172325, y: -0.04534312, z: -0.00000047683716}
 --- !u!1001 &697745709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3446,6 +3802,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -3642,6 +4002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SandBarrier_28_v1
       objectReference: {fileID: 0}
+    - target: {fileID: 7032112302698976235, guid: 0371f61bcdd2799478720637ee746b4f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7700245298789386577, guid: 0371f61bcdd2799478720637ee746b4f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3743,6 +4107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &725886560 stripped
@@ -3805,6 +4173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &734499712 stripped
@@ -3812,6 +4184,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2739574995243696385, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
   m_PrefabInstance: {fileID: 734499711}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &759268155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1144903209254742, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+  m_PrefabInstance: {fileID: 820920434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &759268159
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759268155}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29858556, y: 0.74843997, z: 0.7484402}
+  m_Center: {x: 0, y: 1.8634725e-20, z: -0.00000093877316}
 --- !u!1 &767309246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3821,7 +4211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 767309247}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3855,6 +4245,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -3997,8 +4391,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790051673}
-  m_LocalRotation: {x: 0.4129275, y: -0.00000003168417, z: -0.0000000019108617, w: 0.9107639}
-  m_LocalPosition: {x: -22.38393, y: 7.9910507, z: -8.130795}
+  m_LocalRotation: {x: 0.4129275, y: -0.000000032626065, z: -0.0000000014600637, w: 0.9107639}
+  m_LocalPosition: {x: -23.700253, y: 8.888661, z: -8.991848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 48625350}
@@ -4080,7 +4474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 790090058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarbedWire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4162,6 +4556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &804428415 stripped
@@ -4178,7 +4576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 806703505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ----STATIC----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4205,7 +4603,7 @@ Transform:
   - {fileID: 857894446}
   - {fileID: 1475434108}
   m_Father: {fileID: 1714877497}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &820920434
 PrefabInstance:
@@ -4217,6 +4615,38 @@ PrefabInstance:
     - target: {fileID: 1036649031229888, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
       propertyPath: m_Name
       value: steampunk_crane
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036649031229888, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1144903209254742, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368508307992348, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477504055748452, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517720708270724, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585953380229898, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849982299386046, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886382536214236, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4126021034255078, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
       propertyPath: m_RootOrder
@@ -4282,6 +4712,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -4360,7 +4794,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 857894446}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4396,6 +4830,22 @@ PrefabInstance:
     - target: {fileID: 100000, guid: a3606787b665048478ec1ad0b1269746, type: 3}
       propertyPath: m_Name
       value: Plant_i_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a3606787b665048478ec1ad0b1269746, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a3606787b665048478ec1ad0b1269746, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: a3606787b665048478ec1ad0b1269746, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: a3606787b665048478ec1ad0b1269746, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a3606787b665048478ec1ad0b1269746, type: 3}
       propertyPath: m_RootOrder
@@ -4498,6 +4948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &934545185 stripped
@@ -4559,6 +5013,10 @@ PrefabInstance:
     - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
       propertyPath: m_Name
       value: Wire (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
@@ -4622,6 +5080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!1001 &986983719
@@ -4634,6 +5096,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -4722,7 +5188,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994655581}
-  m_LocalRotation: {x: 0.39533466, y: 1e-45, z: -0, w: 0.9185372}
+  m_LocalRotation: {x: 0.39533466, y: -0, z: -0, w: 0.9185372}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4876,6 +5342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4948,7 +5418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1023644733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StartingHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4982,7 +5452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1028233769}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5062,6 +5532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1032413444 stripped
@@ -5083,7 +5557,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1067687403}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarbedWire (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5165,6 +5639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1084640193 stripped
@@ -5182,6 +5660,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -5260,7 +5742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1141605493}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ----INTERACTABLE----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5281,70 +5763,13 @@ Transform:
   - {fileID: 1441294406}
   - {fileID: 1115388730}
   m_Father: {fileID: 1714877497}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1148524731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
   m_PrefabInstance: {fileID: 1375019798}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1156323033
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1714877497}
-    m_Modifications:
-    - target: {fileID: 100000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_Name
-      value: Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
 --- !u!1001 &1161489895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5399,6 +5824,10 @@ PrefabInstance:
     - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
       propertyPath: m_Name
       value: Wire (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
@@ -5547,7 +5976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1176289873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5590,7 +6019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1178469910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarbedWire (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5626,7 +6055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1181442073}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5665,6 +6094,10 @@ PrefabInstance:
     - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_Name
       value: WallBrick (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
@@ -5727,6 +6160,10 @@ PrefabInstance:
     - target: {fileID: 1830473716910412, guid: ea375b89807624fa68002ee1c30f1d84, type: 3}
       propertyPath: m_Name
       value: steampunk_column_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830473716910412, guid: ea375b89807624fa68002ee1c30f1d84, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4248586224891568, guid: ea375b89807624fa68002ee1c30f1d84, type: 3}
       propertyPath: m_RootOrder
@@ -5842,6 +6279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1217868435 stripped
@@ -5859,6 +6300,10 @@ PrefabInstance:
     - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_Name
       value: Wall (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_RootOrder
@@ -5924,7 +6369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1229475353}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5960,6 +6405,10 @@ PrefabInstance:
     - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_Name
       value: Wall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_RootOrder
@@ -6025,7 +6474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242180726}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarbedWire (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6107,6 +6556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1249350024 stripped
@@ -6169,6 +6622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1256228236 stripped
@@ -6186,6 +6643,10 @@ PrefabInstance:
     - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_Name
       value: WallBrick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
@@ -6248,6 +6709,10 @@ PrefabInstance:
     - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_Name
       value: Wall (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_RootOrder
@@ -6314,6 +6779,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -6433,6 +6902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1264075552 stripped
@@ -6450,6 +6923,10 @@ PrefabInstance:
     - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_Name
       value: WallBrick (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
@@ -6513,6 +6990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor2
       objectReference: {fileID: 0}
+    - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6569,6 +7050,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4413105790749080551, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
   m_PrefabInstance: {fileID: 1927520730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1309328144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1830473716910412, guid: ea375b89807624fa68002ee1c30f1d84, type: 3}
+  m_PrefabInstance: {fileID: 1212695538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1309328147
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309328144}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5199999, y: 3.0000014, z: 0.52001077}
+  m_Center: {x: 0, y: 1.4999998, z: -0.0000054240227}
+--- !u!1 &1317199298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1517720708270724, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+  m_PrefabInstance: {fileID: 820920434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1317199302
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317199298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08915288, y: 1.4740458, z: 6.619218}
+  m_Center: {x: -0.000000001862692, y: -0.40781116, z: 2.9838958}
 --- !u!1001 &1320929741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6579,6 +7096,10 @@ PrefabInstance:
     - target: {fileID: 1058868410077390, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
       propertyPath: m_Name
       value: WallWIndow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058868410077390, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4022533111538854, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
       propertyPath: m_RootOrder
@@ -6641,6 +7162,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -6710,6 +7235,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4947090025357322, guid: 892659dbc7d1e4e178738dbf50cd4bd5, type: 3}
   m_PrefabInstance: {fileID: 235187464}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1341947253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1477504055748452, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+  m_PrefabInstance: {fileID: 820920434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1341947257
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341947253}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.79564524, y: 4.5388527, z: 6.4486647}
+  m_Center: {x: -0.0014180843, y: 1.069424, z: -1.2472076}
 --- !u!1001 &1348758747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6720,6 +7263,14 @@ PrefabInstance:
     - target: {fileID: 103042, guid: 71f7ed2b5b87ec14d93fd8e7ebc473b0, type: 3}
       propertyPath: m_Name
       value: container
+      objectReference: {fileID: 0}
+    - target: {fileID: 103042, guid: 71f7ed2b5b87ec14d93fd8e7ebc473b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 134576, guid: 71f7ed2b5b87ec14d93fd8e7ebc473b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 421786, guid: 71f7ed2b5b87ec14d93fd8e7ebc473b0, type: 3}
       propertyPath: m_RootOrder
@@ -6839,6 +7390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1349901886 stripped
@@ -6856,6 +7411,10 @@ PrefabInstance:
     - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_Name
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_RootOrder
@@ -6962,6 +7521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1379719436 stripped
@@ -6979,6 +7542,10 @@ PrefabInstance:
     - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_Name
       value: WallBrick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
@@ -7086,6 +7653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1385560336 stripped
@@ -7147,6 +7718,10 @@ PrefabInstance:
     - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
       propertyPath: m_Name
       value: Wire
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
@@ -7240,6 +7815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7314,6 +7893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrick (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -7374,7 +7957,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1432632227}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarbedWire (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7410,7 +7993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1441294406}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7443,6 +8026,10 @@ PrefabInstance:
     - target: {fileID: 1058868410077390, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
       propertyPath: m_Name
       value: WallWIndow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058868410077390, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4022533111538854, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
       propertyPath: m_RootOrder
@@ -7504,7 +8091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1475434108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrier (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7585,6 +8172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1511269437 stripped
@@ -7602,6 +8193,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -7690,7 +8285,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519458442}
-  m_LocalRotation: {x: 0.4284396, y: 0.000000015547176, z: -0.0000000073718933, w: 0.9035705}
+  m_LocalRotation: {x: 0.4284396, y: 1e-45, z: -1e-45, w: 0.9035705}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7750,6 +8345,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -7869,6 +8468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1532078949 stripped
@@ -7930,6 +8533,10 @@ PrefabInstance:
     - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
       propertyPath: m_Name
       value: Wire (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
@@ -7993,6 +8600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1560546705 stripped
@@ -8055,6 +8666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1591891246 stripped
@@ -8072,6 +8687,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -8145,7 +8764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1612992863}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SwitchHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8179,6 +8798,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -8253,6 +8876,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -8372,6 +8999,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1646476969 stripped
@@ -8389,6 +9020,10 @@ PrefabInstance:
     - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_Name
       value: Floor2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_RootOrder
@@ -8496,6 +9131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1670471035 stripped
@@ -8503,24 +9142,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2739574995243696385, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
   m_PrefabInstance: {fileID: 1670471034}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1682555365 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 8b794153ea8a6384688d264921d604c3, type: 3}
-  m_PrefabInstance: {fileID: 1156323033}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1682555366
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682555365}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4, y: 1.49, z: 0.4}
-  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!1001 &1686583567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8531,6 +9152,10 @@ PrefabInstance:
     - target: {fileID: 1088148734736576, guid: f815c8b7b23044c29bc726b9648c8edb, type: 3}
       propertyPath: m_Name
       value: Ladder
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088148734736576, guid: f815c8b7b23044c29bc726b9648c8edb, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4203500641751446, guid: f815c8b7b23044c29bc726b9648c8edb, type: 3}
       propertyPath: m_RootOrder
@@ -8592,7 +9217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1690470704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BarbedWire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8629,6 +9254,10 @@ PrefabInstance:
     - target: {fileID: 1830473716910412, guid: ea375b89807624fa68002ee1c30f1d84, type: 3}
       propertyPath: m_Name
       value: steampunk_column_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830473716910412, guid: ea375b89807624fa68002ee1c30f1d84, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4248586224891568, guid: ea375b89807624fa68002ee1c30f1d84, type: 3}
       propertyPath: m_RootOrder
@@ -8744,6 +9373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1698224334 stripped
@@ -8760,7 +9393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1714877497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ----PLAYGROUND----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8775,11 +9408,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714877496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 682033682}
-  - {fileID: 434349595}
   - {fileID: 806703505}
   - {fileID: 1141605493}
   - {fileID: 1306265654}
@@ -8853,6 +9485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch
       objectReference: {fileID: 0}
+    - target: {fileID: 1052786484375913409, guid: fe432e96e32903847af46d3d1377adbd, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe432e96e32903847af46d3d1377adbd, type: 3}
 --- !u!1001 &1760409430
@@ -8910,6 +9546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1760409431 stripped
@@ -8927,6 +9567,10 @@ PrefabInstance:
     - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_Name
       value: Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_RootOrder
@@ -8992,7 +9636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773924063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Foliage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9032,6 +9676,10 @@ PrefabInstance:
     - target: {fileID: 1868868777089870, guid: ddd55826d414d4d5395b5819ba6f53be, type: 3}
       propertyPath: m_Name
       value: roman_crate_closed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868868777089870, guid: ddd55826d414d4d5395b5819ba6f53be, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4594865783533616, guid: ddd55826d414d4d5395b5819ba6f53be, type: 3}
       propertyPath: m_RootOrder
@@ -9089,6 +9737,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -9163,6 +9815,30 @@ PrefabInstance:
     - target: {fileID: 1059178161569566, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
       propertyPath: m_Name
       value: Roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059178161569566, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235180761666570, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293149991175426, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586147481598998, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910320034563518, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986291140878450, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4527368504392492, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
       propertyPath: m_RootOrder
@@ -9270,6 +9946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1813288874 stripped
@@ -9308,7 +9988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855364197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.38393, y: 7.9910507, z: -8.130795}
+  m_LocalPosition: {x: -23.700253, y: 8.888661, z: -8.991848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1519458443}
@@ -9335,8 +10015,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 434349595}
-  m_Follow: {fileID: 434349595}
+  m_LookAt: {fileID: 2072236447}
+  m_Follow: {fileID: 2072236447}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 40
@@ -9432,8 +10112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 1
-  m_IgnoreTag: 
+    m_Bits: 64
+  m_IgnoreTag: Player
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9442,7 +10122,7 @@ MonoBehaviour:
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.1
-  m_Strategy: 1
+  m_Strategy: 0
   m_MaximumEffort: 4
   m_SmoothingTime: 0
   m_Damping: 0
@@ -9502,6 +10182,10 @@ PrefabInstance:
     - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
       propertyPath: m_Name
       value: Wire (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
@@ -9565,6 +10249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1879822727 stripped
@@ -9582,6 +10270,10 @@ PrefabInstance:
     - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_Name
       value: WallBrick (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575056824761088, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696852914475124, guid: 69a699bfe67a74124b25abb930d7ced6, type: 3}
       propertyPath: m_RootOrder
@@ -9643,7 +10335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1892395534}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9732,6 +10424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1895043429 stripped
@@ -9794,6 +10490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &1902278114 stripped
@@ -9808,13 +10508,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1714877497}
     m_Modifications:
+    - target: {fileID: 4409771049128859163, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410182120644567707, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410188049981035507, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4410402899750998667, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
       propertyPath: m_Name
       value: ENEMY
       objectReference: {fileID: 0}
+    - target: {fileID: 4410402899750998667, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410421019566038585, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4413105790749080551, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4413105790749080551, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9858,6 +10578,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0a225a9ff184f2789f3036faaa9150, type: 3}
+--- !u!1001 &1933896931
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 650858092}
+    m_Modifications:
+    - target: {fileID: 8148115025236929219, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_Name
+      value: PlayerCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066452624796505265, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 790051676}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
 --- !u!1 &1946328987
 GameObject:
   m_ObjectHideFlags: 0
@@ -9916,6 +10697,10 @@ PrefabInstance:
     - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_Name
       value: Floor2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_RootOrder
@@ -9978,6 +10763,10 @@ PrefabInstance:
     - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_Name
       value: Wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043877634559756, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4549868059922360, guid: 164bc34a56ac94f74b7bd4fcceab4b17, type: 3}
       propertyPath: m_RootOrder
@@ -10045,6 +10834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10107,6 +10900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorWall
       objectReference: {fileID: 0}
+    - target: {fileID: 1433416042149084, guid: df4e63dd0e636425997108ff5079a4e8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4184944181671430, guid: df4e63dd0e636425997108ff5079a4e8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10167,7 +10964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1981918357}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10211,6 +11008,10 @@ PrefabInstance:
     - target: {fileID: 1058868410077390, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
       propertyPath: m_Name
       value: WallWIndow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058868410077390, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4022533111538854, guid: 2a4a853fcab4c474d8fe854172bb76ea, type: 3}
       propertyPath: m_RootOrder
@@ -10273,6 +11074,10 @@ PrefabInstance:
     - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_Name
       value: Floor1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_RootOrder
@@ -10380,6 +11185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &2022097852 stripped
@@ -10397,6 +11206,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -10461,6 +11274,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
   m_PrefabInstance: {fileID: 2023300578}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2034139253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1232987325651958, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+  m_PrefabInstance: {fileID: 403575302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2034139257
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034139253}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9999998, y: 0.05000367, z: 1.0000001}
+  m_Center: {x: 0.00000047683716, y: -0.000000010244548, z: -2.3293406e-21}
 --- !u!1001 &2041746430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10471,6 +11302,10 @@ PrefabInstance:
     - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_Name
       value: ConcreteBarrier_39_v2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647109984710332790, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3647109984937722758, guid: 70c48be8697ff6140812ee8d2eccd1ef, type: 3}
       propertyPath: m_RootOrder
@@ -10590,12 +11425,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &2058722158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2739574995243696385, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
   m_PrefabInstance: {fileID: 2058722157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2072236447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8815862093081571449, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+  m_PrefabInstance: {fileID: 1933896931}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2076241938
 PrefabInstance:
@@ -10607,6 +11451,10 @@ PrefabInstance:
     - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_Name
       value: Floor2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_RootOrder
@@ -10714,6 +11562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &2084162013 stripped
@@ -10776,6 +11628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wire (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3264894628783676347, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b356a77ccfe640a982b42b04ecd98, type: 3}
 --- !u!4 &2085158530 stripped
@@ -10793,6 +11649,10 @@ PrefabInstance:
     - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_Name
       value: Floor2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042253971341730, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
       propertyPath: m_RootOrder
@@ -10845,6 +11705,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4340373081180572, guid: 906cbdf3fb41540f48572013c58213de, type: 3}
   m_PrefabInstance: {fileID: 2123035529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2124486450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1886382536214236, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
+  m_PrefabInstance: {fileID: 820920434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2124486454
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124486450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6000023, y: 0.0650095, z: 2.6000025}
+  m_Center: {x: 0, y: 0, z: -0.0000019073486}
 --- !u!4 &2137680462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4126021034255078, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
