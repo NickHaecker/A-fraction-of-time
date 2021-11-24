@@ -12,6 +12,8 @@ public class SceneController : Controller
     private GameObject _camRoot = null;
     [SerializeField]
     private SceneData _sceneData = null;
+    [SerializeField]
+    private GameObject _playerRoot = null;
     // [SerializeField]
     // private List<GameObject> _createdPlayer = new List<GameObject>();
     // [SerializeField]

@@ -27,8 +27,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     public String _activeScene = "MovementScene";
 
-    [SerializeField]
-    public Character _character = null;
+    // [SerializeField]
+    // public Character _character = null;
 
     [SerializeField]
     private String _controllerRootName = "";
