@@ -19,8 +19,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
 
-    void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
+    void Start()
+    {
+        // Cursor.lockState = CursorLockMode.Locked;
     }
     // Update is called once per frame
     void Update()
@@ -28,7 +29,8 @@ public class ThirdPersonMovement : MonoBehaviour
         //Gravity
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && fallVelocity.y < 0) {
+        if (isGrounded && fallVelocity.y < 0)
+        {
             fallVelocity.y = -2f;
         }
         fallVelocity.y += gravity * Time.deltaTime;
@@ -39,23 +41,25 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical);
 
-        if (direction.magnitude >= 0.1) {
+        if (direction.magnitude >= 0.1)
+        {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) *Vector3.forward;
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
         }
 
         //Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded) {
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
             fallVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            
+
         }
 
-        
-        
+
+
     }
 }

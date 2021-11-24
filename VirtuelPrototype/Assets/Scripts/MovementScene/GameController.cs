@@ -49,40 +49,40 @@ public class GameController : MonoBehaviour
     {
         _activeScene = scene;
         SceneManager.LoadSceneAsync(scene);
-        SceneManager.sceneLoaded += HandleLoadSceneController;
+        // SceneManager.sceneLoaded += HandleLoadSceneController;
     }
-    private void HandleLoadSceneController(Scene scene, LoadSceneMode mode)
-    {
-        if (scene != null)
-        {
-            GameObject[] rootObjects = scene.GetRootGameObjects();
-            foreach (GameObject gameObject in rootObjects)
-            {
-                if (gameObject.name == _controllerRootName)
-                {
-                    SceneController sceneController = gameObject.GetComponent<SceneController>();
-                    if (sceneController)
-                    {
-                        sceneController.OnInitSceneWithData += sceneController.HandleDataInit;
-                        sceneController.OnInitSceneWithData?.Invoke(GetSceneDataOfActiveScene(), this.GetComponent<GameController>());
-                    }
-                }
+    // private void HandleLoadSceneController(Scene scene, LoadSceneMode mode)
+    // {
+    //     if (scene != null)
+    //     {
+    //         GameObject[] rootObjects = scene.GetRootGameObjects();
+    //         foreach (GameObject gameObject in rootObjects)
+    //         {
+    //             if (gameObject.name == _controllerRootName)
+    //             {
+    //                 SceneController sceneController = gameObject.GetComponent<SceneController>();
+    //                 if (sceneController)
+    //                 {
+    //                     sceneController.OnInitSceneWithData += sceneController.HandleDataInit;
+    //                     sceneController.OnInitSceneWithData?.Invoke(GetSceneDataOfActiveScene(), this.GetComponent<GameController>());
+    //                 }
+    //             }
 
 
-            }
-        }
-    }
-    private SceneData GetSceneDataOfActiveScene()
-    {
-        SceneData data = null;
-        foreach (SceneData sceneData in _scenes)
-        {
-            if (sceneData.NAME == _activeScene)
-            {
-                data = sceneData;
-            }
-        }
-        return data;
-    }
+    //         }
+    //     }
+    // }
+    // private SceneData GetSceneDataOfActiveScene()
+    // {
+    //     SceneData data = null;
+    //     foreach (SceneData sceneData in _scenes)
+    //     {
+    //         if (sceneData.NAME == _activeScene)
+    //         {
+    //             data = sceneData;
+    //         }
+    //     }
+    //     return data;
+    // }
 
 }
