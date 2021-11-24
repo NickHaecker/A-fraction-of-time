@@ -53,39 +53,37 @@ public class MovementController : Controller
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _characterController.Move(moveDirection * _speed * Time.deltaTime);
         }
-        // Debug.Log(IsGrounded());
-        // Debug.Log(_boxCollider);
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
-        }
-        _velocity.y += _gravity * Time.deltaTime;
+        // if (Input.GetButtonDown("Jump") && IsGrounded())
+        // {
+        //     _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
+        // }
+        // _velocity.y += _gravity * Time.deltaTime;
 
-        _characterController.Move(_velocity * Time.deltaTime);
+        // _characterController.Move(_velocity * Time.deltaTime);
 
 
     }
-    public bool IsGrounded()
-    {
-        return Physics.CheckBox(_groundCheck.position, new Vector3(_boxCollider.size.x / 2, _boxCollider.size.y / 2, _boxCollider.size.z / 2), _boxCollider.transform.rotation, _groundMask);
-    }
-    public void HandleInitGround(GameObject sceneRoot)
-    {
-        _sceneRoot = sceneRoot;
-        if (_sceneRoot != null)
-        {
-            for (int i = 0; i < _sceneRoot.transform.childCount; i++)
-            {
-                GameObject child = _sceneRoot.transform.GetChild(i).gameObject;
+    // public bool IsGrounded()
+    // {
+    //     return Physics.CheckBox(_groundCheck.position, new Vector3(_boxCollider.size.x / 2, _boxCollider.size.y / 2, _boxCollider.size.z / 2), _boxCollider.transform.rotation, _groundMask);
+    // }
+    // public void HandleInitGround(GameObject sceneRoot)
+    // {
+    //     _sceneRoot = sceneRoot;
+    //     if (_sceneRoot != null)
+    //     {
+    //         for (int i = 0; i < _sceneRoot.transform.childCount; i++)
+    //         {
+    //             GameObject child = _sceneRoot.transform.GetChild(i).gameObject;
 
-                if (child.name == "Ground")
-                {
+    //             if (child.name == "Ground")
+    //             {
 
-                    _groundCheck = child.transform;
-                }
-            }
-        }
-    }
+    //                 _groundCheck = child.transform;
+    //             }
+    //         }
+    //     }
+    // }
     public void HandleSelectCamera(GameObject cam)
     {
         _camera = cam.transform;

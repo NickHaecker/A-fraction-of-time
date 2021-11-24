@@ -10,15 +10,35 @@ public class SceneController : Controller
 
     [SerializeField]
     private GameObject _camRoot = null;
+    [SerializeField]
+    private SceneData _sceneData = null;
+    [SerializeField]
+    private List<GameObject> _createdPlayer = new List<GameObject>();
+    [SerializeField]
+    private PlayerController _currentCharacter = null;
 
+    public Action<SceneData, GameController> OnInitSceneWithData;
 
-    private void Start()
+    public Action<GameObject> OnInstantiateCharacter;
+
+    private GameController _gameController = null;
+
+    public void HandleDataInit(SceneData data, GameController gameController)
     {
-        if (_controllerRoot == null)
+        _sceneData = data;
+        _gameController = gameController;
+    }
+
+    private void Awake()
+    {
+        if (!_controllerRoot)
         {
-            _controllerRoot = this.gameObject;
+            _controllerRoot = gameObject;
         }
-        if (_sceneRoot != null)
+    }
+    private void InitController()
+    {
+        if (_sceneRoot)
         {
             Controller[] controller = _controllerRoot.GetComponentsInChildren<Controller>();
             foreach (Controller c in controller)
@@ -34,33 +54,68 @@ public class SceneController : Controller
                 GameObject cameraGameObjekt = camera.gameObject;
                 if (cameraGameObjekt)
                 {
+
                     CameraController cameraController = cameraGameObjekt.AddComponent<CameraController>();
                     cameraController.AddCammRootGameObject(_camRoot);
-                    GameObject character = null;
-                    if (_sceneRoot)
+                    OnInstantiateCharacter += cameraController.HandleCreateCharacter;
+
+                }
+            }
+        }
+    }
+
+    private void InitPlayer()
+    {
+        if (_sceneRoot)
+        {
+            GameObject spawn = GetChildInRoot(_sceneRoot, "Spawn");
+            foreach (String name in GameController.Player._playableCharacter)
+            {
+                foreach (CharacterData ch in _gameController._character.CHARACTER)
+                {
+                    if (name == ch.NAME)
                     {
-                        for (int i = 0; i < _sceneRoot.transform.childCount; i++)
+                        if (spawn)
                         {
-                            GameObject child = _sceneRoot.transform.GetChild(i).gameObject;
-
-                            if (child.name == "Character")
-                            {
-
-                                character = child;
-                            }
+                            Camera camera = _camRoot.GetComponentInChildren<Camera>();
+                            GameObject cameraGameObjekt = camera.gameObject;
+                            GameObject character = Instantiate(ch.PREFAB, spawn.transform.position, ch.PREFAB.transform.rotation, _sceneRoot.transform);
+                            PlayerController cC = character.AddComponent<PlayerController>();
+                            cC.InitPlayer(ch);
+                            cC.Ref(cameraGameObjekt);
+                            _currentCharacter = cC;
+                            _createdPlayer.Add(character);
+                            OnInstantiateCharacter?.Invoke(character);
                         }
-                    }
-                    if (character)
-                    {
-                        cameraController.HandleNewTarget(character);
                     }
                 }
             }
         }
     }
+    private GameObject GetChildInRoot(GameObject root, String child)
+    {
+        GameObject ch = null;
+        for (int i = 0; i < root.transform.childCount; i++)
+        {
+            GameObject c = _sceneRoot.transform.GetChild(i).gameObject;
+
+            if (c.name == child)
+            {
+
+                ch = c;
+            }
+        }
+        return ch;
+    }
+
+    private void Start()
+    {
+        InitController();
+        InitPlayer();
+
+    }
     private void Update()
     {
 
     }
-
 }
