@@ -1,1 +1,1 @@
-# GameDes_ZeitistmanchmalRelativ
+# A fraction of time
