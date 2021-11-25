@@ -5,12 +5,12 @@ using UnityEngine;
 public class JumpAbility : Ability
 {
     public CharacterController controller;
-    
+
     [SerializeField]
     private float gravity = -9.81f;
     [SerializeField]
     private float jumpHeight = 2f;
-    
+
     [SerializeField]
     private Vector3 fallVelocity;
     [SerializeField]
@@ -21,18 +21,10 @@ public class JumpAbility : Ability
     private LayerMask groundMask;
     [SerializeField]
     private bool isGrounded;
-    // Start is called before the first frame update
-    void Start()
-    {
-        this.NAME = "JumpAbility";
-        this.DESCRIPTION = "Allows the character to jump by using Space-Key"; 
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        HandleInput();
+
     }
 
     protected override void HandleInput()
@@ -46,17 +38,23 @@ public class JumpAbility : Ability
         }
         fallVelocity.y += gravity * Time.deltaTime;
         controller.Move(fallVelocity * Time.deltaTime);
-        
+
         //Jumping
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            SubmitAction(InteractionType.jump, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, new Time());
             fallVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
         }
     }
 
-    protected override void HandleCollision(GameObject other)
+
+    protected override void HandleCollisionEnter(Collider other)
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
+    }
+    protected override void HandleCollisionExit(Collider other)
+    {
+        // throw new System.NotImplementedException();
     }
 }
