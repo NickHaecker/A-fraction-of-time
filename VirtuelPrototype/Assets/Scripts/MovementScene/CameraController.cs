@@ -42,9 +42,9 @@ public class CameraController : Controller
     {
         _offset = newOffset;
     }
-    public void HandleCreateCharacter(GameObject character)
-    {
-        _target = character.transform;
-        HandleChangeNewTarget();
-    }
+    // public void HandleCreateCharacter(Player player)
+    // {
+    //     _target = player.gecharacter.transform;
+    //     HandleChangeNewTarget();
+    // }
 }

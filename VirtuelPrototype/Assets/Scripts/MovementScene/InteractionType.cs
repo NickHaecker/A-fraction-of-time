@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum InteractionType
 {
-    jump, pull, swim, thorw, climb, kill, hold, lay, change
+    jump, pull, swim, thorw, climb, kill, hold, lay, change, walk
 }
