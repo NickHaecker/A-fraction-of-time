@@ -4391,7 +4391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790051673}
-  m_LocalRotation: {x: 0.4129275, y: -0.000000032626065, z: -0.0000000014600637, w: 0.9107639}
+  m_LocalRotation: {x: 0.4129275, y: 0.000000032626065, z: 0.0000000014600637, w: 0.9107639}
   m_LocalPosition: {x: -23.700253, y: 8.888661, z: -8.991848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7754,7 +7754,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392075603}
-  m_LocalRotation: {x: 0.4119332, y: -0.000000015678696, z: 0.0000000070878796, w: 0.91121405}
+  m_LocalRotation: {x: 0.4119332, y: 0.000000015678696, z: -0.0000000070878796, w: 0.91121405}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10585,6 +10585,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 650858092}
     m_Modifications:
+    - target: {fileID: 4112456667822680736, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: gravity
+      value: -19.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112456667822680736, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: jumpHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112456667822680736, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: groundDistance
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8148115025236929219, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -10687,6 +10699,7 @@ MonoBehaviour:
   _sceneRoot: {fileID: 1714877496}
   _controllerRoot: {fileID: 0}
   _camRoot: {fileID: 48625349}
+  _sceneData: {fileID: 0}
 --- !u!1001 &1954455004
 PrefabInstance:
   m_ObjectHideFlags: 0
