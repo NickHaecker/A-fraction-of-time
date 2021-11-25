@@ -12,6 +12,12 @@ public class SceneController : Controller
     private GameObject _camRoot = null;
     [SerializeField]
     private SceneData _sceneData = null;
+    [SerializeField]
+    private GameObject _playerRoot = null;
+    // [SerializeField]
+
+
+    public Action StartApplication;
     // [SerializeField]
     // private List<GameObject> _createdPlayer = new List<GameObject>();
     // [SerializeField]
@@ -110,6 +116,14 @@ public class SceneController : Controller
 
     private void Start()
     {
+        // if (_playerRoot != null && _camRoot != null)
+        // {
+        //     PlayerController controller = _playerRoot.GetComponent<PlayerController>();
+        //     // GameObject empty = new GameObject();
+        //     // empty.transform.position = new Vector3(-16.78f, 8.84f, -7.31f);
+        //     // controller.CreateCharacter(controller.GetCurrentCharacterData(), empty.transform);
+
+        // }
         // InitController();
         // InitPlayer();
 

@@ -4,28 +4,19 @@ using UnityEngine;
 
 public class MovementAbility : Ability
 {
-    
+
     [SerializeField]
     private float speed = 6;
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
     public Transform playerTransform;
     public CharacterController controller;
-    public Transform cam; 
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        this.NAME = "MovementAbility";
-        this.DESCRIPTION = "Allows the character to move by using WASD-Keys"; 
-        
-    }
+    public Transform cam;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        HandleInput();
+        playerTransform = this.gameObject.transform;
+        controller = this.gameObject.GetComponent<CharacterController>();
     }
 
     protected override void HandleInput()
@@ -44,12 +35,17 @@ public class MovementAbility : Ability
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            SubmitAction(InteractionType.walk, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, new Time());
 
         }
     }
 
-    protected override void HandleCollision(GameObject other)
+    protected override void HandleCollisionEnter(Collider other)
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
+    }
+    protected override void HandleCollisionExit(Collider other)
+    {
+        // throw new System.NotImplementedException();
     }
 }

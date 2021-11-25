@@ -10,7 +10,7 @@ public class CharacterData : ScriptableObject
     public string UID;
     public string DESCRIPTION;
     public GameObject PREFAB;
-
     public List<Ability> ABILITYS = null;
+    public bool IS_SPLIT_REALITY_ORIGIN = false;
 
 }
