@@ -37,8 +37,10 @@ public class MovementAbility : Ability
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
             SubmitAction(InteractionType.walk, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, new Time());
 
+
         }
     }
+
 
     protected override void HandleCollisionEnter(Collider other)
     {

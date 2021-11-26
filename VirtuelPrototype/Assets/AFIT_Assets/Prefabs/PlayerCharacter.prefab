@@ -2080,6 +2080,7 @@ GameObject:
   - component: {fileID: 9066452624796505278}
   - component: {fileID: 4112456667822680736}
   - component: {fileID: 3275090462012792278}
+  - component: {fileID: 3824290350786169622}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -2115,7 +2116,7 @@ Animator:
   m_GameObject: {fileID: 8148115025236929219}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f6bd7dc73bba61245b4df10ca999863c, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 763e790098524d54fbd6a9dc8be4556f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2154,8 +2155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e0b496af1ed944e81f594845701166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NAME: 
-  DESCRIPTION: 
   controller: {fileID: 9066452624796505278}
   gravity: 9.81
   jumpHeight: 0.1
@@ -2165,6 +2164,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  isGrounded: 0
 --- !u!114 &3275090462012792278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2177,14 +2177,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da3b629f8403fb4d9f89bdddb547220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NAME: 
-  DESCRIPTION: 
   speed: 6
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
   playerTransform: {fileID: 8815862093081571449}
   controller: {fileID: 9066452624796505278}
   cam: {fileID: 0}
+--- !u!114 &3824290350786169622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8148115025236929219}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a5c675cb5409e43860ccb2656b9892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3222350865025772035}
 --- !u!1 &8470818672931703068
 GameObject:
   m_ObjectHideFlags: 0
