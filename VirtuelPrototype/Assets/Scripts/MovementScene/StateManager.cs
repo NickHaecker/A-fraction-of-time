@@ -26,22 +26,22 @@ public static class StateManager
 
     public static void SaveRecordData(Player player)
     {
-        if (player.GetCharacterData().IS_SPLIT_REALITY_ORIGIN)
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + StateManager.path;
-            FileStream stream = new FileStream(path, FileMode.Create);
+        // if (player.GetCharacterData().IS_SPLIT_REALITY_ORIGIN)
+        // {
+        //     BinaryFormatter formatter = new BinaryFormatter();
+        //     string path = Application.persistentDataPath + StateManager.path;
+        //     FileStream stream = new FileStream(path, FileMode.Create);
 
-            SaveRecordData record = new SaveRecordData();
-            record.name = player.GetCharacterData().NAME;
-            record.records = player.GetInteractions();
+        //     SaveRecordData record = new SaveRecordData();
+        //     record.name = player.GetCharacterData().NAME;
+        //     record.records = player.GetInteractions();
 
-            formatter.Serialize(stream, record);
-            stream.Close();
+        //     formatter.Serialize(stream, record);
+        //     stream.Close();
 
-            // Player.RealodPlayerData();
-            Debug.Log("Save - COMPLETED");
-        }
+        //     // Player.RealodPlayerData();
+        //     Debug.Log("Save - COMPLETED");
+        // }
     }
 
     // public static PlayerData CreateNewPlayerData()
