@@ -23,7 +23,6 @@ public class PlayerController : Controller
 
     public void HandleStart()
     {
-        Debug.Log(2);
         CharacterData characterData = _playableCharacter[0];
         GameObject character = InstantiateCharacter(characterData.PREFAB);
         Player player = character.AddComponent<Player>();
@@ -46,11 +45,20 @@ public class PlayerController : Controller
     }
     public void HandleCharacterSelection(String name)
     {
-
+        _currentSelection = name;
+        Debug.Log(_currentSelection);
     }
-    public void HandleInput()
+    private void Update()
     {
-
+        HandleInput();
+    }
+    private void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
+            splitSelectionController.InitCharacterSelection(_playableCharacter, _currentCharacter);
+        }
     }
     private void AddInteractionsListener(Player player)
     {
@@ -84,7 +92,7 @@ public class PlayerController : Controller
     }
     private void HandleTemporalOldPlayerSave(Player player)
     {
-
+        _temporalOldPlayer = player;
     }
     private void HandleMergeBack()
     {
@@ -93,7 +101,7 @@ public class PlayerController : Controller
 
     private void Start()
     {
-        Debug.Log(1);
+        BeforeCharacterCreated += HandleTemporalOldPlayerSave;
         BeforeCharacterCreated += StateManager.SavePlayer;
         BeforeCharacterCreated += RemoveInteractionsListener;
         AfterCharacterCreated += AddInteractionsListener;
