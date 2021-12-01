@@ -5,7 +5,7 @@ using System;
 [Serializable]
 public abstract class Ability : MonoBehaviour
 {
-    public Action<Interaction> CreateInteraction;
+    public Action<Interaction> SubmitInteraction;
 
     private void FixedUpdate()
     {
@@ -30,7 +30,7 @@ public abstract class Ability : MonoBehaviour
         if (current.GetCharacterData().IS_SPLIT_REALITY_ORIGIN)
         {
             Interaction interaction = new Interaction().Copy(type, player, gameObject, position, time);
-            CreateInteraction?.Invoke(interaction);
+            SubmitInteraction?.Invoke(interaction);
         }
     }
 }

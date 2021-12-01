@@ -24,7 +24,7 @@ public static class StateManager
         return null;
     }
 
-    public static void SaveRecordData(Player player)
+    public static void SavePlayer(Player player)
     {
         // if (player.GetCharacterData().IS_SPLIT_REALITY_ORIGIN)
         // {

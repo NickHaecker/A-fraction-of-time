@@ -13,29 +13,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     private CharacterData _data = null;
     [SerializeField]
-    private List<Interaction> _records = new List<Interaction>();
+    private List<Interaction> _interactions = new List<Interaction>();
     [SerializeField]
     private bool _isReconstructing = false;
 
     public Action DeleteRecords;
-    private int count = 0;
 
     // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (count < 15)
-        {
-            // Ability abilitys = this.gameObject.GetComponents<Ability>();
 
-            Debug.Log(_records);
-            count++;
-        }
     }
     public string GetName()
     {
@@ -44,6 +34,7 @@ public class Player : MonoBehaviour
     public void Init(CharacterData data)
     {
         _data = data;
+        _interactions = new List<Interaction>();
         // _name = data.NAME;
         // _description = data.DESCRIPTION;
         // _isSplitRealityOrigin = data.IS_SPLIT_REALITY_ORIGIN;
@@ -60,40 +51,34 @@ public class Player : MonoBehaviour
     //         gameObject.AddComponent<ability.>
     //     }
     // }
-    public void DeleteAbilities()
-    {
-        // this.gameObject.
-        foreach (Ability ability in this.gameObject.GetComponents<Ability>())
-        {
-            Destroy(ability);
-        }
-    }
     public void InertInteractions(Interaction interaction)
     {
-        _records.Add(interaction);
+        _interactions.Add(interaction);
+        Debug.Log(_interactions);
     }
-    public void ReconstructRecord()
+    public void ReconstructRecord(List<Interaction> interactions)
     {
-        _isReconstructing = true;
+        _interactions = interactions;
+        // _isReconstructing = true;
 
-        foreach (Interaction interaction in _records)
-        {
-            switch (interaction.type)
-            {
-                case InteractionType.walk:
-                    CharacterController cC = this.gameObject.GetComponent<CharacterController>();
-                    Vector3 direction = new Vector3(interaction.interactionPosition.position.x - transform.position.x, interaction.interactionPosition.position.y - transform.position.y, interaction.interactionPosition.transform.position.z - transform.position.z);
-                    cC.Move(direction);
-                    break;
-                default:
-                    break;
-            }
-        }
+        // foreach (Interaction interaction in _records)
+        // {
+        //     switch (interaction.type)
+        //     {
+        //         case InteractionType.WALK:
+        //             CharacterController cC = this.gameObject.GetComponent<CharacterController>();
+        //             Vector3 direction = new Vector3(interaction.interactionPosition.position.x - transform.position.x, interaction.interactionPosition.position.y - transform.position.y, interaction.interactionPosition.transform.position.z - transform.position.z);
+        //             cC.Move(direction);
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // }
 
-        _isReconstructing = false;
+        // _isReconstructing = false;
 
-        DeleteRecords?.Invoke();
-        Delete();
+        // DeleteRecords?.Invoke();
+        // Delete();
 
     }
     public CharacterData GetCharacterData()
@@ -106,6 +91,6 @@ public class Player : MonoBehaviour
     }
     public List<Interaction> GetInteractions()
     {
-        return _records;
+        return _interactions;
     }
 }
