@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +13,42 @@ public class MovementAbility : Ability
     private Transform _playerTransform;
     private CharacterController _controller;
     private Transform _cam;
+    
+    [SerializeField]
+    private float _gravity = -9.81f;
+    
+    [SerializeField]
+    private Vector3 _fallVelocity;
+    
+    [SerializeField]
+    private bool _isGrounded = false;
+    
+    private float groundDistance = 0.4f;
+
+    [SerializeField] 
+    private LayerMask groundMask;
+
+    [SerializeField] 
+    private Transform groundCheck;
 
     private void Start()
     {
+        //groundMask = LayerMask.GetMask("Ground");
         _playerTransform = this.gameObject.transform;
         _controller = this.gameObject.GetComponent<CharacterController>();
         _cam = SceneController.Instance.GetCamGameObject().transform;
+        
+    }
+
+    private void Update()
+    {
+        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if (_isGrounded && _fallVelocity.y < 0)
+        {
+            _fallVelocity.y = -2f;
+        }
+        _fallVelocity.y += _gravity * Time.deltaTime;
+        _controller.Move(_fallVelocity * Time.deltaTime);
     }
 
     protected override void HandleInput()
