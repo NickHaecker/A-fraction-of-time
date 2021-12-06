@@ -46,7 +46,15 @@ public class PlayerController : Controller
     public void HandleCharacterSelection(String name)
     {
         _currentSelection = name;
-        Debug.Log(_currentSelection);
+        // Debug.Log(_currentSelection);
+        if (IsMerge())
+        {
+            this.HandleMerge();
+        }
+        else
+        {
+            this.HandleSplit();
+        }
     }
     private void Update()
     {
@@ -76,11 +84,20 @@ public class PlayerController : Controller
     }
     private void HandleSplit()
     {
-
+       
     }
+
     private CharacterData GetCharacterData(String uid)
     {
-        return null;
+        CharacterData data = null;
+        foreach(CharacterData c in _playableCharacter)
+        {
+            if(c.NAME == uid)
+            {
+                data = c;
+            }
+        }
+        return data;
     }
     private void ChangeSpawnPoint(Player player)
     {
@@ -94,7 +111,7 @@ public class PlayerController : Controller
     {
         _temporalOldPlayer = player;
     }
-    private void HandleMergeBack()
+    private void HandleMerge()
     {
 
     }
@@ -116,6 +133,7 @@ public class PlayerController : Controller
         }
 
     }
+
     private bool IsMerge()
     {
         bool isM = false;

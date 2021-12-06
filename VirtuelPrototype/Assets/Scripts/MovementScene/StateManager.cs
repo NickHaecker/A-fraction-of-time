@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class StateManager
 {
-    static string path = "/player.data";
+    static string path = "/{{data}}.data";
     public static Player LoadPlayer(Player player)
     {
         // string path = Application.persistentDataPath + StateManager.path;
