@@ -8,9 +8,9 @@ public class Interaction
     public Player actor;
     public GameObject interactedObject;
     public Transform interactionPosition;
-    public Time timestamp;
+    public float timestamp;
 
-    public Interaction Copy(InteractionType i, Player p, GameObject g, Transform t, Time ti)
+    public Interaction Copy(InteractionType i, Player p, GameObject g, Transform t, float ti)
     {
         Interaction interaction = new Interaction();
         interaction.type = i;
