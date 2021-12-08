@@ -24,7 +24,7 @@ public abstract class Ability : MonoBehaviour
     protected abstract void HandleCollisionEnter(Collider other);
 
     protected abstract void HandleCollisionExit(Collider other);
-    protected void SubmitAction(InteractionType type, Player player, GameObject gameObject, Transform position, Time time)
+    protected void SubmitAction(InteractionType type, Player player, GameObject gameObject, Transform position, int time)
     {
         Player current = this.gameObject.GetComponent<Player>();
         if (current.GetCharacterData().IS_SPLIT_REALITY_ORIGIN)

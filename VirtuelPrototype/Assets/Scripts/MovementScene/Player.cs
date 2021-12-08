@@ -25,7 +25,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(_data.IS_SPLIT_REALITY_ORIGIN)
+        {
+            int y = 0;
+            //Debug.Log(_interactions);
+            foreach(Interaction i in _interactions)
+            {
+                Debug.Log(y + " " + i.type.ToString());
+                y++;
+            }
+        }
     }
     public string GetName()
     {

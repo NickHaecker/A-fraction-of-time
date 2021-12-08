@@ -41,7 +41,7 @@ public class PlayerController : Controller
     }
     private void HandleInteractionListener(Interaction interaction)
     {
-
+        _currentCharacter.InertInteractions(interaction);
     }
     public void HandleCharacterSelection(String name)
     {
@@ -49,16 +49,20 @@ public class PlayerController : Controller
         // Debug.Log(_currentSelection);
         if (IsMerge())
         {
-            this.HandleMerge();
+            HandleMerge();
         }
         else
         {
-            this.HandleSplit();
+            HandleSplit();
         }
     }
     private void Update()
     {
         HandleInput();
+    }
+    private void ChangeCurrentCharacter(Player player)
+    {
+        _currentCharacter = player;
     }
     private void HandleInput()
     {
@@ -70,6 +74,7 @@ public class PlayerController : Controller
     }
     private void AddInteractionsListener(Player player)
     {
+        Debug.Log(player);
         foreach (Ability ability in player.gameObject.GetComponents<Ability>())
         {
             ability.SubmitInteraction += HandleInteractionListener;
@@ -84,7 +89,22 @@ public class PlayerController : Controller
     }
     private void HandleSplit()
     {
-       
+        BeforeCharacterCreated?.Invoke(_currentCharacter);
+        ChangeSpawnPoint(_currentCharacter);
+        Destroy(_currentCharacter.gameObject);
+        CharacterData newCharacter = GetCharacterData(_currentSelection);
+        if(newCharacter)
+        {
+            GameObject playerObject = InstantiateCharacter(newCharacter.PREFAB);
+            Player player = playerObject.AddComponent<Player>();
+            player.Init(newCharacter);
+            AfterCharacterCreated?.Invoke(player);
+        }
+        GameObject shadow = InstantiateCharacter(_temporalOldPlayer.GetCharacterData().PREFAB_GHOST);
+        _temporalOldPlayer = null;
+        shadow.transform.position = _currentCharacter.transform.position;
+
+
     }
 
     private CharacterData GetCharacterData(String uid)
@@ -101,6 +121,12 @@ public class PlayerController : Controller
     }
     private void ChangeSpawnPoint(Player player)
     {
+        Transform transform = player.gameObject.transform;
+        transform.localScale = new Vector3(1,1,1);
+        transform.rotation = new Quaternion();
+        _spawnPoint = transform;
+        //Destroy(player.gameObject);
+
 
     }
     private void OnCreateShadow()
@@ -121,6 +147,7 @@ public class PlayerController : Controller
         BeforeCharacterCreated += HandleTemporalOldPlayerSave;
         BeforeCharacterCreated += StateManager.SavePlayer;
         BeforeCharacterCreated += RemoveInteractionsListener;
+        AfterCharacterCreated += ChangeCurrentCharacter;
         AfterCharacterCreated += AddInteractionsListener;
         if (_playerRoot == null)
         {

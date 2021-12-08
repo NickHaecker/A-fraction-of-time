@@ -67,7 +67,7 @@ public class MovementAbility : Ability
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _controller.Move(moveDir.normalized * _speed * Time.deltaTime);
-            SubmitAction(InteractionType.WALK, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, new Time());
+            SubmitAction(InteractionType.WALK, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, 0);
 
 
         }
