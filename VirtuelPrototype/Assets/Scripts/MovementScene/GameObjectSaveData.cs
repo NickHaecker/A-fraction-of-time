@@ -10,5 +10,5 @@ public class GameObjectSaveData
     public float[] Rotation = new float[3];
     public string Name;
    public string Tag;
-   public int Layer;
+    public int Layer;
 }

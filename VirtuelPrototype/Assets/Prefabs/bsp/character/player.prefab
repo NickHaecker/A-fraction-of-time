@@ -2144,6 +2144,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
+  _gravity: -9.81
+  _fallVelocity: {x: 0, y: 0, z: 0}
+  _isGrounded: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheck: {fileID: 0}
 --- !u!114 &4213453898617082770
 MonoBehaviour:
   m_ObjectHideFlags: 0

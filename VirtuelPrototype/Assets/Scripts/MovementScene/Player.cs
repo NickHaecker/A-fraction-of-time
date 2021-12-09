@@ -25,16 +25,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_data.IS_SPLIT_REALITY_ORIGIN)
-        {
-            int y = 0;
-            //Debug.Log(_interactions);
-            foreach(Interaction i in _interactions)
-            {
-                Debug.Log(y + " " + i.type.ToString());
-                y++;
-            }
-        }
+        //if(_data.IS_SPLIT_REALITY_ORIGIN)
+        //{
+        //    int y = 0;
+        //    //Debug.Log(_interactions);
+        //    foreach(Interaction i in _interactions)
+        //    {
+        //        Debug.Log(y + " " + i.type.ToString());
+        //        y++;
+        //    }
+        //}
     }
     public string GetName()
     {
@@ -44,52 +44,47 @@ public class Player : MonoBehaviour
     {
         _data = data;
         _interactions = new List<Interaction>();
-        // _name = data.NAME;
-        // _description = data.DESCRIPTION;
-        // _isSplitRealityOrigin = data.IS_SPLIT_REALITY_ORIGIN;
+
 
     }
-    // public void ApplyAbilitys(List<Ability> abilitys)
-    // {
-    //     foreach (Ability ability in abilitys)
-    //     {
-    //         // this.gameObject.AddComponent<Ability
-    //         // gameObject.AddComponent(typeof(Ability)) as ability;
-    //         // gameObject.AddComponent<ability.GetComponent<>()>();
-    //         // ability.
-    //         gameObject.AddComponent<ability.>
-    //     }
-    // }
+
     public void InertInteractions(Interaction interaction)
     {
         _interactions.Add(interaction);
-        Debug.Log(_interactions);
+
     }
     public void ReconstructRecord(List<Interaction> interactions)
     {
-        _interactions = interactions;
-        // _isReconstructing = true;
 
-        // foreach (Interaction interaction in _records)
-        // {
-        //     switch (interaction.type)
-        //     {
-        //         case InteractionType.WALK:
-        //             CharacterController cC = this.gameObject.GetComponent<CharacterController>();
-        //             Vector3 direction = new Vector3(interaction.interactionPosition.position.x - transform.position.x, interaction.interactionPosition.position.y - transform.position.y, interaction.interactionPosition.transform.position.z - transform.position.z);
-        //             cC.Move(direction);
-        //             break;
-        //         default:
-        //             break;
-        //     }
-        // }
+        Debug.Log("start replay");
 
-        // _isReconstructing = false;
+        foreach(Interaction interaction in interactions)
+        {
+            switch(interaction.type)
+            {
+                case InteractionType.WALK:
+                    CharacterController cC = this.gameObject.GetComponent<CharacterController>();
+                    Vector3 direction = new Vector3(interaction.interactionPosition.position.x - transform.position.x,interaction.interactionPosition.position.y - transform.position.y,interaction.interactionPosition.transform.position.z - transform.position.z);
+                    cC.Move(direction);
+                    break;
+                default:
+                    break;
+            }
 
-        // DeleteRecords?.Invoke();
-        // Delete();
+        }
+
+        StartCoroutine(tu());
 
     }
+
+    IEnumerator tu()
+    {
+     
+        yield return new WaitForSeconds(600);
+        Debug.Log("Delete");
+        Delete();
+    }
+
     public CharacterData GetCharacterData()
     {
         return _data;
