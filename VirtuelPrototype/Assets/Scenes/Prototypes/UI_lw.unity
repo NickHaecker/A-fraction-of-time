@@ -420,5 +420,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3938841283573080651, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
+      propertyPath: GapWidthDegree
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238365712461385941, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118599820729082695, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118599820729082695, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 800
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
