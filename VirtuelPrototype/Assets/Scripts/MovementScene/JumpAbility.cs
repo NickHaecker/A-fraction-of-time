@@ -36,7 +36,7 @@ public class JumpAbility : Ability
         //Jumping
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
-            SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, 0);
+            SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, TimeController.Instance.GetGameTime());
             _fallVelocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
 
         }

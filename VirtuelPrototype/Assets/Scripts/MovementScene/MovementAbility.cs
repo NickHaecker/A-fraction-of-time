@@ -13,22 +13,22 @@ public class MovementAbility : Ability
     private Transform _playerTransform;
     private CharacterController _controller;
     private Transform _cam;
-    
+
     [SerializeField]
     private float _gravity = -9.81f;
-    
+
     [SerializeField]
     private Vector3 _fallVelocity;
-    
+
     [SerializeField]
     private bool _isGrounded = false;
-    
+
     private float groundDistance = 0.4f;
 
-    [SerializeField] 
+    [SerializeField]
     private LayerMask groundMask;
 
-    [SerializeField] 
+    [SerializeField]
     private Transform groundCheck;
 
     private void Start()
@@ -37,7 +37,7 @@ public class MovementAbility : Ability
         _playerTransform = this.gameObject.transform;
         _controller = this.gameObject.GetComponent<CharacterController>();
         _cam = SceneController.Instance.GetCamGameObject().transform;
-        
+
     }
 
     private void Update()
@@ -67,12 +67,11 @@ public class MovementAbility : Ability
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _controller.Move(moveDir.normalized * _speed * Time.deltaTime);
-            SubmitAction(InteractionType.WALK, this.gameObject.GetComponent<Player>(),this.gameObject, this.gameObject.transform, 0);
+            SubmitAction(InteractionType.WALK, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, TimeController.Instance.GetGameTime());
 
 
         }
     }
-
 
     protected override void HandleCollisionEnter(Collider other)
     {
