@@ -9,42 +9,32 @@ public class CameraController : Controller
     [SerializeField]
     private Transform _target = null;
     [SerializeField]
-    private Vector3 _offset;
-    [SerializeField]
     CinemachineFreeLook _cinemachineFreeLook;
 
     private void Start()
     {
+        _camRoot = this.gameObject;
         if (_camRoot)
         {
             _cinemachineFreeLook = _camRoot.GetComponentInChildren<CinemachineFreeLook>();
-            HandleChangeNewTarget();
         }
     }
-    void FixedUpdate()
-    {
 
-    }
     private void HandleChangeNewTarget()
     {
         if (_cinemachineFreeLook)
         {
-            _cinemachineFreeLook.m_Follow = _target;
-            _cinemachineFreeLook.m_LookAt = _target;
+            _cinemachineFreeLook.Follow = _target;
+            _cinemachineFreeLook.LookAt = _target;
         }
     }
-
-    public void AddCammRootGameObject(GameObject root)
-    {
-        _camRoot = root;
-    }
-    public void HandleNewOffset(Vector3 newOffset)
-    {
-        _offset = newOffset;
-    }
-    // public void HandleCreateCharacter(Player player)
-    // {
-    //     _target = player.gecharacter.transform;
-    //     HandleChangeNewTarget();
+    // public void InitCamera(PlayerController playerController){
+    //     playerController.AfterCharacterCreated += HandleCreatePlayerCharacter;
     // }
+
+    public void HandleCreatePlayerCharacter(Player player)
+    {
+        _target = player.gameObject.transform;
+        HandleChangeNewTarget();
+    }
 }

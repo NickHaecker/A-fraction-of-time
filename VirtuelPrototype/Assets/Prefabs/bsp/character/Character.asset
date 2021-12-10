@@ -15,6 +15,6 @@ MonoBehaviour:
   NAME: Character
   UID: Character
   DESCRIPTION: 
-  PREFAB: {fileID: 8148115025236929219, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
-  ABILITYS: []
+  PREFAB: {fileID: 8148115025236929219, guid: 2f257e2bd00cfec4da2745fd06af9db0, type: 3}
+  PREFAB_GHOST: {fileID: 3625321528424346676, guid: 806162b9828b1fd46878daf702ce44e1, type: 3}
   IS_SPLIT_REALITY_ORIGIN: 0
