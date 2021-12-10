@@ -46,7 +46,7 @@ public static class Utils
             interactedPosition.localScale = new Vector3(iscale[0],iscale[1],iscale[2]);
             interactedPosition.rotation = Quaternion.Euler(new Vector3(irotation[0],irotation[1],irotation[2]));
 
-            int time = interaction.TimeStamp;
+            float time = interaction.TimeStamp;
 
             i = i.Copy(type,actor,interactedObject,interactedPosition,time);
             interactions.Add(i);

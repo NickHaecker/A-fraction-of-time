@@ -9,5 +9,5 @@ public class InteractionSaveData
     public string Actor;
     public GameObjectSaveData Source;
     public GameObjectSaveData Target;
-    public int TimeStamp;
+    public float TimeStamp;
 }
