@@ -92,9 +92,11 @@ public class PlayerController : Controller
         BeforeCharacterCreated?.Invoke(_currentCharacter);
         ChangeSpawnPoint(_currentCharacter);
         Destroy(_currentCharacter.gameObject);
+        
         CharacterData newCharacter = GetCharacterData(_currentSelection);
         if(newCharacter)
         {
+            RemoveShadow(newCharacter);
             GameObject playerObject = InstantiateCharacter(newCharacter.PREFAB);
             Player player = playerObject.AddComponent<Player>();
             player.Init(newCharacter);
@@ -106,8 +108,21 @@ public class PlayerController : Controller
 
 
     }
-
-    private CharacterData GetCharacterData(String uid)
+    private void RemoveShadow(CharacterData character)
+    {
+        int count = this.gameObject.transform.childCount;
+        //CharacterData possShad
+        for(int i = 0 ; i < count ; i++)
+        {
+            //if()
+            GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
+            if(gO.name.Contains(character.PREFAB_GHOST.name))
+            {
+                Destroy(gO);
+            }
+        }
+    }
+        private CharacterData GetCharacterData(String uid)
     {
         CharacterData data = null;
         foreach(CharacterData c in _playableCharacter)
