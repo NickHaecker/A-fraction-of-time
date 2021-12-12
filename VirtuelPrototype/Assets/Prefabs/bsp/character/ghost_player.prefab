@@ -37,6 +37,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 761837239726883518, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1906165231832013381, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -97,6 +101,7 @@ PrefabInstance:
     - {fileID: -8966345294744092474, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
     - {fileID: 4901603853642488924, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
     - {fileID: 4213453898617082770, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
+    - {fileID: 7026548122873460477, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d8d547623e47bd4dab621aebd423b2d, type: 3}
 --- !u!4 &4108525396096413326 stripped
 Transform:
