@@ -35,7 +35,7 @@ public class PlayerController : Controller
         GameObject character = null;
         if (prefab)
         {
-            character = Instantiate(prefab, _spawnPoint.position, prefab.transform.rotation, this.gameObject.transform);
+            character = Instantiate(prefab, FindNewSpawnPoint(_spawnPoint), prefab.transform.rotation, this.gameObject.transform);
         }
         return character;
     }
@@ -59,6 +59,7 @@ public class PlayerController : Controller
     private void Update()
     {
         HandleInput();
+
     }
     private void ChangeCurrentCharacter(Player player)
     {
@@ -92,9 +93,9 @@ public class PlayerController : Controller
         BeforeCharacterCreated?.Invoke(_currentCharacter);
         ChangeSpawnPoint(_currentCharacter);
         Destroy(_currentCharacter.gameObject);
-        
+
         CharacterData newCharacter = GetCharacterData(_currentSelection);
-        if(newCharacter)
+        if (newCharacter)
         {
             RemoveShadow(newCharacter);
             GameObject playerObject = InstantiateCharacter(newCharacter.PREFAB);
@@ -112,22 +113,22 @@ public class PlayerController : Controller
     {
         int count = this.gameObject.transform.childCount;
         //CharacterData possShad
-        for(int i = 0 ; i < count ; i++)
+        for (int i = 0; i < count; i++)
         {
             //if()
             GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
-            if(gO.name.Contains(character.PREFAB_GHOST.name))
+            if (gO.name.Contains(character.PREFAB_GHOST.name))
             {
                 Destroy(gO);
             }
         }
     }
-        private CharacterData GetCharacterData(String uid)
+    private CharacterData GetCharacterData(String uid)
     {
         CharacterData data = null;
-        foreach(CharacterData c in _playableCharacter)
+        foreach (CharacterData c in _playableCharacter)
         {
-            if(c.NAME == uid)
+            if (c.NAME == uid)
             {
                 data = c;
             }
@@ -136,13 +137,25 @@ public class PlayerController : Controller
     }
     private void ChangeSpawnPoint(Player player)
     {
+
         Transform transform = player.gameObject.transform;
-        transform.localScale = new Vector3(1,1,1);
+        transform.localScale = new Vector3(1, 1, 1);
         transform.rotation = new Quaternion();
         _spawnPoint = transform;
 
-
-
+    }
+    private Vector3 FindNewSpawnPoint(Transform transform)
+    {
+        Vector3 rayStart = transform.position + Vector3.up;
+        Vector2 randomVector = UnityEngine.Random.insideUnitCircle;
+        randomVector.Normalize();
+        RaycastHit hit;
+        while (Physics.Raycast(rayStart, new Vector3(randomVector.x, 0, randomVector.y), out hit, 1))
+        {
+            randomVector = UnityEngine.Random.insideUnitCircle;
+            randomVector.Normalize();
+        }
+        return transform.position + new Vector3(randomVector.x, 0, randomVector.y);
     }
     //private void OnCreateShadow()
     //{
@@ -152,7 +165,7 @@ public class PlayerController : Controller
     {
 
         int children = this.gameObject.transform.childCount;
-        for(int i = 0 ; i < children ; i++)
+        for (int i = 0; i < children; i++)
         {
             GameObject child = this.gameObject.transform.GetChild(i).gameObject;
             Destroy(child);
@@ -175,9 +188,9 @@ public class PlayerController : Controller
 
         float[] position = player.Position.Position;
         float[] rotation = player.Position.Rotation;
-        newSpawn.transform.position = new Vector3(position[0],position[1],position[2]);
-        newSpawn.transform.rotation = Quaternion.Euler(new Vector3(rotation[0],rotation[1],rotation[2]));
-        newSpawn.transform.localScale = new Vector3(1,1,1);
+        newSpawn.transform.position = new Vector3(position[0], position[1], position[2]);
+        newSpawn.transform.rotation = Quaternion.Euler(new Vector3(rotation[0], rotation[1], rotation[2]));
+        newSpawn.transform.localScale = new Vector3(1, 1, 1);
         _spawnPoint = newSpawn.transform;
         SavePlayerData shadow = StateManager.LoadPlayer(_temporalOldPlayer.GetName());
         CharacterData shadowData = GetCharacterData(shadow.Name);
@@ -190,7 +203,7 @@ public class PlayerController : Controller
         GameObject newShadow = InstantiateCharacter(shadowData.PREFAB_GHOST);
         Player newShadowPlayerScript = newShadow.AddComponent<Player>();
         newShadowPlayerScript.Init(shadowData);
-        newShadowPlayerScript.ReconstructRecord(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
+        newShadowPlayerScript.ReconstructRecord(Utils.ConvertInteractions(shadow.Interactions, _playableCharacter));
 
         AfterCharacterCreated?.Invoke(newPlayerScript);
         _temporalOldPlayer = null;
