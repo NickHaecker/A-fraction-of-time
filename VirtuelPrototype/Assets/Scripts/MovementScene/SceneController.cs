@@ -14,122 +14,34 @@ public class SceneController : Controller
     private SceneData _sceneData = null;
     [SerializeField]
     private GameObject _playerRoot = null;
-    // [SerializeField]
 
-
-    public Action StartApplication;
-    // [SerializeField]
-    // private List<GameObject> _createdPlayer = new List<GameObject>();
-    // [SerializeField]
-    // private PlayerController _currentCharacter = null;
-
-    // public Action<SceneData, GameController> OnInitSceneWithData;
-
-    // public Action<GameObject> OnInstantiateCharacter;
-
-    // private GameController _gameController = null;
-
-    // public void HandleDataInit(SceneData data, GameController gameController)
-    // {
-    //     _sceneData = data;
-    //     _gameController = gameController;
-    // }
-
-    // private void Awake()
-    // {
-    //     if (!_controllerRoot)
-    //     {
-    //         _controllerRoot = gameObject;
-    //     }
-    // }
-    // private void InitController()
-    // {
-    //     if (_sceneRoot)
-    //     {
-    //         Controller[] controller = _controllerRoot.GetComponentsInChildren<Controller>();
-    //         foreach (Controller c in controller)
-    //         {
-    //             c.InitSceneRoot(_sceneRoot);
-    //         }
-    //     }
-    //     if (_camRoot != null)
-    //     {
-    //         Camera camera = _camRoot.GetComponentInChildren<Camera>();
-    //         if (camera)
-    //         {
-    //             GameObject cameraGameObjekt = camera.gameObject;
-    //             if (cameraGameObjekt)
-    //             {
-
-    //                 CameraController cameraController = cameraGameObjekt.AddComponent<CameraController>();
-    //                 cameraController.AddCammRootGameObject(_camRoot);
-    //                 OnInstantiateCharacter += cameraController.HandleCreateCharacter;
-
-    //             }
-    //         }
-    //     }
-    // }
-
-    // private void InitPlayer()
-    // {
-    //     if (_sceneRoot)
-    //     {
-    //         GameObject spawn = GetChildInRoot(_sceneRoot, "Spawn");
-    //         foreach (String name in GameController.Player._playableCharacter)
-    //         {
-    //             foreach (CharacterData ch in _gameController._character.CHARACTER)
-    //             {
-    //                 if (name == ch.NAME)
-    //                 {
-    //                     if (spawn)
-    //                     {
-    //                         Camera camera = _camRoot.GetComponentInChildren<Camera>();
-    //                         GameObject cameraGameObjekt = camera.gameObject;
-    //                         GameObject character = Instantiate(ch.PREFAB, spawn.transform.position, ch.PREFAB.transform.rotation, _sceneRoot.transform);
-    //                         PlayerController cC = character.AddComponent<PlayerController>();
-    //                         cC.InitPlayer(ch);
-    //                         cC.Ref(cameraGameObjekt);
-    //                         _currentCharacter = cC;
-    //                         _createdPlayer.Add(character);
-    //                         OnInstantiateCharacter?.Invoke(character);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-    // private GameObject GetChildInRoot(GameObject root, String child)
-    // {
-    //     GameObject ch = null;
-    //     for (int i = 0; i < root.transform.childCount; i++)
-    //     {
-    //         GameObject c = _sceneRoot.transform.GetChild(i).gameObject;
-
-    //         if (c.name == child)
-    //         {
-
-    //             ch = c;
-    //         }
-    //     }
-    //     return ch;
-    // }
-
+    [SerializeField]
+    private static SceneController _instance = null;
+    [SerializeField]
+    public static SceneController Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    private void Awake()
+    {
+        _instance = this;
+    }
     private void Start()
     {
-        // if (_playerRoot != null && _camRoot != null)
-        // {
-        //     PlayerController controller = _playerRoot.GetComponent<PlayerController>();
-        //     // GameObject empty = new GameObject();
-        //     // empty.transform.position = new Vector3(-16.78f, 8.84f, -7.31f);
-        //     // controller.CreateCharacter(controller.GetCurrentCharacterData(), empty.transform);
 
-        // }
-        // InitController();
-        // InitPlayer();
-
+        if (_playerRoot != null && _camRoot != null)
+        {
+            CameraController cameraController = _camRoot.GetComponentInChildren<CameraController>();
+            PlayerController playerController = _playerRoot.GetComponent<PlayerController>();
+            playerController.AfterCharacterCreated += cameraController.HandleCreatePlayerCharacter;
+            playerController.HandleStart();
+        }
     }
-    private void Update()
+    public GameObject GetCamGameObject()
     {
-
+        return _camRoot.GetComponentInChildren<Camera>().gameObject;
     }
 }

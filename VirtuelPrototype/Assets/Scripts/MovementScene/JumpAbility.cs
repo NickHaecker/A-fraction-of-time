@@ -4,46 +4,40 @@ using UnityEngine;
 
 public class JumpAbility : Ability
 {
-    public CharacterController controller;
+    public CharacterController _controller;
 
     [SerializeField]
-    private float gravity = -9.81f;
+    private float _gravity = -9.81f;
     [SerializeField]
-    private float jumpHeight = 2f;
+    private float _jumpHeight = 2f;
 
     [SerializeField]
-    private Vector3 fallVelocity;
+    private Vector3 _fallVelocity;
     [SerializeField]
-    private Transform groundCheck;
-    [SerializeField]
-    private float groundDistance = 0.2f;
-    [SerializeField]
-    private LayerMask groundMask;
-    [SerializeField]
-    private bool isGrounded;
+    private bool _isGrounded = false;
 
     private void Start()
     {
-
+        _controller = this.gameObject.GetComponent<CharacterController>();
     }
 
     protected override void HandleInput()
     {
         //Ground checking to see if agent is touching the ground
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        // isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && fallVelocity.y < 0)
+        if (_isGrounded && _fallVelocity.y < 0)
         {
-            fallVelocity.y = -2f;
+            _fallVelocity.y = -2f;
         }
-        fallVelocity.y += gravity * Time.deltaTime;
-        controller.Move(fallVelocity * Time.deltaTime);
+        _fallVelocity.y += _gravity * Time.deltaTime;
+        _controller.Move(_fallVelocity * Time.deltaTime);
 
         //Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && _isGrounded)
         {
-            SubmitAction(InteractionType.jump, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, new Time());
-            fallVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, TimeController.Instance.GetGameTime());
+            _fallVelocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
 
         }
     }
@@ -51,10 +45,18 @@ public class JumpAbility : Ability
 
     protected override void HandleCollisionEnter(Collider other)
     {
+        if (other.tag == "Ground")
+        {
+            _isGrounded = true;
+        }
         // throw new System.NotImplementedException();
     }
     protected override void HandleCollisionExit(Collider other)
     {
+        if (other.tag == "Ground")
+        {
+            _isGrounded = false;
+        }
         // throw new System.NotImplementedException();
     }
 }

@@ -16,14 +16,14 @@ public class AnimationHandler : MonoBehaviour
 
         animator.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("isJumping", true);
         }
 
-        if(Input.GetKeyUp(KeyCode.Space))
-        {
-            animator.SetBool("isJumping", false);
-        }
+        // if(Input.GetKeyUp(KeyCode.Space))
+        // {
+        //     animator.SetBool("isJumping", false);
+        // }
     }
 }

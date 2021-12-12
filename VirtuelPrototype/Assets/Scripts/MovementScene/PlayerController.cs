@@ -4,181 +4,243 @@ using UnityEngine;
 using System;
 public class PlayerController : Controller
 {
-    // [SerializeField]
-    // private MovementController _movementController = null;
-    // [SerializeField]
-    // private TimeController _timeController = null;
-    // [SerializeField]
-    // private string _name = null;
-    // [SerializeField]
-    // private bool _isAlive = true;
-    // [SerializeField]
-    // private AbilityController _abilityController = null;
-    // [SerializeField]
-    // private CharacterData _characterData = null;
-
-    // // private GameObject _root = null;
-    // private GameObject _cam = null;
+    [SerializeField]
+    private GameObject _playerRoot = null;
+    [SerializeField]
+    private Transform _spawnPoint = null;
     [SerializeField]
     private Player _currentCharacter = null;
     [SerializeField]
     private List<CharacterData> _playableCharacter = null;
+    [SerializeField]
+    private string _currentSelection = "";
+    [SerializeField]
+    private Player _temporalOldPlayer = null;
 
-    // public Change
-    // public Action<Player> BeforeCreateCharacter;
-    // public Action<Player> AfterCreateCharacter;
-    // public Action BeforeSwitchCharacter;
-    // public Action AfterSwitchCharacter;
-    // public Action<Player> BeforeSplit;
-    // public Action<Player> AfterSplit;
-    // private CharacterData _target
-    // private void Start()
-    // {
-    //     // BeforeSplit += StateManager.SaveRecordData;
-    //     // BeforeSplit += OnBeforeCreateCharacter;
-    //     // BeforeSplit += OnDeleteOldCharacter;
-    //     // AfterSplit += OnAfterCreateCharacter;
-    //     // AfterSplit += StateManager.LoadPlayer;
-    //     // Transform transform = new Transform();
-    //     // GameObject empty = new GameObject();
-    //     // empty.transform.position = new Vector3(-16.78f, 8.84f, -7.31f);
-    //     // this.InitPlayer(GetCurrentCharacterData(), empty.transform);
+    public Action<Player> BeforeCharacterCreated;
+    public Action<Player> AfterCharacterCreated;
+    public Action<Player> CreateShadow;
+
+    public void HandleStart()
+    {
+        CharacterData characterData = _playableCharacter[0];
+        GameObject character = InstantiateCharacter(characterData.PREFAB);
+        Player player = character.AddComponent<Player>();
+        player.Init(characterData);
+        _currentCharacter = player;
+        AfterCharacterCreated?.Invoke(player);
+    }
+    private GameObject InstantiateCharacter(GameObject prefab)
+    {
+        GameObject character = null;
+        if (prefab)
+        {
+            character = Instantiate(prefab, _spawnPoint.position, prefab.transform.rotation, this.gameObject.transform);
+        }
+        return character;
+    }
+    private void HandleInteractionListener(Interaction interaction)
+    {
+        _currentCharacter.InertInteractions(interaction);
+    }
+    public void HandleCharacterSelection(String name)
+    {
+        _currentSelection = name;
+
+        if (IsMerge())
+        {
+            HandleMerge();
+        }
+        else
+        {
+            HandleSplit();
+        }
+    }
+    private void Update()
+    {
+        HandleInput();
+    }
+    private void ChangeCurrentCharacter(Player player)
+    {
+        _currentCharacter = player;
+    }
+    private void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
+            splitSelectionController.InitCharacterSelection(_playableCharacter, _currentCharacter);
+        }
+    }
+    private void AddInteractionsListener(Player player)
+    {
+        Debug.Log(player);
+        foreach (Ability ability in player.gameObject.GetComponents<Ability>())
+        {
+            ability.SubmitInteraction += HandleInteractionListener;
+        }
+    }
+    private void RemoveInteractionsListener(Player player)
+    {
+        foreach (Ability ability in player.gameObject.GetComponents<Ability>())
+        {
+            ability.SubmitInteraction -= HandleInteractionListener;
+        }
+    }
+    private void HandleSplit()
+    {
+        BeforeCharacterCreated?.Invoke(_currentCharacter);
+        ChangeSpawnPoint(_currentCharacter);
+        Destroy(_currentCharacter.gameObject);
+        
+        CharacterData newCharacter = GetCharacterData(_currentSelection);
+        if(newCharacter)
+        {
+            RemoveShadow(newCharacter);
+            GameObject playerObject = InstantiateCharacter(newCharacter.PREFAB);
+            Player player = playerObject.AddComponent<Player>();
+            player.Init(newCharacter);
+            AfterCharacterCreated?.Invoke(player);
+        }
+        GameObject shadow = InstantiateCharacter(_temporalOldPlayer.GetCharacterData().PREFAB_GHOST);
+        _temporalOldPlayer = null;
 
 
-    //     // _movementController = gameObject.AddComponent<MovementController>();
-    //     // _movementController.HandleSelectCamera(_cam);
-    //     // // _movementController.HandleInitGround(_root);
-    //     // _timeController = gameObject.AddComponent<TimeController>();
-    // }
-    // private void FixedUpdate()
-    // {
-    //     this.HandleInput();
-    // }
-    // public void HandleInput()
-    // {
-    //     // GameObject empty = null;
-    //     // if (GetCurrentPlayer().name == "Character") { empty = new GameObject("Kaengu"); } else { empty = new GameObject("Character"); }
-    //     if (Input.GetKeyDown(KeyCode.G))
-    //     {
-    //         // HandleSplit(new Interaction().Copy(InteractionType.change, GetCurrentPlayer(), empty, GetCurrentPlayer().gameObject.transform, new Time()));
-    //     }
-    // }
-    // private void HandleInteractions(Interaction interaction)
-    // {
-    //     GetCurrentPlayer().InertInteractions(interaction);
-    // }
-    // private void OnAfterCreateCharacter(Player player)
-    // {
-    //     Ability[] abilitys = player.gameObject.GetComponents<Ability>();
-    //     foreach (Ability ability in abilitys)
-    //     {
-    //         ability.CreateInteraction += HandleInteractions;
-    //     }
-    // }
-    // // private void OnDeleteOldCharacter(Player player)
-    // // {
-    // //     if (player.GetCharacterData().IS_SPLIT_REALITY_ORIGIN)
-    // //     {
-    // //         Destroy(player.gameObject);
-    // //     }
-    // // }
-    // private void OnBeforeCreateCharacter(Player player)
-    // {
-    //     Ability[] abilitys = player.gameObject.GetComponents<Ability>();
-    //     foreach (Ability ability in abilitys)
-    //     {
-    //         ability.CreateInteraction -= HandleInteractions;
-    //     }
-    //     // if()
-    //     // Destroy(player.gameObject);
-    // }
-    // public void HandleSplit(Interaction interaction)
-    // {
-    //     BeforeSplit?.Invoke(interaction.actor);
 
-    //     // this.InitPlayer()
-    //     AfterSplit?.Invoke(interaction.actor);
-    // }
-    // public bool IsCurrentCharacterSplited()
-    // {
-    //     return GetCurrentCharacterData().IS_SPLIT_REALITY_ORIGIN;
-    // }
-    // public CharacterData GetCurrentCharacterData()
-    // {
-    //     if (_playableCharacter != null)
-    //     {
-    //         return _playableCharacter[_currentPlayableCharacter];
-    //     }
-    //     return null;
-    // }
-    // public Player GetCurrentPlayer()
-    // {
-    //     Player player = null;
-    //     for (int i = 0; i < this.gameObject.transform.childCount; i++)
-    //     {
-    //         GameObject current = this.gameObject.transform.GetChild(i).gameObject;
-    //         // GameObject object = this.gameObject.transform.GetChild(i).gameObject;
-    //         Player p = current.GetComponent<Player>();
-    //         if (p.GetCharacterData().NAME == GetCurrentCharacterData().NAME)
-    //         {
-    //             player = p;
-    //         }
-    //     }
-    //     return player;
-    //     // return this.gameObject.transform.GetChild(_currentPlayableCharacter).gameObject.GetComponent<Player>();
-    // }
-    // public void CreateCharacter(CharacterData character, Transform spawn)
-    // {
-    //     //     // if (AreChildsExisting())
-    //     //     // {
-    //     //     //     BeforeCreateCharacter?.Invoke(GetCurrentPlayer());
-    //     //     // }
-    //     //     // if (character != null)
-    //     //     // {
-    //     //     //     if (this.gameObject.transform.childCount > 0)
-    //     //     //     {
-    //     //     //         for (int i = 0; i < this.gameObject.transform.childCount; i++)
-    //     //     //         {
-    //     //     //             Player player = this.gameObject.transform.GetChild(i).gameObject.GetComponent<Player>();
-    //     //     //             if (player && player.GetName() != character.name)
-    //     //     //             {
-    //     //     //                 GameObject instantiation = Instantiate(character.PREFAB, spawn.position, character.PREFAB.transform.rotation, this.gameObject.transform);
-    //     //     //                 player = instantiation.AddComponent<Player>();
-    //     //     //                 player.Init(character);
-    //     //     //             }
-    //     //     //             // else if(player && player.GetName())
+    }
+    private void RemoveShadow(CharacterData character)
+    {
+        int count = this.gameObject.transform.childCount;
+        //CharacterData possShad
+        for(int i = 0 ; i < count ; i++)
+        {
+            //if()
+            GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
+            if(gO.name.Contains(character.PREFAB_GHOST.name))
+            {
+                Destroy(gO);
+            }
+        }
+    }
+        private CharacterData GetCharacterData(String uid)
+    {
+        CharacterData data = null;
+        foreach(CharacterData c in _playableCharacter)
+        {
+            if(c.NAME == uid)
+            {
+                data = c;
+            }
+        }
+        return data;
+    }
+    private void ChangeSpawnPoint(Player player)
+    {
+        Transform transform = player.gameObject.transform;
+        transform.localScale = new Vector3(1,1,1);
+        transform.rotation = new Quaternion();
+        _spawnPoint = transform;
 
-    //     //     //             // GameObject player = this.gameObject.transform.GetChild(i).gameObject;
-    //     //     //             // if(player.name != character.PREFAB.name){
-    //     //     //             //     GameObject instantiation = Instantiate(character.PREFAB,spawn,,character.PREFAB.transform.rotation,this.gameObject);
-    //     //     //             //     instantiation.AddComponent<Player>();
-    //     //     //             // }
 
-    //     //     //         }
-    //     //     //     }
-    //     //     // }
-    //     //     // AfterCreateCharacter?.Invoke(GetCurrentPlayer());
-    // }
-    // // public void ReconstructRecord()
-    // // {
 
-    // // }
-    // // public void InitPlayer(CharacterData data)
-    // // {
-    // //     // _characterData = data;
+    }
+    //private void OnCreateShadow()
+    //{
 
-    // // }
-    // // public void Ref(GameObject cam)
-    // // {
-    // //     // _root = root;
-    // //     _cam = cam;
-    // // }
-    // // public CharacterData GetCharacterData()
-    // // {
-    // //     return _characterData;
-    // // }
-    // public bool AreChildsExisting()
-    // {
-    //     return this.gameObject.transform.childCount > 0;
-    // }
+    //}
+    private void ClearChildren()
+    {
+
+        int children = this.gameObject.transform.childCount;
+        for(int i = 0 ; i < children ; i++)
+        {
+            GameObject child = this.gameObject.transform.GetChild(i).gameObject;
+            Destroy(child);
+        }
+        Debug.Log("deleted all children");
+    }
+    private void HandleTemporalOldPlayerSave(Player player)
+    {
+        _temporalOldPlayer = player;
+    }
+    private void HandleMerge()
+    {
+        BeforeCharacterCreated?.Invoke(_currentCharacter);
+        Debug.Log("start merge");
+        Debug.Log(_currentSelection);
+        SavePlayerData player = StateManager.LoadPlayer(_currentSelection);
+        CharacterData playerData = GetCharacterData(_currentSelection);
+        GameObject newSpawn = new GameObject("pc-157");
+        newSpawn.hideFlags = HideFlags.HideInHierarchy;
+
+        float[] position = player.Position.Position;
+        float[] rotation = player.Position.Rotation;
+        newSpawn.transform.position = new Vector3(position[0],position[1],position[2]);
+        newSpawn.transform.rotation = Quaternion.Euler(new Vector3(rotation[0],rotation[1],rotation[2]));
+        newSpawn.transform.localScale = new Vector3(1,1,1);
+        _spawnPoint = newSpawn.transform;
+        SavePlayerData shadow = StateManager.LoadPlayer(_temporalOldPlayer.GetName());
+        CharacterData shadowData = GetCharacterData(shadow.Name);
+        ClearChildren();
+
+        GameObject newPlayer = InstantiateCharacter(playerData.PREFAB);
+        Player newPlayerScript = newPlayer.AddComponent<Player>();
+        newPlayerScript.Init(playerData);
+
+        GameObject newShadow = InstantiateCharacter(shadowData.PREFAB_GHOST);
+        Player newShadowPlayerScript = newShadow.AddComponent<Player>();
+        newShadowPlayerScript.Init(shadowData);
+        newShadowPlayerScript.ReconstructRecord(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
+
+        AfterCharacterCreated?.Invoke(newPlayerScript);
+        _temporalOldPlayer = null;
+
+    }
+
+    private void Start()
+    {
+        BeforeCharacterCreated += HandleTemporalOldPlayerSave;
+        BeforeCharacterCreated += StateManager.SavePlayer;
+        BeforeCharacterCreated += RemoveInteractionsListener;
+        AfterCharacterCreated += ChangeCurrentCharacter;
+        AfterCharacterCreated += AddInteractionsListener;
+        if (_playerRoot == null)
+        {
+            _playerRoot = this.gameObject;
+        }
+        SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
+        if (splitSelectionController)
+        {
+            splitSelectionController.SelectCharacter += HandleCharacterSelection;
+        }
+
+    }
+
+    private bool IsMerge()
+    {
+        bool isM = false;
+        if (_currentCharacter != null)
+        {
+            int currentIndex = 0;
+            foreach (CharacterData data in _playableCharacter)
+            {
+                if (data.NAME == _currentCharacter.GetCharacterData().NAME)
+                {
+                    break;
+                }
+                currentIndex++;
+            }
+            int potencialIndex = 0;
+            foreach (CharacterData d in _playableCharacter)
+            {
+                if (d.NAME == _currentSelection)
+                {
+                    break;
+                }
+                potencialIndex++;
+            }
+            isM = potencialIndex < currentIndex;
+        }
+        return isM;
+    }
 }
