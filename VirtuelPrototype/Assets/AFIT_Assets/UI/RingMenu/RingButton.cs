@@ -4,22 +4,10 @@ using UnityEngine;
 
 public class RingButton : MonoBehaviour
 {
-    private CharacterData Data;
+    public CharacterData Data;
 
-
-    void Start()
+    public void setData(CharacterData data)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void callName()
-    {
-        Debug.Log("Hello World ...");
+        Data = data;
     }
 }

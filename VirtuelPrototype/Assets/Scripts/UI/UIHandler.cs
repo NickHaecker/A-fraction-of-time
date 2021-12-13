@@ -17,19 +17,19 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift) && !ChooseCharacterUI.activeSelf && !ShiftIsPressed)
+        if(Input.GetKeyDown(KeyCode.G) && !ChooseCharacterUI.activeSelf && !ShiftIsPressed)
         {
             RunTimeUI.SetActive(false);
             ChooseCharacterUI.SetActive(true);
             ShiftIsPressed = true;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && ChooseCharacterUI.activeSelf && !ShiftIsPressed)
+        if (Input.GetKeyDown(KeyCode.G) && ChooseCharacterUI.activeSelf && !ShiftIsPressed)
         {
             RunTimeUI.SetActive(true);
             ChooseCharacterUI.SetActive(false);
             ShiftIsPressed = true;
         }
-        if(!Input.GetKeyDown(KeyCode.LeftShift) && ShiftIsPressed)
+        if(!Input.GetKeyDown(KeyCode.G) && ShiftIsPressed)
         {
             ShiftIsPressed = false;
         }
