@@ -1,26 +1,27 @@
 using UnityEngine;
 
-public sealed class TimeController : MonoBehaviour
+public class TimeController : MonoBehaviour
 {
+    [SerializeField]
     private static TimeController _instance = null;
+    [SerializeField]
     private float _gametime;
+    [SerializeField]
     private bool _firstSplitHappenend = false;
+    [SerializeField]
     private bool _isActive = false;
-
-    private TimeController()
-    {
-    }
+    [SerializeField]
 
     public static TimeController Instance
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = new TimeController();
-            }
             return _instance;
         }
+    }
+    private void Awake()
+    {
+        _instance = this;
     }
     // Update is called once per frame
     public void Update()
