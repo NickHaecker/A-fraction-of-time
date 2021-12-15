@@ -45,7 +45,8 @@ public class PlayerController : Controller
     }
     private void HandleInteractionListener(Interaction interaction)
     {
-        _currentCharacter.InsertInteractions(interaction);
+        Debug.Log("recorded: " + interaction.interactionPosition.position);
+        _currentCharacter.InsertInteraction(interaction);
     }
     public void HandleCharacterSelection(String name)
     {

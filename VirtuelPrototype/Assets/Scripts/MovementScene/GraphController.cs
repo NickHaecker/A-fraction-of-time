@@ -31,6 +31,11 @@ public class GraphController : Controller
         _playerController.RemoveCharacter(_currentTimeline.GetPlayer());
         Player shadow = _playerController.CreateShadow(_currentTimeline.GetPlayer());
         _currentTimeline.InsertGhost(shadow);
+        shadow.SetLastTimestamp(_currentTimeline.GetStartTimestamp());
+        /*  foreach (var interaction in _currentTimeline.GetGhost().GetInteractions())
+          {
+              Debug.Log("time :" + interaction.timestamp);
+          }*/
         _currentTimeline = _currentTimeline.GetParent();
         //shadow.InsertInteractions(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
     }

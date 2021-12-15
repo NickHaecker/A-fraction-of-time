@@ -22,7 +22,7 @@ public static class Utils
             GameObject interactedObject = new GameObject();
             interactedObject.hideFlags = HideFlags.HideInHierarchy;
   
-            Debug.Log(interactedObject.name);
+            //Debug.Log(interactedObject.name);
             float[] position = interaction.Source.Position;
             float[] scale = interaction.Source.Scale;
             float[] rotation = interaction.Source.Rotation;
@@ -37,7 +37,7 @@ public static class Utils
 
             Transform interactedPosition = new GameObject().transform;
             interactedPosition.gameObject.hideFlags = HideFlags.HideInHierarchy;
-            Debug.Log(interactedPosition.gameObject.name);
+            //Debug.Log(interactedPosition.gameObject.name);
             float[] iposition = interaction.Target.Position;
             float[] iscale = interaction.Target.Scale;
             float[] irotation = interaction.Target.Rotation;

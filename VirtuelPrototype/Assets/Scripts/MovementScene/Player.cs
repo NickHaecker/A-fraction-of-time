@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private List<Interaction> _interactions = new List<Interaction>();
     [SerializeField]
     private bool _isReconstructing = false;
+    [SerializeField]
+    private float _lastTimestamp = 0f;
 
     //public Action DeleteRecords;
 
@@ -48,25 +50,30 @@ public class Player : MonoBehaviour
 
     }
 
-    public void InsertInteractions(Interaction interaction)
+    public void InsertInteraction(Interaction interaction)
     {
         _interactions.Add(interaction);
 
     }
     public void ReconstructRecord(float timestamp)
     {
-        Debug.Log("current stamp " + timestamp);
-        Interaction interaction = _interactions.Find(i => i.timestamp.Equals(timestamp));
-        Debug.Log(interaction);
+        //Debug.Log("current stamp " + timestamp);
+        
+        Interaction interaction = _interactions.Find(i => (_lastTimestamp < i.timestamp && i.timestamp <= timestamp));
+
+        SetLastTimestamp(timestamp);
+
+        //Debug.Log(interaction);
         //Debug.Log("start replay");
 
         //foreach(Interaction interaction in interactions)
         //{
-        if(interaction != null)
+        if (interaction != null)
         {
             switch(interaction.type)
             {
                 case InteractionType.WALK:
+                    Debug.Log("interacted :" + interaction.interactionPosition.position);
                     transform.position = interaction.interactionPosition.position;
                     transform.rotation = interaction.interactionPosition.rotation;
                     transform.localScale = interaction.interactionPosition.localScale;
@@ -84,7 +91,11 @@ public class Player : MonoBehaviour
         //StartCoroutine(tu());
 
     }
-
+    public void SetLastTimestamp(float timestamp)
+    {
+        
+        _lastTimestamp = timestamp;
+    }
     //IEnumerator tu()
     //{
 
