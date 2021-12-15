@@ -3885,6 +3885,8 @@ GameObject:
   - component: {fileID: 650858092}
   - component: {fileID: 650858093}
   - component: {fileID: 650858094}
+  - component: {fileID: 650858096}
+  - component: {fileID: 650858095}
   m_Layer: 0
   m_Name: ----PLAYER----
   m_TagString: Untagged
@@ -3943,6 +3945,32 @@ MonoBehaviour:
   _selectionUI: {fileID: 313815058}
   _button: {fileID: 1695705158104821949, guid: 82e9b81f27a807c4fb839708b80ca41f, type: 3}
   _createdButtons: []
+--- !u!114 &650858095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650858091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af21afe79c459e04f83d3583e325fcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gametime: 0
+  _isCounting: 0
+--- !u!114 &650858096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650858091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1844b6593f12e6c4b8f7cdbed427bc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &657376528
 PrefabInstance:
   m_ObjectHideFlags: 0

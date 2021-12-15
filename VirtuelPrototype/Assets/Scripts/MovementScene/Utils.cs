@@ -15,11 +15,11 @@ public static class Utils
         {
             Interaction i = new Interaction();
             InteractionType type = (InteractionType)Enum.Parse(typeof(InteractionType),interaction.Type);
-            Player actor = new GameObject("ut-18").AddComponent<Player>();
+            Player actor = new GameObject().AddComponent<Player>();
             actor.gameObject.hideFlags = HideFlags.HideInHierarchy;
 
             actor.Init(GetCharacterData(data,interaction.Actor));
-            GameObject interactedObject = new GameObject("ut-21");
+            GameObject interactedObject = new GameObject();
             interactedObject.hideFlags = HideFlags.HideInHierarchy;
   
             Debug.Log(interactedObject.name);
@@ -35,7 +35,7 @@ public static class Utils
             interactedObject.layer = interaction.Source.Layer;
             interactedObject.tag = interaction.Source.Tag;
 
-            Transform interactedPosition = new GameObject("ut-36").transform;
+            Transform interactedPosition = new GameObject().transform;
             interactedPosition.gameObject.hideFlags = HideFlags.HideInHierarchy;
             Debug.Log(interactedPosition.gameObject.name);
             float[] iposition = interaction.Target.Position;

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool _isReconstructing = false;
 
-    public Action DeleteRecords;
+    //public Action DeleteRecords;
 
     // Start is called before the first frame update
 
@@ -48,43 +48,54 @@ public class Player : MonoBehaviour
 
     }
 
-    public void InertInteractions(Interaction interaction)
+    public void InsertInteractions(Interaction interaction)
     {
         _interactions.Add(interaction);
 
     }
-    public void ReconstructRecord(List<Interaction> interactions)
+    public void ReconstructRecord(float timestamp)
     {
+        Debug.Log("current stamp " + timestamp);
+        Interaction interaction = _interactions.Find(i => i.timestamp.Equals(timestamp));
+        Debug.Log(interaction);
+        //Debug.Log("start replay");
 
-        Debug.Log("start replay");
-
-        foreach(Interaction interaction in interactions)
+        //foreach(Interaction interaction in interactions)
+        //{
+        if(interaction != null)
         {
             switch(interaction.type)
             {
                 case InteractionType.WALK:
-                    CharacterController cC = this.gameObject.GetComponent<CharacterController>();
-                    Vector3 direction = new Vector3(interaction.interactionPosition.position.x - transform.position.x,interaction.interactionPosition.position.y - transform.position.y,interaction.interactionPosition.transform.position.z - transform.position.z);
-                    cC.Move(direction);
+                    transform.position = interaction.interactionPosition.position;
+                    transform.rotation = interaction.interactionPosition.rotation;
+                    transform.localScale = interaction.interactionPosition.localScale;
+                    //            //CharacterController cC = this.gameObject.GetComponent<CharacterController>();
+                    //            //Vector3 direction = new Vector3(interaction.interactionPosition.position.x - transform.position.x,interaction.interactionPosition.position.y - transform.position.y,interaction.interactionPosition.transform.position.z - transform.position.z);
+                    //            //cC.Move(direction);
                     break;
                 default:
                     break;
             }
-
         }
 
-        StartCoroutine(tu());
+        //}
+
+        //StartCoroutine(tu());
 
     }
 
-    IEnumerator tu()
+    //IEnumerator tu()
+    //{
+
+    //    yield return new WaitForSeconds(600);
+    //    Debug.Log("Delete");
+    //    Delete();
+    //}
+    public void InsertInteractions(List<Interaction> interactions)
     {
-     
-        yield return new WaitForSeconds(600);
-        Debug.Log("Delete");
-        Delete();
+        _interactions = interactions;
     }
-
     public CharacterData GetCharacterData()
     {
         return _data;

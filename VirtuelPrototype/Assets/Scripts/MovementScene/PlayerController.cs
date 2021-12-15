@@ -19,7 +19,10 @@ public class PlayerController : Controller
 
     public Action<Player> BeforeCharacterCreated;
     public Action<Player> AfterCharacterCreated;
-    public Action<Player> CreateShadow;
+    //public Action<Player> CreateShadow;
+    public Action<CharacterData> InitTimeline;
+    public Action<CharacterData> Split;
+    public Action Merge;
 
     public void HandleStart()
     {
@@ -29,6 +32,7 @@ public class PlayerController : Controller
         player.Init(characterData);
         _currentCharacter = player;
         AfterCharacterCreated?.Invoke(player);
+        InitTimeline?.Invoke(player.GetCharacterData());
     }
     private GameObject InstantiateCharacter(GameObject prefab)
     {
@@ -41,10 +45,11 @@ public class PlayerController : Controller
     }
     private void HandleInteractionListener(Interaction interaction)
     {
-        _currentCharacter.InertInteractions(interaction);
+        _currentCharacter.InsertInteractions(interaction);
     }
     public void HandleCharacterSelection(String name)
     {
+        TimeController.Instance.SetActive(true);
         _currentSelection = name;
 
         if (IsMerge())
@@ -66,11 +71,14 @@ public class PlayerController : Controller
     }
     private void HandleInput()
     {
+
         if (Input.GetKeyDown(KeyCode.G))
         {
+            TimeController.Instance.SetActive(false);
             SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
             splitSelectionController.InitCharacterSelection(_playableCharacter, _currentCharacter);
         }
+
     }
     private void AddInteractionsListener(Player player)
     {
@@ -101,14 +109,16 @@ public class PlayerController : Controller
             Player player = playerObject.AddComponent<Player>();
             player.Init(newCharacter);
             AfterCharacterCreated?.Invoke(player);
+            Split?.Invoke(player.GetCharacterData());
         }
         GameObject shadow = InstantiateCharacter(_temporalOldPlayer.GetCharacterData().PREFAB_GHOST);
+
         _temporalOldPlayer = null;
 
 
 
     }
-    private void RemoveShadow(CharacterData character)
+    public void RemoveShadow(CharacterData character)
     {
         int count = this.gameObject.transform.childCount;
         //CharacterData possShad
@@ -122,7 +132,21 @@ public class PlayerController : Controller
             }
         }
     }
-        private CharacterData GetCharacterData(String uid)
+    public void RemoveCharacter(CharacterData character)
+    {
+        int count = this.gameObject.transform.childCount;
+        //CharacterData possShad
+        for(int i = 0 ; i < count ; i++)
+        {
+            //if()
+            GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
+            if(gO.name.Contains(character.PREFAB.name))
+            {
+                Destroy(gO);
+            }
+        }
+    }
+    private CharacterData GetCharacterData(String uid)
     {
         CharacterData data = null;
         foreach(CharacterData c in _playableCharacter)
@@ -144,10 +168,15 @@ public class PlayerController : Controller
 
 
     }
-    //private void OnCreateShadow()
-    //{
-
-    //}
+    public Player CreateShadow(CharacterData data)
+    {
+        SavePlayerData shadow = StateManager.LoadPlayer(data.NAME);
+        GameObject newShadow = InstantiateCharacter(data.PREFAB_GHOST);
+        Player shadwoPlayer = newShadow.AddComponent<Player>();
+        shadwoPlayer.Init(data);
+        shadwoPlayer.InsertInteractions(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
+        return shadwoPlayer;
+    }
     private void ClearChildren()
     {
 
@@ -166,11 +195,12 @@ public class PlayerController : Controller
     private void HandleMerge()
     {
         BeforeCharacterCreated?.Invoke(_currentCharacter);
-        Debug.Log("start merge");
-        Debug.Log(_currentSelection);
+        //Debug.Log("start merge");
+        //Debug.Log(_currentSelection);
         SavePlayerData player = StateManager.LoadPlayer(_currentSelection);
         CharacterData playerData = GetCharacterData(_currentSelection);
-        GameObject newSpawn = new GameObject("pc-157");
+        RemoveShadow(playerData);
+        GameObject newSpawn = new GameObject();
         newSpawn.hideFlags = HideFlags.HideInHierarchy;
 
         float[] position = player.Position.Position;
@@ -179,18 +209,19 @@ public class PlayerController : Controller
         newSpawn.transform.rotation = Quaternion.Euler(new Vector3(rotation[0],rotation[1],rotation[2]));
         newSpawn.transform.localScale = new Vector3(1,1,1);
         _spawnPoint = newSpawn.transform;
-        SavePlayerData shadow = StateManager.LoadPlayer(_temporalOldPlayer.GetName());
-        CharacterData shadowData = GetCharacterData(shadow.Name);
-        ClearChildren();
+        
+        //SavePlayerData shadow = StateManager.LoadPlayer(_temporalOldPlayer.GetName());
+        //CharacterData shadowData = GetCharacterData(shadow.Name);
+        //ClearChildren();
 
         GameObject newPlayer = InstantiateCharacter(playerData.PREFAB);
         Player newPlayerScript = newPlayer.AddComponent<Player>();
         newPlayerScript.Init(playerData);
-
-        GameObject newShadow = InstantiateCharacter(shadowData.PREFAB_GHOST);
-        Player newShadowPlayerScript = newShadow.AddComponent<Player>();
-        newShadowPlayerScript.Init(shadowData);
-        newShadowPlayerScript.ReconstructRecord(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
+        Merge?.Invoke();
+        //GameObject newShadow = InstantiateCharacter(shadowData.PREFAB_GHOST);
+        //Player newShadowPlayerScript = newShadow.AddComponent<Player>();
+        //newShadowPlayerScript.Init(shadowData);
+        //newShadowPlayerScript.ReconstructRecord(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
 
         AfterCharacterCreated?.Invoke(newPlayerScript);
         _temporalOldPlayer = null;
