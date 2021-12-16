@@ -13,7 +13,7 @@ public class GraphController : Controller
 
     [SerializeField]
     private PlayerController _playerController = null;
-    //// Start is called before the first frame update
+
     void Start()
     {
         _playerController = this.gameObject.GetComponent<PlayerController>();
@@ -22,11 +22,6 @@ public class GraphController : Controller
         _playerController.Merge += HandleMerge;
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
     private void HandleMerge()
     {
         TimeController.Instance.SetGameTime(_currentTimeline.GetStartTimestamp());
@@ -34,13 +29,9 @@ public class GraphController : Controller
         Player shadow = _playerController.CreateShadow(_currentTimeline.GetPlayer());
         _currentTimeline.InsertGhost(shadow);
         shadow.SetLastTimestamp(_currentTimeline.GetStartTimestamp());
-        /*  foreach (var interaction in _currentTimeline.GetGhost().GetInteractions())
-          {
-              Debug.Log("time :" + interaction.timestamp);
-          }*/
+
         _currentTimeline = _currentTimeline.GetParent();
-        //shadow.StartShadowing(true);
-        //shadow.InsertInteractions(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
+
     }
     private void HandleAddChild(CharacterData player)
     {
@@ -57,10 +48,7 @@ public class GraphController : Controller
     {
         if(_currentTimeline != null)
         {
-            //if(_currentTimeline.GetParent() != null && _currentTimeline.GetParent().GetChildren().Count > 1)
-            //{
 
-            //}
             if(_currentTimeline.GetChildren().Count != 0)
             {
                 foreach(Timeline child in _currentTimeline.GetChildren())
@@ -72,7 +60,7 @@ public class GraphController : Controller
                 }
             }
         }
-        //if()
+
 
     }
 }

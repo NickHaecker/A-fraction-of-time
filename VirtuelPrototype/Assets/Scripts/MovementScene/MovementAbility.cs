@@ -34,7 +34,7 @@ public class MovementAbility : Ability
 
     private void Start()
     {
-        //groundMask = LayerMask.GetMask("Ground");
+ 
         _playerTransform = this.gameObject.transform;
         _controller = this.gameObject.GetComponent<CharacterController>();
         _cam = SceneController.Instance.GetCamGameObject().transform;
@@ -54,8 +54,7 @@ public class MovementAbility : Ability
 
     protected override void HandleInput()
     {
-        // cam = Camera.main.gameObject.transform;
-        //Player Movement
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical);

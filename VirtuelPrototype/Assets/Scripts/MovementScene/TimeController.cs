@@ -11,8 +11,7 @@ public class TimeController : Controller
 
     [SerializeField]
     private float _gametime;
-    //[SerializeField]
-    //private bool _firstSplitHappenend = false;
+
     [SerializeField]
     private bool _isCounting = false;
     [SerializeField]
@@ -33,14 +32,14 @@ public class TimeController : Controller
         _graphController = this.gameObject.GetComponent<GraphController>();
         SetActive(true);
     }
-    // Update is called once per frame
+
     public void FixedUpdate()
     {
         if(_isCounting)
         {
 
             _graphController.HandleGameTime(_gametime);
-            //Debug.Log(_gametime);
+
             _gametime += Time.deltaTime;
 
         }
@@ -48,7 +47,7 @@ public class TimeController : Controller
 
     public void FirstSplit()
     {
-        //this._firstSplitHappenend = true;
+
         _isCounting = true;
     }
 

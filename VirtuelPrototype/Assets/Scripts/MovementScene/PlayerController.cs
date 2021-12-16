@@ -21,7 +21,6 @@ public class PlayerController : Controller
 
     public Action<Player> BeforeCharacterCreated;
     public Action<Player> AfterCharacterCreated;
-    //public Action<Player> CreateShadow;
     public Action<CharacterData> InitTimeline;
     public Action<CharacterData> Split;
     public Action Merge;
@@ -47,7 +46,6 @@ public class PlayerController : Controller
     }
     private void HandleInteractionListener(InteractionSaveData interaction)
     {
-        //Debug.Log("recorded: " + interaction.interactionPosition.position);
         _currentCharacter.InsertInteraction(interaction);
     }
     public void HandleCharacterSelection(String name)
@@ -124,10 +122,10 @@ public class PlayerController : Controller
     public void RemoveShadow(CharacterData character)
     {
         int count = this.gameObject.transform.childCount;
-        //CharacterData possShad
+
         for(int i = 0 ; i < count ; i++)
         {
-            //if()
+
             GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
             if(gO.name.Contains(character.PREFAB_GHOST.name))
             {
@@ -138,10 +136,10 @@ public class PlayerController : Controller
     public void RemoveCharacter(CharacterData character)
     {
         int count = this.gameObject.transform.childCount;
-        //CharacterData possShad
+
         for(int i = 0 ; i < count ; i++)
         {
-            //if()
+       
             GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
             if(gO.name.Contains(character.PREFAB.name))
             {
@@ -198,8 +196,7 @@ public class PlayerController : Controller
     private void HandleMerge()
     {
         BeforeCharacterCreated?.Invoke(_currentCharacter);
-        //Debug.Log("start merge");
-        //Debug.Log(_currentSelection);
+
         SavePlayerData player = StateManager.LoadPlayer(_currentSelection);
         CharacterData playerData = GetCharacterData(_currentSelection);
         RemoveShadow(playerData);
@@ -213,18 +210,13 @@ public class PlayerController : Controller
         newSpawn.transform.localScale = new Vector3(1,1,1);
         _spawnPoint = newSpawn.transform;
         
-        //SavePlayerData shadow = StateManager.LoadPlayer(_temporalOldPlayer.GetName());
-        //CharacterData shadowData = GetCharacterData(shadow.Name);
-        //ClearChildren();
+ 
 
         GameObject newPlayer = InstantiateCharacter(playerData.PREFAB);
         Player newPlayerScript = newPlayer.AddComponent<Player>();
         newPlayerScript.Init(playerData);
         Merge?.Invoke();
-        //GameObject newShadow = InstantiateCharacter(shadowData.PREFAB_GHOST);
-        //Player newShadowPlayerScript = newShadow.AddComponent<Player>();
-        //newShadowPlayerScript.Init(shadowData);
-        //newShadowPlayerScript.ReconstructRecord(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
+
 
         AfterCharacterCreated?.Invoke(newPlayerScript);
         

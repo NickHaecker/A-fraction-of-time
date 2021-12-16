@@ -13,13 +13,13 @@ public class Interaction
 
     public Interaction(InteractionType i, Player p, GameObject g, Transform t, float ti)
     {
-        //Interaction interaction = new Interaction();
+
         type = i;
         actor = p;
         interactedObject = g;
         interactionPosition = t;
         timestamp = ti;
 
-        //return interaction;
+   
     }
 }

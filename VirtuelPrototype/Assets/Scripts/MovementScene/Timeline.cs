@@ -26,7 +26,7 @@ public class Timeline
         }
         _ID = level.ToString() + parentId +  "_" + player.NAME;
     }
-    //public get level
+
     public int GetLevel()
     {
         return _level;

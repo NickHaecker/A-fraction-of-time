@@ -9,5 +9,5 @@ public class SavePlayerData
     public string UID;
     public List<InteractionSaveData> Interactions = new List<InteractionSaveData>();
     public GameObjectSaveData Position;
-    //public float timestamp;
+
 }
