@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
+[Serializable]
 public class PlayerController : Controller
 {
     [SerializeField]
@@ -43,9 +45,9 @@ public class PlayerController : Controller
         }
         return character;
     }
-    private void HandleInteractionListener(Interaction interaction)
+    private void HandleInteractionListener(InteractionSaveData interaction)
     {
-        Debug.Log("recorded: " + interaction.interactionPosition.position);
+        //Debug.Log("recorded: " + interaction.interactionPosition.position);
         _currentCharacter.InsertInteraction(interaction);
     }
     public void HandleCharacterSelection(String name)
@@ -175,7 +177,7 @@ public class PlayerController : Controller
         GameObject newShadow = InstantiateCharacter(data.PREFAB_GHOST);
         Player shadwoPlayer = newShadow.AddComponent<Player>();
         shadwoPlayer.Init(data);
-        shadwoPlayer.InsertInteractions(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
+        shadwoPlayer.InsertInteractions(shadow.Interactions);
         return shadwoPlayer;
     }
     private void ClearChildren()
@@ -225,6 +227,7 @@ public class PlayerController : Controller
         //newShadowPlayerScript.ReconstructRecord(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
 
         AfterCharacterCreated?.Invoke(newPlayerScript);
+        
         _temporalOldPlayer = null;
 
     }

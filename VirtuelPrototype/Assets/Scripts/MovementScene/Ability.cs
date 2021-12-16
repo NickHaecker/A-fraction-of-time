@@ -5,7 +5,7 @@ using System;
 [Serializable]
 public abstract class Ability : MonoBehaviour
 {
-    public Action<Interaction> SubmitInteraction;
+    public Action<InteractionSaveData> SubmitInteraction;
 
     private void FixedUpdate()
     {
@@ -29,8 +29,9 @@ public abstract class Ability : MonoBehaviour
         Player current = this.gameObject.GetComponent<Player>();
         if (current.GetCharacterData().IS_SPLIT_REALITY_ORIGIN)
         {
-            Interaction interaction = new Interaction().Copy(type, player, gameObject, position, timestamp);
-            SubmitInteraction?.Invoke(interaction);
+            //new Transform()
+            Interaction interaction = new Interaction(type, player, gameObject,position, timestamp);
+            SubmitInteraction?.Invoke(Utils.GetInteractionSaveState(interaction));
         }
     }
 }

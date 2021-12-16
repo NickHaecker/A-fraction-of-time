@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+[Serializable]
 public class Player : MonoBehaviour
 {
     // [SerializeField]
@@ -13,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private CharacterData _data = null;
     [SerializeField]
-    private List<Interaction> _interactions = new List<Interaction>();
+    private List<InteractionSaveData> _interactions;
     [SerializeField]
     private bool _isReconstructing = false;
     [SerializeField]
@@ -45,21 +46,24 @@ public class Player : MonoBehaviour
     public void Init(CharacterData data)
     {
         _data = data;
-        _interactions = new List<Interaction>();
+        _interactions = new List<InteractionSaveData>();
 
 
     }
 
-    public void InsertInteraction(Interaction interaction)
+    public void InsertInteraction(InteractionSaveData interaction)
     {
+        //Debug.Log("in Player " + interaction.S.position);
         _interactions.Add(interaction);
+        //Debug.Log("in Player " + interaction.interactionPosition.position + " after add");
+        Debug.Log(_interactions);
 
     }
     public void ReconstructRecord(float timestamp)
     {
         //Debug.Log("current stamp " + timestamp);
         
-        Interaction interaction = _interactions.Find(i => (_lastTimestamp < i.timestamp && i.timestamp <= timestamp));
+        InteractionSaveData interaction = _interactions.Find(i => (_lastTimestamp < i.TimeStamp && i.TimeStamp <= timestamp));
 
         SetLastTimestamp(timestamp);
 
@@ -70,13 +74,14 @@ public class Player : MonoBehaviour
         //{
         if (interaction != null)
         {
-            switch(interaction.type)
+            InteractionType type = (InteractionType)Enum.Parse(typeof(InteractionType),interaction.Type);
+            switch(type)
             {
                 case InteractionType.WALK:
-                    Debug.Log("interacted :" + interaction.interactionPosition.position);
-                    transform.position = interaction.interactionPosition.position;
-                    transform.rotation = interaction.interactionPosition.rotation;
-                    transform.localScale = interaction.interactionPosition.localScale;
+                    //Debug.Log("interacted :" + interaction.interactionPosition.position);
+                    transform.position = new Vector3( interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
+                    transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
+                    transform.localScale = new Vector3( interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
                     //            //CharacterController cC = this.gameObject.GetComponent<CharacterController>();
                     //            //Vector3 direction = new Vector3(interaction.interactionPosition.position.x - transform.position.x,interaction.interactionPosition.position.y - transform.position.y,interaction.interactionPosition.transform.position.z - transform.position.z);
                     //            //cC.Move(direction);
@@ -85,7 +90,6 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-
         //}
 
         //StartCoroutine(tu());
@@ -103,7 +107,7 @@ public class Player : MonoBehaviour
     //    Debug.Log("Delete");
     //    Delete();
     //}
-    public void InsertInteractions(List<Interaction> interactions)
+    public void InsertInteractions(List<InteractionSaveData> interactions)
     {
         _interactions = interactions;
     }
@@ -115,8 +119,12 @@ public class Player : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-    public List<Interaction> GetInteractions()
+    public List<InteractionSaveData> GetInteractions()
     {
         return _interactions;
+    }
+    public void StartShadowing(bool state)
+    {
+        _isReconstructing = state;
     }
 }

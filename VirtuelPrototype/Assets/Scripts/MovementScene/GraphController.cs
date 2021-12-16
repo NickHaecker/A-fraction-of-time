@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+[Serializable]
 
 public class GraphController : Controller
 {
@@ -37,6 +39,7 @@ public class GraphController : Controller
               Debug.Log("time :" + interaction.timestamp);
           }*/
         _currentTimeline = _currentTimeline.GetParent();
+        //shadow.StartShadowing(true);
         //shadow.InsertInteractions(Utils.ConvertInteractions(shadow.Interactions,_playableCharacter));
     }
     private void HandleAddChild(CharacterData player)

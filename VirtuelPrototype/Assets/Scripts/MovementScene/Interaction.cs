@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
+[Serializable]
 public class Interaction
 {
     public InteractionType type;
@@ -10,15 +11,15 @@ public class Interaction
     public Transform interactionPosition;
     public float timestamp;
 
-    public Interaction Copy(InteractionType i, Player p, GameObject g, Transform t, float ti)
+    public Interaction(InteractionType i, Player p, GameObject g, Transform t, float ti)
     {
-        Interaction interaction = new Interaction();
-        interaction.type = i;
-        interaction.actor = p;
-        interaction.interactedObject = g;
-        interaction.interactionPosition = t;
-        interaction.timestamp = ti;
+        //Interaction interaction = new Interaction();
+        type = i;
+        actor = p;
+        interactedObject = g;
+        interactionPosition = t;
+        timestamp = ti;
 
-        return interaction;
+        //return interaction;
     }
 }
