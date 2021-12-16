@@ -33,6 +33,10 @@ public class GraphController : Controller
         _currentTimeline = _currentTimeline.GetParent();
 
     }
+    //private void RemoveTimeline(GameObject current)
+    //{
+
+    //}
     private void HandleAddChild(CharacterData player)
     {
         Timeline timeline = new Timeline(_currentTimeline.GetLevel() + 1,TimeController.Instance.GetGameTime(),player,_currentTimeline);

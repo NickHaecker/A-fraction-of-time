@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _lastTimestamp = 0f;
 
-
+    public Action<GameObject> DestroyShadow;
 
 
 
@@ -41,28 +41,34 @@ public class Player : MonoBehaviour
     }
     public void ReconstructRecord(float timestamp)
     {
-   
-        
-        InteractionSaveData interaction = _interactions.Find(i => (_lastTimestamp < i.TimeStamp && i.TimeStamp <= timestamp));
 
-        SetLastTimestamp(timestamp);
-
-
-        if (interaction != null)
+        if(timestamp < _lastTimestamp)
         {
-            InteractionType type = (InteractionType)Enum.Parse(typeof(InteractionType),interaction.Type);
-            switch(type)
+            InteractionSaveData interaction = _interactions.Find(i => (_lastTimestamp < i.TimeStamp && i.TimeStamp <= timestamp));
+
+            //SetLastTimestamp(timestamp);
+
+
+            if(interaction != null)
             {
-                case InteractionType.WALK:
+                InteractionType type = (InteractionType)Enum.Parse(typeof(InteractionType),interaction.Type);
+                switch(type)
+                {
+                    case InteractionType.WALK:
 
-                    transform.position = new Vector3( interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
-                    transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
-                    transform.localScale = new Vector3( interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
+                        transform.position = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
+                        transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
+                        transform.localScale = new Vector3(interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
 
-                    break;
-                default:
-                    break;
+                        break;
+                    default:
+                        break;
+                }
             }
+        }
+        else
+        {
+            DestroyShadow?.Invoke(this.gameObject);
         }
      
 
@@ -78,6 +84,7 @@ public class Player : MonoBehaviour
     public void InsertInteractions(List<InteractionSaveData> interactions)
     {
         _interactions = interactions;
+        _lastTimestamp = _interactions[_interactions.Count - 1].TimeStamp;
     }
     public CharacterData GetCharacterData()
     {
