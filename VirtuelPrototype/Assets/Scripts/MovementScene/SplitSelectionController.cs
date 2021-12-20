@@ -14,26 +14,11 @@ public class SplitSelectionController : Controller
     public Action<String> SelectCharacter;
     public void InitCharacterSelection(List<CharacterData> data, Player player)
     {
-
         if (_selectionUI)
         {
-            _selectionUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
-            if (_button)
-            {
-                foreach (CharacterData d in data)
-                {
-                    if (player.GetCharacterData().NAME != d.NAME)
-                    {
-                        GameObject gO = Instantiate(_button, _selectionUI.transform.position, new Quaternion(0, 0, 0, 0), _selectionUI.transform);
-                        Button button = gO.GetComponentInChildren<Button>();
-                        button.GetComponentInChildren<Text>().text = d.NAME;
-                        button.onClick.AddListener(() => HandleCharacterSelection(button.GetComponentInChildren<Text>().text));
-                    }
-
-                }
-            }
-
+            _selectionUI.GetComponent<RingHandler>().setCharacterData(data, this);
+            _selectionUI.SetActive(true);
         }
     }
     private void SetGamePause()
