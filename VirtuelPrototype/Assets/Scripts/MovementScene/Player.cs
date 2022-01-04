@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private List<InteractionSaveData> _interactions;
     [SerializeField]
-    private bool _isReconstructing = false;
-    [SerializeField]
     private float _lastTimestamp = 0f;
 
     public Action<GameObject> DestroyShadow;
@@ -27,59 +25,16 @@ public class Player : MonoBehaviour
     {
         _data = data;
         _interactions = new List<InteractionSaveData>();
-
-
     }
 
     public void InsertInteraction(InteractionSaveData interaction)
     {
-
         _interactions.Add(interaction);
-
-
-
-    }
-    public void ReconstructRecord(float timestamp)
-    {
-
-
-        InteractionSaveData interaction = _interactions.Find(i => (_lastTimestamp < i.TimeStamp && i.TimeStamp <= timestamp));
-
-        SetLastTimestamp(timestamp);
-
-
-        if(interaction != null)
-        {
-            InteractionType type = (InteractionType)Enum.Parse(typeof(InteractionType),interaction.Type);
-            switch(type)
-            {
-                case InteractionType.WALK:
-
-                    transform.position = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
-                    transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
-                    transform.localScale = new Vector3(interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
-
-                    break;
-                default:
-                    break;
-            }
-        }
-
-
-
-
-
-    }
-    public void SetLastTimestamp(float timestamp)
-    {
-
-        _lastTimestamp = timestamp;
     }
 
     public void InsertInteractions(List<InteractionSaveData> interactions)
     {
         _interactions = interactions;
-
     }
     public CharacterData GetCharacterData()
     {
@@ -93,8 +48,5 @@ public class Player : MonoBehaviour
     {
         return _interactions;
     }
-    public void StartShadowing(bool state)
-    {
-        _isReconstructing = state;
-    }
+
 }

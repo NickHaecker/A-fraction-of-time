@@ -16,36 +16,11 @@ public class Shadow : Player
 
     public Action<GameObject> DestroyShadow;
 
-
-
-    public string GetName()
-    {
-        return _data.NAME;
-    }
-    public void Init(CharacterData data)
-    {
-        _data = data;
-        _interactions = new List<InteractionSaveData>();
-
-
-    }
-
-    public void InsertInteraction(InteractionSaveData interaction)
-    {
-
-        _interactions.Add(interaction);
-
-
-
-    }
     public void ReconstructRecord(float timestamp)
     {
-
-
         InteractionSaveData interaction = _interactions.Find(i => (_lastTimestamp < i.TimeStamp && i.TimeStamp <= timestamp));
 
         SetLastTimestamp(timestamp);
-
 
         if (interaction != null)
         {
@@ -63,35 +38,12 @@ public class Shadow : Player
                     break;
             }
         }
-
-
-
-
-
     }
     public void SetLastTimestamp(float timestamp)
     {
-
         _lastTimestamp = timestamp;
     }
 
-    public void InsertInteractions(List<InteractionSaveData> interactions)
-    {
-        _interactions = interactions;
-
-    }
-    public CharacterData GetCharacterData()
-    {
-        return _data;
-    }
-    public void Delete()
-    {
-        Destroy(this.gameObject);
-    }
-    public List<InteractionSaveData> GetInteractions()
-    {
-        return _interactions;
-    }
     public void StartShadowing(bool state)
     {
         _isReconstructing = state;

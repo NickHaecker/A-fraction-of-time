@@ -26,7 +26,7 @@ public class GraphController : Controller
     {
         TimeController.Instance.SetGameTime(_currentTimeline.GetStartTimestamp());
         _playerController.RemoveCharacter(_currentTimeline.GetPlayer());
-        Player shadow = _playerController.CreateShadow(_currentTimeline.GetPlayer());
+        Shadow shadow = _playerController.CreateShadow(_currentTimeline.GetPlayer());
         _currentTimeline.InsertGhost(shadow);
         shadow.SetLastTimestamp(_currentTimeline.GetStartTimestamp());
 
@@ -37,15 +37,15 @@ public class GraphController : Controller
     //{
 
     //}
-    private void HandleAddChild(CharacterData player)
+    private void HandleAddChild(CharacterData playerData)
     {
-        Timeline timeline = new Timeline(_currentTimeline.GetLevel() + 1,TimeController.Instance.GetGameTime(),player,_currentTimeline);
+        Timeline timeline = new Timeline(_currentTimeline.GetLevel() + 1,TimeController.Instance.GetGameTime(),playerData,_currentTimeline);
         _currentTimeline.InsertChild(timeline);
         _currentTimeline = timeline;
     }
-    private void HandleInitTimeline(CharacterData player)
+    private void HandleInitTimeline(CharacterData playerData)
     {
-        _rootTimeline = new Timeline(0,TimeController.Instance.GetGameTime(),player,null);
+        _rootTimeline = new Timeline(0,TimeController.Instance.GetGameTime(),playerData,null);
         _currentTimeline = _rootTimeline;
     }
     public void HandleGameTime(float gametime)
