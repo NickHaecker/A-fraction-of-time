@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class RingHandler : MonoBehaviour
@@ -18,7 +19,7 @@ public class RingHandler : MonoBehaviour
             RingButtons[i].GetComponent<RingButton>().setData(Data[i]);
         }
 
-        foreach(RingButton button in RingButtons)
+        foreach (RingButton button in RingButtons)
         {
             if(button.Data != null)
             {
@@ -34,7 +35,9 @@ public class RingHandler : MonoBehaviour
                         button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[5];
                         break;
                 }
+                button.GetComponentInChildren<Button>().onClick.RemoveListener(() => sSC.HandleCharacterSelection(button.Data.NAME));
                 button.GetComponentInChildren<Button>().onClick.AddListener(() => sSC.HandleCharacterSelection(button.Data.NAME));
+                
             } else
             {
                 button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[5];
