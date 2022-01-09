@@ -270,4 +270,9 @@ public class PlayerController : Controller
         }
         return isM;
     }
+
+    public Player GetCurrentCharacter()
+    {
+        return this._currentCharacter;
+    }
 }
