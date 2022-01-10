@@ -6,13 +6,8 @@ using System;
 public class Shadow : Player
 {
     [SerializeField]
-    private CharacterData _data = null;
-    [SerializeField]
-    private List<InteractionSaveData> _interactions;
-    [SerializeField]
     private bool _isReconstructing = false;
-    [SerializeField]
-    private float _lastTimestamp = 0f;
+
 
     public Action<GameObject> DestroyShadow;
 

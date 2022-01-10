@@ -7,13 +7,12 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField]
-    private CharacterData _data = null;
+    protected CharacterData _data = null;
     [SerializeField]
-    private List<InteractionSaveData> _interactions;
+    protected List<InteractionSaveData> _interactions;
     [SerializeField]
-    private float _lastTimestamp = 0f;
+    protected float _lastTimestamp = 0f;
 
-    public Action<GameObject> DestroyShadow;
 
 
 
