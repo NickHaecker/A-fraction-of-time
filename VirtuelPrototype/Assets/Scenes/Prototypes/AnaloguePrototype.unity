@@ -3833,6 +3833,7 @@ MonoBehaviour:
   _playableCharacter:
   - {fileID: 11400000, guid: e28b4b2fcaf6faa498c865a9f01c4096, type: 2}
   - {fileID: 11400000, guid: ce92ee594b67f7f4a8ffdce256248900, type: 2}
+  - {fileID: 11400000, guid: 1cdbed4227cbeca42b56777955f6fffc, type: 2}
   _currentSelection: 
   _temporalOldPlayer: {fileID: 0}
 --- !u!114 &650858094

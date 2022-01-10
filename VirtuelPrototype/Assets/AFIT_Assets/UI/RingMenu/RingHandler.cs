@@ -30,6 +30,10 @@ public class RingHandler : MonoBehaviour
                 this.GetComponent<Transform>().GetChild(2).GetChild(0).GetComponent<Image>().sprite = Icons[1];
                 this.GetComponent<Transform>().GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = currentCharacterName;
                 break;
+            case "Paengu":
+                this.GetComponent<Transform>().GetChild(2).GetChild(0).GetComponent<Image>().sprite = Icons[2];
+                this.GetComponent<Transform>().GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = currentCharacterName;
+                break;
             default:
                 this.GetComponent<Transform>().GetChild(2).GetChild(0).GetComponent<Image>().sprite = Icons[5];
                 break;
@@ -50,11 +54,15 @@ public class RingHandler : MonoBehaviour
                 {
                     case "Character":
                         button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[0];
-                        ButtonStyling(button, "Character", currentCharacterName, sSC);
+                        ButtonStyling(button,button.Data.NAME, currentCharacterName, sSC);
                         break;
                     case "Kaengu":
                         button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[1];
-                        ButtonStyling(button, "Kaengu", currentCharacterName, sSC);
+                        ButtonStyling(button,button.Data.NAME, currentCharacterName, sSC);
+                        break;
+                    case "Paengu":
+                        button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[2];
+                        ButtonStyling(button,button.Data.NAME,currentCharacterName,sSC);
                         break;
                     default:
                         ColorBlock cbBlocked = new ColorBlock();
