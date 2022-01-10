@@ -52,19 +52,50 @@ public class GraphController : Controller
     {
         if(_currentTimeline != null)
         {
-
-            if(_currentTimeline.GetChildren().Count != 0)
-            {
-                foreach(Timeline child in _currentTimeline.GetChildren())
-                {
-                    if(child.GetGhost() != null)
-                    {
-                        child.GetGhost().ReconstructRecord(gametime);
-                    }
-                }
-            }
+            CheckForInteractions(gametime, _currentTimeline);
         }
-
-
     }
+
+    public void CheckForInteractions(float gametime, Timeline timeline)
+    {
+        //if (timeline.GetStartTimestamp() < gametime && timeline.GetMergeTimestamp() > gametime)
+        //{
+        //    CheckForUnusedGhosts(gametime, timeline);
+        //    return;
+        //}
+
+        //if (timeline.GetGhost() == null && timeline.GetMergeTimestamp() != 0)
+        //{
+        //    Player ghost = _playerController.CreateShadow(timeline.GetPlayer());
+        //    timeline.InsertGhost(ghost);
+        //}
+
+        if (timeline.GetGhost() != null)
+            timeline.GetGhost().ReconstructRecord(gametime);
+
+        if (timeline.GetChildren() == null)
+            return;
+
+        foreach (Timeline child in timeline.GetChildren())
+        {
+            CheckForInteractions(gametime, child);
+        }
+    }
+
+    //public void CheckForUnusedGhosts(float gametime, Timeline timeline)
+    //{
+    //    if (timeline.GetStartTimestamp() < gametime && timeline.GetMergeTimestamp() > gametime)
+    //    {
+    //        if (timeline.GetGhost() != null)
+    //        {
+    //            _playerController.RemoveShadow(timeline.GetPlayer());
+    //            timeline.InsertGhost(null);
+    //        }
+    //    }
+
+    //    foreach (Timeline child in timeline.GetChildren())
+    //    {
+    //        CheckForUnusedGhosts(gametime, child);
+    //    }
+    //}
 }
