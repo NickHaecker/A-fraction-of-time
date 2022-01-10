@@ -18,6 +18,8 @@ public class PlayerController : Controller
     private string _currentSelection = "";
     [SerializeField]
     private Player _temporalOldPlayer = null;
+    [SerializeField]
+    private GameObject CharacterPreview = null;
 
     public Action<Player> BeforeCharacterCreated;
     public Action<Player> AfterCharacterCreated;
@@ -34,6 +36,7 @@ public class PlayerController : Controller
         _currentCharacter = player;
         AfterCharacterCreated?.Invoke(player);
         InitTimeline?.Invoke(player.GetCharacterData());
+        CharacterPreview.GetComponent<CharacterPreview>().ActualizePreview();
     }
     private GameObject InstantiateCharacter(GameObject prefab)
     {
@@ -83,7 +86,7 @@ public class PlayerController : Controller
     }
     private void AddInteractionsListener(Player player)
     {
-        Debug.Log(player);
+        //Debug.Log(player);
         foreach (Ability ability in player.gameObject.GetComponents<Ability>())
         {
             ability.SubmitInteraction += HandleInteractionListener;
@@ -274,5 +277,10 @@ public class PlayerController : Controller
     public Player GetCurrentCharacter()
     {
         return this._currentCharacter;
+    }
+
+    public List<CharacterData> GetCharacterData()
+    {
+        return this._playableCharacter;
     }
 }

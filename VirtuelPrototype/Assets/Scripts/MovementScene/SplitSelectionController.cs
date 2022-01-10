@@ -8,6 +8,8 @@ public class SplitSelectionController : Controller
     [SerializeField]
     private GameObject _selectionUI = null;
     [SerializeField]
+    private GameObject _characterPreview = null;
+    [SerializeField]
     private GameObject _button = null;
     [SerializeField]
     private List<GameObject> _createdButtons = new List<GameObject>();
@@ -27,6 +29,7 @@ public class SplitSelectionController : Controller
     }
     public void HandleCharacterSelection(String name)
     {
+        
         if (_selectionUI)
         {
             foreach (GameObject b in _createdButtons)
@@ -36,5 +39,6 @@ public class SplitSelectionController : Controller
             _selectionUI.SetActive(false);
         }
         SelectCharacter?.Invoke(name);
+        _characterPreview.GetComponent<CharacterPreview>().ActualizePreview();
     }
 }
