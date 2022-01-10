@@ -10,21 +10,21 @@ public class Timeline
     private float _startTimestamp;
     private CharacterData _player;
     private Timeline _parent = null;
-    private Player _ghost = null;
+    private Shadow _ghost = null;
     private string _ID;
 
-    public Timeline(int level, float timestamp,CharacterData player, Timeline timeline)
+    public Timeline(int level, float timestamp,CharacterData playerData, Timeline timeline)
     {
         _level = level;
         _startTimestamp = timestamp;
-        _player = player;
+        _player = playerData;
         _parent = timeline;
         string parentId = "";
         if(timeline != null)
         {
             parentId = timeline.GetId();
         }
-        _ID = level.ToString() + parentId +  "_" + player.NAME;
+        _ID = level.ToString() + parentId +  "_" + _player.NAME;
     }
 
     public int GetLevel()
@@ -58,11 +58,11 @@ public class Timeline
             _children.Insert(_children.FindIndex(a => a.GetId() == child.GetId()),child);
         }
     }
-    public void InsertGhost(Player ghost)
+    public void InsertGhost(Shadow ghost)
     {
         _ghost = ghost;
     }
-    public Player GetGhost()
+    public Shadow GetGhost()
     {
         return _ghost;
     }

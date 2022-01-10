@@ -169,11 +169,11 @@ public class PlayerController : Controller
 
 
     }
-    public Player CreateShadow(CharacterData data)
+    public Shadow CreateShadow(CharacterData data)
     {
         SavePlayerData shadow = StateManager.LoadPlayer(data.NAME);
         GameObject newShadow = InstantiateCharacter(data.PREFAB_GHOST);
-        Player shadwoPlayer = newShadow.AddComponent<Player>();
+        Shadow shadwoPlayer = newShadow.AddComponent<Shadow>();
         shadwoPlayer.Init(data);
         shadwoPlayer.InsertInteractions(shadow.Interactions);
         return shadwoPlayer;
