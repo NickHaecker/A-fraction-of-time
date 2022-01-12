@@ -5,15 +5,22 @@ using System;
 [Serializable]
 public class Timeline
 {
+    [SerializeField]
     private int _level = 0;
+    [SerializeField]
     private List<Timeline> _children = new List<Timeline>();
+    [SerializeField]
     private float _startTimestamp;
+    [SerializeField]
     private CharacterData _player;
+    [SerializeField]
     private Timeline _parent = null;
+    [SerializeField]
     private Shadow _ghost = null;
+    [SerializeField]
     private string _ID;
 
-    public Timeline(int level, float timestamp,CharacterData playerData, Timeline timeline)
+    public Timeline(int level,float timestamp,CharacterData playerData,Timeline timeline)
     {
         _level = level;
         _startTimestamp = timestamp;
@@ -24,7 +31,7 @@ public class Timeline
         {
             parentId = timeline.GetId();
         }
-        _ID = level.ToString() + parentId +  "_" + _player.NAME;
+        _ID = level.ToString() + parentId + "_" + _player.NAME;
     }
 
     public int GetLevel()
@@ -61,6 +68,7 @@ public class Timeline
     public void InsertGhost(Shadow ghost)
     {
         _ghost = ghost;
+        _ghost.DestroyShadow += DeleteGhost;
     }
     public Shadow GetGhost()
     {
@@ -69,5 +77,23 @@ public class Timeline
     public string GetId()
     {
         return _ID;
+    }
+    private void DeleteGhost()
+    {
+        _ghost.DestroyShadow -= DeleteGhost;
+        _ghost = null;
+
+    }
+    public bool IsTimestampStillValid(float timestamp)
+    {
+        SavePlayerData shadowData = StateManager.LoadPlayer(_player.NAME);
+        if(shadowData != null)
+        {
+            if(shadowData.Interactions.Count > 0)
+            {
+                return shadowData.Interactions[shadowData.Interactions.Count - 1].TimeStamp <= timestamp;
+            }
+        }
+        return false;
     }
 }

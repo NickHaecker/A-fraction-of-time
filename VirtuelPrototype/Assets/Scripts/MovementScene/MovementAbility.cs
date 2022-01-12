@@ -34,7 +34,7 @@ public class MovementAbility : Ability
 
     private void Start()
     {
- 
+
         _playerTransform = this.gameObject.transform;
         _controller = this.gameObject.GetComponent<CharacterController>();
         _cam = SceneController.Instance.GetCamGameObject().transform;
@@ -43,8 +43,8 @@ public class MovementAbility : Ability
 
     private void Update()
     {
-        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (_isGrounded && _fallVelocity.y < 0)
+        _isGrounded = Physics.CheckSphere(groundCheck.position,groundDistance,groundMask);
+        if(_isGrounded && _fallVelocity.y < 0)
         {
             _fallVelocity.y = -2f;
         }
@@ -57,17 +57,17 @@ public class MovementAbility : Ability
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical);
+        Vector3 direction = new Vector3(horizontal,0f,vertical);
 
-        if (direction.magnitude >= 0.1)
+        if(direction.magnitude >= 0.1)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(_playerTransform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
-            _playerTransform.rotation = Quaternion.Euler(0f, angle, 0f);
+            float targetAngle = Mathf.Atan2(direction.x,direction.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(_playerTransform.eulerAngles.y,targetAngle,ref _turnSmoothVelocity,_turnSmoothTime);
+            _playerTransform.rotation = Quaternion.Euler(0f,angle,0f);
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            Vector3 moveDir = Quaternion.Euler(0f,targetAngle,0f) * Vector3.forward;
             _controller.Move(moveDir.normalized * _speed * Time.deltaTime);
-            SubmitAction(InteractionType.WALK, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
+            SubmitAction(InteractionType.WALK,this.gameObject.GetComponent<Player>(),this.gameObject,this.gameObject.transform,TimeController.Instance.GetGameTime());
 
 
         }

@@ -12,15 +12,15 @@ public class RingHandler : MonoBehaviour
     public List<Sprite> Icons = new List<Sprite>();
     private List<CharacterData> Data;
     //public GameObject PlayerObject;
-    
 
-    public void setCharacterData(List<CharacterData> data, SplitSelectionController sSC)
+
+    public void setCharacterData(List<CharacterData> data,SplitSelectionController sSC)
     {
 
         GameObject PlayerObject = GameObject.Find("----PLAYER----");
         Player activeCharacter = PlayerObject.GetComponent<PlayerController>().GetCurrentCharacter();
         string currentCharacterName = activeCharacter.GetCharacterData().NAME;
-        switch (currentCharacterName)
+        switch(currentCharacterName)
         {
             case "Character":
                 this.GetComponent<Transform>().GetChild(2).GetChild(0).GetComponent<Image>().sprite = Icons[0];
@@ -40,25 +40,25 @@ public class RingHandler : MonoBehaviour
         }
 
         this.Data = data;
-        for(int i = 0; i < Data.Count; i++ )
+        for(int i = 0 ; i < Data.Count ; i++)
         {
             RingButtons[i].GetComponent<RingButton>().setData(Data[i]);
         }
 
-        foreach (RingButton button in RingButtons)
+        foreach(RingButton button in RingButtons)
         {
             button.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
-            if (button.Data != null)
+            if(button.Data != null)
             {
-                switch (button.Data.NAME)
+                switch(button.Data.NAME)
                 {
                     case "Character":
                         button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[0];
-                        ButtonStyling(button,button.Data.NAME, currentCharacterName, sSC);
+                        ButtonStyling(button,button.Data.NAME,currentCharacterName,sSC);
                         break;
                     case "Kaengu":
                         button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[1];
-                        ButtonStyling(button,button.Data.NAME, currentCharacterName, sSC);
+                        ButtonStyling(button,button.Data.NAME,currentCharacterName,sSC);
                         break;
                     case "Paengu":
                         button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[2];
@@ -66,20 +66,21 @@ public class RingHandler : MonoBehaviour
                         break;
                     default:
                         ColorBlock cbBlocked = new ColorBlock();
-                        cbBlocked.normalColor = new Color(1f, 1f, 1f, 0.1f);
-                        cbBlocked.highlightedColor = new Color(1f, 1f, 1f, 0.1f);
-                        cbBlocked.pressedColor = new Color(1f, 1f, 1f, 0.1f);
+                        cbBlocked.normalColor = new Color(1f,1f,1f,0.1f);
+                        cbBlocked.highlightedColor = new Color(1f,1f,1f,0.1f);
+                        cbBlocked.pressedColor = new Color(1f,1f,1f,0.1f);
                         cbBlocked.colorMultiplier = 1;
                         button.GetComponentInChildren<Button>().colors = cbBlocked;
                         button.GetComponentInChildren<RectTransform>().GetChild(0).GetChild(0).GetComponent<Image>().sprite = Icons[5];
                         break;
                 }
-            } else
+            }
+            else
             {
                 ColorBlock cbBlocked = new ColorBlock();
-                cbBlocked.normalColor = new Color(1f, 1f, 1f, 0.1f);
-                cbBlocked.highlightedColor = new Color(1f, 1f, 1f, 0.1f);
-                cbBlocked.pressedColor = new Color(1f, 1f, 1f, 0.1f);
+                cbBlocked.normalColor = new Color(1f,1f,1f,0.1f);
+                cbBlocked.highlightedColor = new Color(1f,1f,1f,0.1f);
+                cbBlocked.pressedColor = new Color(1f,1f,1f,0.1f);
                 cbBlocked.colorMultiplier = 1;
                 button.GetComponentInChildren<Button>().colors = cbBlocked;
                 button.GetComponentInChildren<Button>().interactable = false;
@@ -89,14 +90,14 @@ public class RingHandler : MonoBehaviour
         }
     }
 
-    private void ButtonStyling(RingButton button, string buttonName, string currentCharacterName, SplitSelectionController sSC)
+    private void ButtonStyling(RingButton button,string buttonName,string currentCharacterName,SplitSelectionController sSC)
     {
-        if (currentCharacterName != buttonName)
+        if(currentCharacterName != buttonName)
         {
             ColorBlock cb = new ColorBlock();
-            cb.normalColor = new Color(1f, 1f, 1f, 0.6f);
-            cb.highlightedColor = new Color(1f, 1f, 1f, 0.9f);
-            cb.pressedColor = new Color(1f, 1f, 1f, 1f);
+            cb.normalColor = new Color(1f,1f,1f,0.6f);
+            cb.highlightedColor = new Color(1f,1f,1f,0.9f);
+            cb.pressedColor = new Color(1f,1f,1f,1f);
             cb.colorMultiplier = 1;
             button.GetComponentInChildren<Button>().colors = cb;
             button.GetComponentInChildren<Button>().onClick.AddListener(() => sSC.HandleCharacterSelection(button.Data.NAME));
@@ -106,10 +107,10 @@ public class RingHandler : MonoBehaviour
         else
         {
             ColorBlock cbBlocked = new ColorBlock();
-            cbBlocked.normalColor = new Color(1f, 1f, 1f, 0.1f);
-            cbBlocked.highlightedColor = new Color(1f, 1f, 1f, 0.1f);
-            cbBlocked.pressedColor = new Color(1f, 1f, 1f, 0.1f);
-            cbBlocked.disabledColor = new Color(1f, 1f, 1f, 0.1f);
+            cbBlocked.normalColor = new Color(1f,1f,1f,0.1f);
+            cbBlocked.highlightedColor = new Color(1f,1f,1f,0.1f);
+            cbBlocked.pressedColor = new Color(1f,1f,1f,0.1f);
+            cbBlocked.disabledColor = new Color(1f,1f,1f,0.1f);
             cbBlocked.colorMultiplier = 1;
             button.GetComponentInChildren<Button>().colors = cbBlocked;
             button.GetComponentInChildren<Button>().interactable = false;

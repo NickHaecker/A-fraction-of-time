@@ -26,7 +26,7 @@ public class JumpAbility : Ability
         //Ground checking to see if agent is touching the ground
         // isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (_isGrounded && _fallVelocity.y < 0)
+        if(_isGrounded && _fallVelocity.y < 0)
         {
             _fallVelocity.y = -2f;
         }
@@ -34,9 +34,9 @@ public class JumpAbility : Ability
         _controller.Move(_fallVelocity * Time.deltaTime);
 
         //Jumping
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        if(Input.GetButtonDown("Jump") && _isGrounded)
         {
-            SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), null, this.gameObject.transform, TimeController.Instance.GetGameTime());
+            SubmitAction(InteractionType.JUMP,this.gameObject.GetComponent<Player>(),null,this.gameObject.transform,TimeController.Instance.GetGameTime());
             _fallVelocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
 
         }
@@ -45,7 +45,7 @@ public class JumpAbility : Ability
 
     protected override void HandleCollisionEnter(Collider other)
     {
-        if (other.tag == "Ground")
+        if(other.tag == "Ground")
         {
             _isGrounded = true;
         }
@@ -53,7 +53,7 @@ public class JumpAbility : Ability
     }
     protected override void HandleCollisionExit(Collider other)
     {
-        if (other.tag == "Ground")
+        if(other.tag == "Ground")
         {
             _isGrounded = false;
         }

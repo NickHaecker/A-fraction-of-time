@@ -55,11 +55,13 @@ public class TimeController : Controller
     {
         _isCounting = active;
     }
-    public void SetGameTime(float timestamp) {
+    public void SetGameTime(float timestamp)
+    {
         _gametime = timestamp;
     }
 
-    public float GetGameTime() {
+    public float GetGameTime()
+    {
         return _gametime;
     }
 }

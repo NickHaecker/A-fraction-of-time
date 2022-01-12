@@ -32,7 +32,7 @@ public class SceneController : Controller
     private void Start()
     {
 
-        if (_playerRoot != null && _camRoot != null)
+        if(_playerRoot != null && _camRoot != null)
         {
             CameraController cameraController = _camRoot.GetComponentInChildren<CameraController>();
             PlayerController playerController = _playerRoot.GetComponent<PlayerController>();

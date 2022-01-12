@@ -24,6 +24,8 @@ public class GraphController : Controller
 
     private void HandleMerge()
     {
+
+        //hier noch todo iterativ
         TimeController.Instance.SetGameTime(_currentTimeline.GetStartTimestamp());
         _playerController.RemoveCharacter(_currentTimeline.GetPlayer());
         Shadow shadow = _playerController.CreateShadow(_currentTimeline.GetPlayer());
@@ -32,11 +34,9 @@ public class GraphController : Controller
 
         _currentTimeline = _currentTimeline.GetParent();
 
-    }
-    //private void RemoveTimeline(GameObject current)
-    //{
 
-    //}
+
+    }
     private void HandleAddChild(CharacterData playerData)
     {
         Timeline timeline = new Timeline(_currentTimeline.GetLevel() + 1,TimeController.Instance.GetGameTime(),playerData,_currentTimeline);
@@ -52,50 +52,78 @@ public class GraphController : Controller
     {
         if(_currentTimeline != null)
         {
-            CheckForInteractions(gametime, _currentTimeline);
+            CheckForInteractions(gametime,_rootTimeline);
         }
     }
 
-    public void CheckForInteractions(float gametime, Timeline timeline)
+    public bool IsSelectionInTimelineYet(string selection)
     {
-        //if (timeline.GetStartTimestamp() < gametime && timeline.GetMergeTimestamp() > gametime)
-        //{
-        //    CheckForUnusedGhosts(gametime, timeline);
-        //    return;
-        //}
-
-        //if (timeline.GetGhost() == null && timeline.GetMergeTimestamp() != 0)
-        //{
-        //    Player ghost = _playerController.CreateShadow(timeline.GetPlayer());
-        //    timeline.InsertGhost(ghost);
-        //}
-
-        if (timeline.GetGhost() != null)
-            timeline.GetGhost().ReconstructRecord(gametime);
-
-        if (timeline.GetChildren() == null)
-            return;
-
-        foreach (Timeline child in timeline.GetChildren())
-        {
-            CheckForInteractions(gametime, child);
-        }
+        return CheckValidation(_rootTimeline,selection);
     }
 
-    //public void CheckForUnusedGhosts(float gametime, Timeline timeline)
-    //{
-    //    if (timeline.GetStartTimestamp() < gametime && timeline.GetMergeTimestamp() > gametime)
-    //    {
-    //        if (timeline.GetGhost() != null)
-    //        {
-    //            _playerController.RemoveShadow(timeline.GetPlayer());
-    //            timeline.InsertGhost(null);
-    //        }
-    //    }
+    private bool CheckValidation(Timeline timeline,string selection)
+    {
+        bool valid = false;
+        CharacterData data = timeline.GetPlayer();
+        if(data)
+        {
+            if(data.NAME == selection)
+            {
+                valid = true;
+            }
+            else
+            {
+                List<Timeline> children = timeline.GetChildren();
 
-    //    foreach (Timeline child in timeline.GetChildren())
-    //    {
-    //        CheckForUnusedGhosts(gametime, child);
-    //    }
-    //}
+                if(children.Count > 0)
+                {
+                    foreach(Timeline child in children)
+                    {
+                        CheckValidation(child,selection);
+                    }
+                }
+            }
+        }
+        return valid;
+    }
+
+
+    private void CheckForInteractions(float gametime,Timeline timeline)
+    {
+        if(timeline != null)
+        {
+
+            if(timeline.GetLevel() >= _currentTimeline.GetLevel())
+            {
+                if(!timeline.GetId().Equals(_currentTimeline.GetId()))
+                {
+                    Shadow ghost = timeline.GetGhost();
+                    if(ghost != null)
+                    {
+                        ghost.ReconstructRecord(gametime);
+                    }
+                    else
+                    {
+                        if(timeline.IsTimestampStillValid(gametime))
+                        {
+                            Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
+                            timeline.InsertGhost(shadow);
+                        }
+                    }
+                }
+            }
+
+
+            List<Timeline> children = timeline.GetChildren();
+            if(children != null && children.Count > 0)
+            {
+                foreach(Timeline child in children)
+                {
+                    CheckForInteractions(gametime,child);
+                }
+            }
+        }
+
+    }
+
 }

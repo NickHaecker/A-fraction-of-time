@@ -12,12 +12,12 @@ public class SplitSelectionController : Controller
     [SerializeField]
     private List<GameObject> _createdButtons = new List<GameObject>();
     public Action<String> SelectCharacter;
-    public void InitCharacterSelection(List<CharacterData> data, Player player)
+    public void InitCharacterSelection(List<CharacterData> data,Player player)
     {
-        if (_selectionUI)
+        if(_selectionUI)
         {
             Cursor.lockState = CursorLockMode.None;
-            _selectionUI.GetComponent<RingHandler>().setCharacterData(data, this);
+            _selectionUI.GetComponent<RingHandler>().setCharacterData(data,this);
             _selectionUI.SetActive(true);
         }
     }
@@ -27,9 +27,9 @@ public class SplitSelectionController : Controller
     }
     public void HandleCharacterSelection(String name)
     {
-        if (_selectionUI)
+        if(_selectionUI)
         {
-            foreach (GameObject b in _createdButtons)
+            foreach(GameObject b in _createdButtons)
             {
                 Destroy(b);
             }
