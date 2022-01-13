@@ -19,8 +19,10 @@ public class Timeline
     private Shadow _ghost = null;
     [SerializeField]
     private string _ID;
+    [SerializeField]
+    private float[] _startPosition = new float[3];
 
-    public Timeline(int level,float timestamp,CharacterData playerData,Timeline timeline)
+    public Timeline(int level,float timestamp,CharacterData playerData,Timeline timeline, Transform startPosition)
     {
         _level = level;
         _startTimestamp = timestamp;
@@ -32,6 +34,9 @@ public class Timeline
             parentId = timeline.GetId();
         }
         _ID = level.ToString() + parentId + "_" + _player.NAME;
+        _startPosition[0] = startPosition.position.x;
+        _startPosition[1] = startPosition.position.y;
+        _startPosition[2] = startPosition.position.z;
     }
 
     public int GetLevel()
@@ -91,9 +96,14 @@ public class Timeline
         {
             if(shadowData.Interactions.Count > 0)
             {
-                return shadowData.Interactions[shadowData.Interactions.Count - 1].TimeStamp <= timestamp;
+                return shadowData.Interactions[shadowData.Interactions.Count - 1].TimeStamp >= timestamp;
             }
         }
         return false;
     }
+    public float[] GetPosition()
+    {
+        return _startPosition;
+    }
+
 }

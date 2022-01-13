@@ -23,7 +23,7 @@ public class PlayerController : Controller
     public Action<Player> AfterCharacterCreated;
     public Action<CharacterData> InitTimeline;
     public Action<CharacterData> Split;
-    public Action Merge;
+    public Action<Player> Merge;
 
     public void HandleStart()
     {
@@ -192,11 +192,12 @@ public class PlayerController : Controller
     private void HandleTemporalOldPlayerSave(Player player)
     {
         _temporalOldPlayer = player;
+        
     }
     private void HandleMerge()
     {
         BeforeCharacterCreated?.Invoke(_currentCharacter);
-
+        RemoveCharacter(_currentCharacter.GetCharacterData());
         SavePlayerData player = StateManager.LoadPlayer(_currentSelection);
         CharacterData playerData = GetCharacterData(_currentSelection);
         RemoveShadow(playerData);
@@ -215,7 +216,7 @@ public class PlayerController : Controller
         GameObject newPlayer = InstantiateCharacter(playerData.PREFAB);
         Player newPlayerScript = newPlayer.AddComponent<Player>();
         newPlayerScript.Init(playerData);
-        Merge?.Invoke();
+        Merge?.Invoke(newPlayerScript);
 
 
         AfterCharacterCreated?.Invoke(newPlayerScript);
@@ -264,5 +265,9 @@ public class PlayerController : Controller
     public Player GetCurrentCharacter()
     {
         return this._currentCharacter;
+    }
+    public Transform GetSpawn()
+    {
+        return _spawnPoint;
     }
 }
