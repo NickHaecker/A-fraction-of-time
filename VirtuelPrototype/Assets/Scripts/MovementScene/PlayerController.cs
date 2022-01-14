@@ -31,6 +31,7 @@ public class PlayerController : Controller
     {
         CharacterData characterData = _playableCharacter[0];
         GameObject character = InstantiateCharacter(characterData.PREFAB);
+        character.tag = "Player";
         Player player = character.AddComponent<Player>();
         player.Init(characterData);
         _currentCharacter = player;
