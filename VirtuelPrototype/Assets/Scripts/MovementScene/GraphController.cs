@@ -135,7 +135,7 @@ public class GraphController : Controller
     }
     public void HandleGameTime(float gametime)
     {
-        if(_currentTimeline != null)
+        if(_rootTimeline != null)
         {
             CheckForInteractions(gametime,_rootTimeline);
         }
