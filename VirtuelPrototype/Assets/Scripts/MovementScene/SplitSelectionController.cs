@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using Cinemachine;
+
 public class SplitSelectionController : Controller
 {
     [SerializeField]
@@ -18,7 +20,10 @@ public class SplitSelectionController : Controller
     {
         if (_selectionUI)
         {
-            Cursor.lockState = CursorLockMode.None;
+            GameObject Cam = GameObject.Find("----CAM----");
+            Cam.GetComponent<Transform>().GetChild(0).GetComponent<CinemachineFreeLook>().enabled = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             _selectionUI.GetComponent<RingHandler>().setCharacterData(data, this);
             _selectionUI.SetActive(true);
         }
@@ -29,7 +34,6 @@ public class SplitSelectionController : Controller
     }
     public void HandleCharacterSelection(String name)
     {
-        
         if (_selectionUI)
         {
             foreach (GameObject b in _createdButtons)
@@ -37,6 +41,9 @@ public class SplitSelectionController : Controller
                 Destroy(b);
             }
             _selectionUI.SetActive(false);
+            GameObject Cam = GameObject.Find("----CAM----");
+            Cam.GetComponent<Transform>().GetChild(0).GetComponent<CinemachineFreeLook>().enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         SelectCharacter?.Invoke(name);
         _characterPreview.GetComponent<CharacterPreview>().ActualizePreview();
