@@ -83,7 +83,7 @@ public class PlayerController : Controller
     }
     private void AddInteractionsListener(Player player)
     {
-        Debug.Log(player);
+        //Debug.Log(player);
         foreach(Ability ability in player.gameObject.GetComponents<Ability>())
         {
             ability.SubmitInteraction += HandleInteractionListener;
