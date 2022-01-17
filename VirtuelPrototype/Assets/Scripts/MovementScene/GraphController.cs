@@ -63,6 +63,7 @@ public class GraphController : Controller
             HandleRemoveOldCharacter(_rootTimeline);
             _timelinesToHandle = new List<Timeline>();
             CheckForInteractions(TimeController.Instance.GetGameTime(),_rootTimeline);
+
         }
 
 
@@ -143,26 +144,35 @@ public class GraphController : Controller
         //{
         //    CheckForInteractions(gametime,_rootTimeline);
         //}
-        foreach(Timeline timeline in _timelinesToHandle)
+        if(_timelinesToHandle != null && _timelinesToHandle.Count > 0)
         {
-            Shadow ghost = timeline.GetGhost();
-            if(ghost != null)
+            foreach(Timeline timeline in _timelinesToHandle.ToArray())
             {
-                ghost.ReconstructRecord(gametime);
-            }
-            else
-            {
-                if(timeline.IsTimestampStillValid(gametime))
+                Shadow ghost = timeline.GetGhost();
+                if(ghost != null)
                 {
-                    if(timeline.GetStartTimestamp() == gametime)
+                    ghost.ReconstructRecord(gametime);
+                }
+                else
+                {
+                    if(timeline.IsTimestampStillValid(gametime))
                     {
-                        Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
-                        shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
-                        //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
-                        timeline.InsertGhost(shadow);
-                        shadow.ReconstructRecord(gametime);
+                        if(timeline.GetStartTimestamp() <= gametime)
+                        {
+                            Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
+                            shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
+                            //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
+                            timeline.InsertGhost(shadow);
+                            //shadow.ReconstructRecord(gametime);
+                        }
                     }
                 }
+
+                if(!timeline.IsTimestampStillValid(gametime))
+                {
+                    _timelinesToHandle.Remove(timeline);
+                }
+
             }
         }
     }

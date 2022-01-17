@@ -21,7 +21,7 @@ public static class StateManager
             SavePlayerData data = formatter.Deserialize(stream) as SavePlayerData;
             stream.Close();
 
-
+            Debug.Log("Load - COMPLETED");
 
             return data;
 
