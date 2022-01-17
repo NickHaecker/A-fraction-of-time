@@ -22,7 +22,7 @@ public class SplitSelectionController : Controller
         {
             GameObject Cam = GameObject.Find("----CAM----");
             Cam.GetComponent<Transform>().GetChild(0).GetComponent<CinemachineFreeLook>().enabled = false;
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             _selectionUI.GetComponent<RingHandler>().setCharacterData(data, this);
             _selectionUI.SetActive(true);
