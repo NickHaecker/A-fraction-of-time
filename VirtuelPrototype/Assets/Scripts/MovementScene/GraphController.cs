@@ -10,9 +10,11 @@ public class GraphController : Controller
     private Timeline _rootTimeline;
     [SerializeField]
     private Timeline _currentTimeline;
-
     [SerializeField]
     private PlayerController _playerController = null;
+    [SerializeField]
+
+    private List<Timeline> _timelinesToHandle = new List<Timeline>();
 
     void Start()
     {
@@ -29,7 +31,6 @@ public class GraphController : Controller
 
         if(timeline != null)
         {
-
             List<Timeline> childrenOfNewTimeline = timeline.GetChildren();
 
             if(childrenOfNewTimeline.Count > 1)
@@ -42,6 +43,7 @@ public class GraphController : Controller
                     }
                 }
             }
+
             if(childrenOfNewTimeline.Count == 1)
             {
                 foreach(Timeline child in childrenOfNewTimeline)
@@ -59,6 +61,8 @@ public class GraphController : Controller
             }
 
             HandleRemoveOldCharacter(_rootTimeline);
+            _timelinesToHandle = new List<Timeline>();
+            CheckForInteractions(TimeController.Instance.GetGameTime(),_rootTimeline);
         }
 
 
@@ -135,9 +139,31 @@ public class GraphController : Controller
     }
     public void HandleGameTime(float gametime)
     {
-        if(_rootTimeline != null)
+        //if(_rootTimeline != null)
+        //{
+        //    CheckForInteractions(gametime,_rootTimeline);
+        //}
+        foreach(Timeline timeline in _timelinesToHandle)
         {
-            CheckForInteractions(gametime,_rootTimeline);
+            Shadow ghost = timeline.GetGhost();
+            if(ghost != null)
+            {
+                ghost.ReconstructRecord(gametime);
+            }
+            else
+            {
+                if(timeline.IsTimestampStillValid(gametime))
+                {
+                    if(timeline.GetStartTimestamp() == gametime)
+                    {
+                        Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
+                        shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
+                        //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
+                        timeline.InsertGhost(shadow);
+                        shadow.ReconstructRecord(gametime);
+                    }
+                }
+            }
         }
     }
 
@@ -182,25 +208,26 @@ public class GraphController : Controller
             {
                 if(!timeline.GetId().Equals(_currentTimeline.GetId()))
                 {
-                    Shadow ghost = timeline.GetGhost();
-                    if(ghost != null)
-                    {
-                        ghost.ReconstructRecord(gametime);
-                    }
-                    else
-                    {
-                        if(timeline.IsTimestampStillValid(gametime))
-                        {
-                            if(timeline.GetStartTimestamp() == gametime)
-                            {
-                                Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
-                                shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
-                                Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
-                                timeline.InsertGhost(shadow);
-                                shadow.ReconstructRecord(gametime);
-                            }
-                        }
-                    }
+                    _timelinesToHandle.Add(timeline);
+                    //Shadow ghost = timeline.GetGhost();
+                    //if(ghost != null)
+                    //{
+                    //    ghost.ReconstructRecord(gametime);
+                    //}
+                    //else
+                    //{
+                    //    if(timeline.IsTimestampStillValid(gametime))
+                    //    {
+                    //        if(timeline.GetStartTimestamp() == gametime)
+                    //        {
+                    //            Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
+                    //            shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
+                    //            //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
+                    //            timeline.InsertGhost(shadow);
+                    //            //shadow.ReconstructRecord(gametime);
+                    //        }
+                    //    }
+                    //}
                 }
             }
 
