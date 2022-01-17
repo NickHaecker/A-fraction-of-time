@@ -377,6 +377,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 5619572870206180535}
+        m_TargetAssemblyTypeName: MainMenuHandler, Assembly-CSharp
+        m_MethodName: ActivateCursorLock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &5518151934597825562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,7 +985,7 @@ MonoBehaviour:
   m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
-  m_sharedMaterial: {fileID: 8883777601237716224, guid: e2807b2600d1a2a45bfa08fabca133aa, type: 2}
+  m_sharedMaterial: {fileID: -1038570964613231910, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1036,7 +1048,7 @@ MonoBehaviour:
   m_margin: {x: 20.620773, y: 9.95388, z: 20.620926, w: 10.66687}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1509523419458346919
@@ -1678,7 +1690,7 @@ MonoBehaviour:
   m_text: Quit Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
-  m_sharedMaterial: {fileID: 8883777601237716224, guid: e2807b2600d1a2a45bfa08fabca133aa, type: 2}
+  m_sharedMaterial: {fileID: -1038570964613231910, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1741,7 +1753,7 @@ MonoBehaviour:
   m_margin: {x: 20.620773, y: 9.953945, z: 20.620926, w: 9.9550705}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2161550522762444121
@@ -2301,7 +2313,7 @@ MonoBehaviour:
   m_text: Steam Store
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
-  m_sharedMaterial: {fileID: 8883777601237716224, guid: e2807b2600d1a2a45bfa08fabca133aa, type: 2}
+  m_sharedMaterial: {fileID: -1038570964613231910, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2364,7 +2376,7 @@ MonoBehaviour:
   m_margin: {x: 20.62078, y: 10.664406, z: 20.620926, w: 9.956475}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2904475191422504312
@@ -4114,7 +4126,7 @@ MonoBehaviour:
   m_text: Play Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
-  m_sharedMaterial: {fileID: 8883777601237716224, guid: e2807b2600d1a2a45bfa08fabca133aa, type: 2}
+  m_sharedMaterial: {fileID: -1038570964613231910, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4177,7 +4189,7 @@ MonoBehaviour:
   m_margin: {x: 20.620773, y: 11.37763, z: 20.620926, w: 10.666614}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5599059134066355566
@@ -4286,7 +4298,7 @@ MonoBehaviour:
   m_text: Select Game Mode
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
-  m_sharedMaterial: {fileID: 8883777601237716224, guid: e2807b2600d1a2a45bfa08fabca133aa, type: 2}
+  m_sharedMaterial: {fileID: -1038570964613231910, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4349,7 +4361,7 @@ MonoBehaviour:
   m_margin: {x: -29.154236, y: 10.664899, z: -8.530846, w: 9.955982}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5695660807015131785
@@ -5670,7 +5682,7 @@ MonoBehaviour:
   m_text: Extras
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
-  m_sharedMaterial: {fileID: 8883777601237716224, guid: e2807b2600d1a2a45bfa08fabca133aa, type: 2}
+  m_sharedMaterial: {fileID: -1038570964613231910, guid: 8b83f0ab3b9e05e4aa7e437d54f45680, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5733,7 +5745,7 @@ MonoBehaviour:
   m_margin: {x: 20.62078, y: 9.953601, z: 19.911644, w: 9.955402}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7060641830465256738
@@ -7131,7 +7143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7804864187558019448
 RectTransform:
   m_ObjectHideFlags: 0
