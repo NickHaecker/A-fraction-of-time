@@ -22,6 +22,8 @@ public class Timeline
     [SerializeField]
     private float[] _startPosition = new float[3];
 
+    private SavePlayerData _data = null;
+
     public Timeline(int level,float timestamp,CharacterData playerData,Timeline timeline, Transform startPosition)
     {
         _level = level;
@@ -91,12 +93,16 @@ public class Timeline
     }
     public bool IsTimestampStillValid(float timestamp)
     {
-        SavePlayerData shadowData = StateManager.LoadPlayer(_player.NAME);
-        if(shadowData != null)
+        //SavePlayerData shadowData = StateManager.LoadPlayer(_player.NAME);
+        if(_data == null)
         {
-            if(shadowData.Interactions.Count > 0)
+            _data = StateManager.LoadPlayer(_player.NAME);
+        }
+        if(_data != null)
+        {
+            if(_data.Interactions.Count > 0)
             {
-                return shadowData.Interactions[shadowData.Interactions.Count - 1].TimeStamp >= timestamp;
+                return _data.Interactions[_data.Interactions.Count - 1].TimeStamp >= timestamp;
             }
         }
         return false;

@@ -163,7 +163,7 @@ public class GraphController : Controller
                             shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
                             //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
                             timeline.InsertGhost(shadow);
-                            //shadow.ReconstructRecord(gametime);
+                            shadow.ReconstructRecord(gametime);
                         }
                     }
                 }
