@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03945d077a59b1e4db31d560f1b05d69, type: 3}
+  m_Name: Paengu
+  m_EditorClassIdentifier: 
+  NAME: Paengu
+  UID: Paengu
+  DESCRIPTION: Paengo 1 ganz tolles
+  PREFAB: {fileID: 7852671293765817975, guid: b09cfe4f6e8601544b60fd06d694dcb7, type: 3}
+  PREFAB_GHOST: {fileID: 6311594153786905585, guid: 7661ea4deb97de84785c397505d7783f, type: 3}
+  IS_SPLIT_REALITY_ORIGIN: 1

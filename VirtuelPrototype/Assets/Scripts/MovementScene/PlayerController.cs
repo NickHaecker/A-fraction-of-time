@@ -25,7 +25,7 @@ public class PlayerController : Controller
     public Action<Player> AfterCharacterCreated;
     public Action<CharacterData> InitTimeline;
     public Action<CharacterData> Split;
-    public Action Merge;
+    public Action<Player> Merge;
 
     public void HandleStart()
     {
@@ -42,9 +42,9 @@ public class PlayerController : Controller
     private GameObject InstantiateCharacter(GameObject prefab)
     {
         GameObject character = null;
-        if (prefab)
+        if(prefab)
         {
-            character = Instantiate(prefab, _spawnPoint.position, prefab.transform.rotation, this.gameObject.transform);
+            character = Instantiate(prefab,_spawnPoint.position,prefab.transform.rotation,this.gameObject.transform);
         }
         return character;
     }
@@ -57,7 +57,7 @@ public class PlayerController : Controller
         TimeController.Instance.SetActive(true);
         _currentSelection = name;
 
-        if (IsMerge())
+        if(IsMerge())
         {
             HandleMerge();
         }
@@ -77,25 +77,25 @@ public class PlayerController : Controller
     private void HandleInput()
     {
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if(Input.GetKeyDown(KeyCode.G))
         {
             TimeController.Instance.SetActive(false);
             SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
-            splitSelectionController.InitCharacterSelection(_playableCharacter, _currentCharacter);
+            splitSelectionController.InitCharacterSelection(_playableCharacter,_currentCharacter);
         }
 
     }
     private void AddInteractionsListener(Player player)
     {
         //Debug.Log(player);
-        foreach (Ability ability in player.gameObject.GetComponents<Ability>())
+        foreach(Ability ability in player.gameObject.GetComponents<Ability>())
         {
             ability.SubmitInteraction += HandleInteractionListener;
         }
     }
     private void RemoveInteractionsListener(Player player)
     {
-        foreach (Ability ability in player.gameObject.GetComponents<Ability>())
+        foreach(Ability ability in player.gameObject.GetComponents<Ability>())
         {
             ability.SubmitInteraction -= HandleInteractionListener;
         }
@@ -105,7 +105,7 @@ public class PlayerController : Controller
         BeforeCharacterCreated?.Invoke(_currentCharacter);
         ChangeSpawnPoint(_currentCharacter);
         Destroy(_currentCharacter.gameObject);
-        
+
         CharacterData newCharacter = GetCharacterData(_currentSelection);
         if(newCharacter)
         {
@@ -143,7 +143,7 @@ public class PlayerController : Controller
 
         for(int i = 0 ; i < count ; i++)
         {
-       
+
             GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
             if(gO.name.Contains(character.PREFAB.name))
             {
@@ -196,11 +196,12 @@ public class PlayerController : Controller
     private void HandleTemporalOldPlayerSave(Player player)
     {
         _temporalOldPlayer = player;
+        
     }
     private void HandleMerge()
     {
         BeforeCharacterCreated?.Invoke(_currentCharacter);
-
+        RemoveCharacter(_currentCharacter.GetCharacterData());
         SavePlayerData player = StateManager.LoadPlayer(_currentSelection);
         CharacterData playerData = GetCharacterData(_currentSelection);
         RemoveShadow(playerData);
@@ -213,17 +214,17 @@ public class PlayerController : Controller
         newSpawn.transform.rotation = Quaternion.Euler(new Vector3(rotation[0],rotation[1],rotation[2]));
         newSpawn.transform.localScale = new Vector3(1,1,1);
         _spawnPoint = newSpawn.transform;
-        
- 
+
+
 
         GameObject newPlayer = InstantiateCharacter(playerData.PREFAB);
         Player newPlayerScript = newPlayer.AddComponent<Player>();
         newPlayerScript.Init(playerData);
-        Merge?.Invoke();
+        Merge?.Invoke(newPlayerScript);
 
 
         AfterCharacterCreated?.Invoke(newPlayerScript);
-        
+
         _temporalOldPlayer = null;
 
     }
@@ -235,12 +236,12 @@ public class PlayerController : Controller
         BeforeCharacterCreated += RemoveInteractionsListener;
         AfterCharacterCreated += ChangeCurrentCharacter;
         AfterCharacterCreated += AddInteractionsListener;
-        if (_playerRoot == null)
+        if(_playerRoot == null)
         {
             _playerRoot = this.gameObject;
         }
         SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
-        if (splitSelectionController)
+        if(splitSelectionController)
         {
             splitSelectionController.SelectCharacter += HandleCharacterSelection;
         }
@@ -249,35 +250,29 @@ public class PlayerController : Controller
 
     private bool IsMerge()
     {
-        bool isM = false;
-        if (_currentCharacter != null)
+        
+        GraphController graphController = this.gameObject.GetComponent<GraphController>();
+        bool isM = graphController.IsSelectionInTimelineYet(_currentSelection);
+
+        if(isM)
         {
-            int currentIndex = 0;
-            foreach (CharacterData data in _playableCharacter)
-            {
-                if (data.NAME == _currentCharacter.GetCharacterData().NAME)
-                {
-                    break;
-                }
-                currentIndex++;
-            }
-            int potencialIndex = 0;
-            foreach (CharacterData d in _playableCharacter)
-            {
-                if (d.NAME == _currentSelection)
-                {
-                    break;
-                }
-                potencialIndex++;
-            }
-            isM = potencialIndex < currentIndex;
+            Debug.Log("habe ich grad gemerget: " + isM);
         }
+        else
+        {
+            Debug.Log("habe ich grad gesplittet: " + !isM);
+        }
+
         return isM;
     }
 
     public Player GetCurrentCharacter()
     {
         return this._currentCharacter;
+    }
+    public Transform GetSpawn()
+    {
+        return _spawnPoint;
     }
 
     public List<CharacterData> GetCharacterData()

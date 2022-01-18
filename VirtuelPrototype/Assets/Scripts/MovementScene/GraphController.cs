@@ -10,9 +10,14 @@ public class GraphController : Controller
     private Timeline _rootTimeline;
     [SerializeField]
     private Timeline _currentTimeline;
-
     [SerializeField]
     private PlayerController _playerController = null;
+    [SerializeField]
+    private List<Timeline> _timelinesToHandle = new List<Timeline>();
+
+
+    private bool _splitValidationCheck = false;
+    private Timeline _usedTimneline = null;
 
     void Start()
     {
@@ -22,80 +27,287 @@ public class GraphController : Controller
         _playerController.Merge += HandleMerge;
     }
 
-    private void HandleMerge()
+    private void HandleMerge(Player player)
     {
-        TimeController.Instance.SetGameTime(_currentTimeline.GetStartTimestamp());
-        _playerController.RemoveCharacter(_currentTimeline.GetPlayer());
-        Shadow shadow = _playerController.CreateShadow(_currentTimeline.GetPlayer());
-        _currentTimeline.InsertGhost(shadow);
-        shadow.SetLastTimestamp(_currentTimeline.GetStartTimestamp());
+        float startPoint = -1;
+        _usedTimneline = null;
+        Timeline timeline = GetTimelineOfNewPlayer(player.GetCharacterData());
 
-        _currentTimeline = _currentTimeline.GetParent();
+        if(timeline != null)
+        {
+            List<Timeline> childrenOfNewTimeline = timeline.GetChildren();
+
+            if(childrenOfNewTimeline.Count > 1)
+            {
+                foreach(Timeline child in childrenOfNewTimeline)
+                {
+                    if(child.GetId().Equals(_currentTimeline.GetId()))
+                    {
+                        startPoint = child.GetStartTimestamp();
+                    }
+                }
+            }
+
+            if(childrenOfNewTimeline.Count == 1)
+            {
+                foreach(Timeline child in childrenOfNewTimeline)
+                {
+                    startPoint = child.GetStartTimestamp();
+                }
+            }
+
+            if(startPoint != -1)
+            {
+                TimeController.Instance.SetGameTime(startPoint);
+
+
+                _currentTimeline = timeline;
+            }
+
+            HandleRemoveOldCharacter(_rootTimeline);
+            _timelinesToHandle = new List<Timeline>();
+            CheckForInteractions(_rootTimeline);
+        }
+
+
 
     }
-    //private void RemoveTimeline(GameObject current)
-    //{
+    private void HandleRemoveOldCharacter(Timeline timeline)
+    {
+        //Debug.Log("hier bin ich");
 
-    //}
+        if(timeline.GetLevel() >= _currentTimeline.GetLevel() && !timeline.GetId().Equals(_currentTimeline.GetId()))
+        {
+            //Debug.Log("zweiter schritt " +timeline.GetId());
+            CharacterData shadow = timeline.GetPlayer();
+
+            int children = this.gameObject.transform.childCount;
+
+            for(int i = 0 ; i < children ; i++)
+            {
+                GameObject child = this.gameObject.transform.GetChild(i).gameObject;
+                if(child.name.Contains(shadow.PREFAB_GHOST.name))
+                {
+                    //Debug.Log("dritter schritt " + child.name);
+                    Destroy(child);
+                }
+            }
+        }
+        else
+        {
+            List<Timeline> children = timeline.GetChildren();
+            if(children.Count > 0)
+            {
+                foreach(Timeline child in children)
+                {
+                    HandleRemoveOldCharacter(child);
+                }
+            }
+        }
+    }
+    private Timeline GetTimelineOfNewPlayer(CharacterData data)
+    {
+        //Timeline t = null;
+
+        //Func<Timeline,CharacterData,TResult> GetTimelineOfNewPlayer = (Timeline timeline, CharacterData data) =>
+        //{
+
+        //}
+
+        HandleGetTimelimeOfNewPlayer(_rootTimeline,data);
+        return _usedTimneline;
+    }
+    private void HandleGetTimelimeOfNewPlayer(Timeline timeline,CharacterData data)
+    {
+        //Timeline t = null;
+        if(timeline.GetPlayer().NAME.Equals(data.NAME))
+        {
+            _usedTimneline = timeline;
+        }
+        else
+        {
+            List<Timeline> children = timeline.GetChildren();
+            if(children.Count > 0)
+            {
+                foreach(Timeline child in children)
+                {
+                    HandleGetTimelimeOfNewPlayer(child,data);
+                }
+            }
+        }
+
+        //return t;
+    }
     private void HandleAddChild(CharacterData playerData)
     {
-        Timeline timeline = new Timeline(_currentTimeline.GetLevel() + 1,TimeController.Instance.GetGameTime(),playerData,_currentTimeline);
+        Timeline timeline = new Timeline(_currentTimeline.GetLevel() + 1,TimeController.Instance.GetGameTime(),playerData,_currentTimeline,_playerController.GetSpawn());
         _currentTimeline.InsertChild(timeline);
         _currentTimeline = timeline;
     }
     private void HandleInitTimeline(CharacterData playerData)
     {
-        _rootTimeline = new Timeline(0,TimeController.Instance.GetGameTime(),playerData,null);
+        _rootTimeline = new Timeline(0,TimeController.Instance.GetGameTime(),playerData,null,_playerController.GetSpawn());
         _currentTimeline = _rootTimeline;
     }
     public void HandleGameTime(float gametime)
     {
-        if(_currentTimeline != null)
+        //if(_rootTimeline != null)
+        //{
+        //    CheckForInteractions(gametime,_rootTimeline);
+        //}
+
+        PurgeOldTimelines(gametime);
+
+        if(_timelinesToHandle != null && _timelinesToHandle.Count > 0)
         {
-            CheckForInteractions(gametime, _currentTimeline);
+            foreach(Timeline timeline in _timelinesToHandle.ToArray())
+            {
+                Shadow ghost = timeline.GetGhost();
+                if(ghost != null)
+                {
+                    ghost.ReconstructRecord(gametime);
+                }
+                else
+                {
+                    if(timeline.IsTimestampStillValid(gametime))
+                    {
+                        if(timeline.GetStartTimestamp() <= gametime)
+                        {
+                            Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
+                            shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
+                            //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
+                            timeline.InsertGhost(shadow);
+                            shadow.ReconstructRecord(gametime);
+                        }
+                    }
+                }
+
+                if(!timeline.IsTimestampStillValid(gametime))
+                {
+                    Debug.Log("Zu spät zum tun");
+                    _timelinesToHandle.Remove(timeline);
+                    //if(_rootTimeline.)
+                    //if()
+                }
+
+            }
         }
     }
 
-    public void CheckForInteractions(float gametime, Timeline timeline)
+    private void PurgeOldTimelines(float gametime)
     {
-        //if (timeline.GetStartTimestamp() < gametime && timeline.GetMergeTimestamp() > gametime)
-        //{
-        //    CheckForUnusedGhosts(gametime, timeline);
-        //    return;
-        //}
-
-        //if (timeline.GetGhost() == null && timeline.GetMergeTimestamp() != 0)
-        //{
-        //    Player ghost = _playerController.CreateShadow(timeline.GetPlayer());
-        //    timeline.InsertGhost(ghost);
-        //}
-
-        if (timeline.GetGhost() != null)
-            timeline.GetGhost().ReconstructRecord(gametime);
-
-        if (timeline.GetChildren() == null)
-            return;
-
-        foreach (Timeline child in timeline.GetChildren())
+        if(_currentTimeline.GetId().Equals(_rootTimeline.GetId()))
         {
-            CheckForInteractions(gametime, child);
+            HandlePurge(gametime,_rootTimeline);
         }
     }
 
-    //public void CheckForUnusedGhosts(float gametime, Timeline timeline)
-    //{
-    //    if (timeline.GetStartTimestamp() < gametime && timeline.GetMergeTimestamp() > gametime)
-    //    {
-    //        if (timeline.GetGhost() != null)
-    //        {
-    //            _playerController.RemoveShadow(timeline.GetPlayer());
-    //            timeline.InsertGhost(null);
-    //        }
-    //    }
+    private void HandlePurge(float gametime,Timeline timeline)
+    {
+        List<Timeline> children = timeline.GetChildren();
+        if(children.Count > 0)
+        {
+            foreach(Timeline child in children.ToArray())
+            {
+                HandlePurge(gametime,child);
+            }
+        }
+        else
+        {
+            //timeline.GetParent()?.GetChildren().Remove(timeline);
+            if(!timeline.IsTimestampStillValid(gametime))
+            {
+                timeline.GetParent()?.GetChildren()?.Remove(timeline);
+            }
+        }
+    }
 
-    //    foreach (Timeline child in timeline.GetChildren())
-    //    {
-    //        CheckForUnusedGhosts(gametime, child);
-    //    }
-    //}
+    public bool IsSelectionInTimelineYet(string selection)
+    {
+        _splitValidationCheck = false;
+        CheckValidation(_rootTimeline,selection);
+        Debug.Log(_splitValidationCheck);
+        return _splitValidationCheck;
+    }
+
+    private void CheckValidation(Timeline timeline,string selection)
+    {
+        //bool valid = false;
+        //CharacterData data = timeline.GetPlayer();
+        //Debug.Log("Selection " + selection + " Name grad " + data.NAME);
+        //if(data)
+        //{
+        //Debug.Log(data.NAME == selection);
+        if(selection.Equals(timeline.GetPlayer().NAME))
+        {
+            //valid = true;
+            //return true;
+            _splitValidationCheck = true;
+        }
+        else
+        {
+            List<Timeline> children = timeline.GetChildren();
+            //Debug.Log(children.Count);
+            if(children.Count > 0)
+            {
+                foreach(Timeline child in children)
+                {
+                    //Debug.Log(child);
+                    CheckValidation(child,selection);
+                }
+            }
+        }
+        //}
+        //Debug.LO
+        //return valid;
+    }
+
+
+    private void CheckForInteractions(Timeline timeline)
+    {
+
+
+        if(timeline.GetLevel() >= _currentTimeline.GetLevel())
+        {
+            if(!timeline.GetId().Equals(_currentTimeline.GetId()))
+            {
+                Debug.Log("Referenzierte Timeline: " + timeline.GetId());
+                _timelinesToHandle.Add(timeline);
+                //Shadow ghost = timeline.GetGhost();
+                //if(ghost != null)
+                //{
+                //    ghost.ReconstructRecord(gametime);
+                //}
+                //else
+                //{
+                //    if(timeline.IsTimestampStillValid(gametime))
+                //    {
+                //        if(timeline.GetStartTimestamp() == gametime)
+                //        {
+                //            Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
+                //            shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
+                //            //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
+                //            timeline.InsertGhost(shadow);
+                //            //shadow.ReconstructRecord(gametime);
+                //        }
+                //    }
+                //}
+            }
+        }
+        //else
+        //{
+
+
+        List<Timeline> children = timeline.GetChildren();
+        if(children.Count > 0)
+        {
+            foreach(Timeline child in children)
+            {
+                CheckForInteractions(child);
+            }
+        }
+        //}
+
+    }
+
 }

@@ -16,9 +16,9 @@ public class SplitSelectionController : Controller
     [SerializeField]
     private List<GameObject> _createdButtons = new List<GameObject>();
     public Action<String> SelectCharacter;
-    public void InitCharacterSelection(List<CharacterData> data, Player player)
+    public void InitCharacterSelection(List<CharacterData> data,Player player)
     {
-        if (_selectionUI)
+        if(_selectionUI)
         {
             GameObject Cam = GameObject.Find("----CAM----");
             Cam.GetComponent<Transform>().GetChild(0).GetComponent<CinemachineFreeLook>().enabled = false;
@@ -34,9 +34,9 @@ public class SplitSelectionController : Controller
     }
     public void HandleCharacterSelection(String name)
     {
-        if (_selectionUI)
+        if(_selectionUI)
         {
-            foreach (GameObject b in _createdButtons)
+            foreach(GameObject b in _createdButtons)
             {
                 Destroy(b);
             }

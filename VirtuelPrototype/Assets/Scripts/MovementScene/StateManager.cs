@@ -16,12 +16,12 @@ public static class StateManager
         {
 
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            FileStream stream = new FileStream(path,FileMode.Open);
 
             SavePlayerData data = formatter.Deserialize(stream) as SavePlayerData;
             stream.Close();
 
-            Debug.Log("Load - LOADED PLAYER COMPLETED");
+            Debug.Log("Load - COMPLETED");
 
             return data;
 
@@ -63,16 +63,16 @@ public static class StateManager
 
 
 
-             BinaryFormatter formatter = new BinaryFormatter();
-             string path = Application.persistentDataPath + StateManager.path.Replace("{{player}}",playerToSafe.Name);
-             FileStream stream = new FileStream(path, FileMode.Create);
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + StateManager.path.Replace("{{player}}",playerToSafe.Name);
+        FileStream stream = new FileStream(path,FileMode.Create);
 
 
-             formatter.Serialize(stream,playerToSafe);
-             stream.Close();
+        formatter.Serialize(stream,playerToSafe);
+        stream.Close();
 
 
-             Debug.Log("Save - COMPLETED");
+        Debug.Log("Save - COMPLETED");
 
     }
 

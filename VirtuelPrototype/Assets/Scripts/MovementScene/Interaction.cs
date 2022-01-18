@@ -11,7 +11,7 @@ public class Interaction
     public Transform interactionPosition;
     public float timestamp;
 
-    public Interaction(InteractionType i, Player p, GameObject g, Transform t, float ti)
+    public Interaction(InteractionType i,Player p,GameObject g,Transform t,float ti)
     {
 
         type = i;
@@ -20,6 +20,6 @@ public class Interaction
         interactionPosition = t;
         timestamp = ti;
 
-   
+
     }
 }
