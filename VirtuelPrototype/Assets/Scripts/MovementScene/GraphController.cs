@@ -32,7 +32,6 @@ public class GraphController : Controller
         float startPoint = -1;
         _usedTimneline = null;
         Timeline timeline = GetTimelineOfNewPlayer(player.GetCharacterData());
-        _usedTimneline = null;
 
         if(timeline != null)
         {
@@ -185,6 +184,7 @@ public class GraphController : Controller
 
                 if(!timeline.IsTimestampStillValid(gametime))
                 {
+                    Debug.Log("Zu spät zum tun");
                     _timelinesToHandle.Remove(timeline);
                     //if(_rootTimeline.)
                     //if()
@@ -271,6 +271,7 @@ public class GraphController : Controller
         {
             if(!timeline.GetId().Equals(_currentTimeline.GetId()))
             {
+                Debug.Log("Referenzierte Timeline: " + timeline.GetId());
                 _timelinesToHandle.Add(timeline);
                 //Shadow ghost = timeline.GetGhost();
                 //if(ghost != null)
