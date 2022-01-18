@@ -17,6 +17,7 @@ public class GraphController : Controller
 
 
     private bool _splitValidationCheck = false;
+    private Timeline _usedTimneline = null;
 
     void Start()
     {
@@ -29,7 +30,9 @@ public class GraphController : Controller
     private void HandleMerge(Player player)
     {
         float startPoint = -1;
+        _usedTimneline = null;
         Timeline timeline = GetTimelineOfNewPlayer(player.GetCharacterData());
+        _usedTimneline = null;
 
         if(timeline != null)
         {
@@ -105,14 +108,22 @@ public class GraphController : Controller
     }
     private Timeline GetTimelineOfNewPlayer(CharacterData data)
     {
-        return HandleGetTimelimeOfNewPlayer(_rootTimeline,data);
+        //Timeline t = null;
+
+        //Func<Timeline,CharacterData,TResult> GetTimelineOfNewPlayer = (Timeline timeline, CharacterData data) =>
+        //{
+
+        //}
+
+        HandleGetTimelimeOfNewPlayer(_rootTimeline,data);
+        return _usedTimneline;
     }
-    private Timeline HandleGetTimelimeOfNewPlayer(Timeline timeline,CharacterData data)
+    private void HandleGetTimelimeOfNewPlayer(Timeline timeline,CharacterData data)
     {
-        Timeline t = null;
+        //Timeline t = null;
         if(timeline.GetPlayer().NAME.Equals(data.NAME))
         {
-            t = timeline;
+            _usedTimneline = timeline;
         }
         else
         {
@@ -126,7 +137,7 @@ public class GraphController : Controller
             }
         }
 
-        return t;
+        //return t;
     }
     private void HandleAddChild(CharacterData playerData)
     {
