@@ -11,6 +11,7 @@ public class RingHandler : MonoBehaviour
     public List<RingButton> RingButtons = new List<RingButton>();
     public List<Sprite> Icons = new List<Sprite>();
     private List<CharacterData> Data;
+
     //public GameObject PlayerObject;
 
 

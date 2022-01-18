@@ -18,6 +18,8 @@ public class PlayerController : Controller
     private string _currentSelection = "";
     [SerializeField]
     private Player _temporalOldPlayer = null;
+    [SerializeField]
+    private GameObject CharacterPreview = null;
 
     public Action<Player> BeforeCharacterCreated;
     public Action<Player> AfterCharacterCreated;
@@ -29,11 +31,13 @@ public class PlayerController : Controller
     {
         CharacterData characterData = _playableCharacter[0];
         GameObject character = InstantiateCharacter(characterData.PREFAB);
+        character.tag = "Player";
         Player player = character.AddComponent<Player>();
         player.Init(characterData);
         _currentCharacter = player;
         AfterCharacterCreated?.Invoke(player);
         InitTimeline?.Invoke(player.GetCharacterData());
+        CharacterPreview.GetComponent<CharacterPreview>().ActualizePreview();
     }
     private GameObject InstantiateCharacter(GameObject prefab)
     {
@@ -269,5 +273,10 @@ public class PlayerController : Controller
     public Transform GetSpawn()
     {
         return _spawnPoint;
+    }
+
+    public List<CharacterData> GetCharacterData()
+    {
+        return this._playableCharacter;
     }
 }
