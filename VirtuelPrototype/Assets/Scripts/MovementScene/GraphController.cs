@@ -25,6 +25,8 @@ public class GraphController : Controller
         _playerController.InitTimeline += HandleInitTimeline;
         _playerController.Split += HandleAddChild;
         _playerController.Merge += HandleMerge;
+        _timelinesToHandle = new List<Timeline>();
+        CheckForInteractions(_rootTimeline);
     }
 
     private void HandleMerge(Player player)
@@ -211,7 +213,7 @@ public class GraphController : Controller
 
     private void CheckValidation(Timeline timeline,string selection)
     {
-        timeline.ResetData();
+ 
         if(selection.Equals(timeline.GetPlayer().NAME))
         {
             _splitValidationCheck = true;
@@ -228,6 +230,28 @@ public class GraphController : Controller
             }
         }
     }
+    private void HandleResetDataInTimeline(Timeline timeline,string name)
+    {
+        if(name.Equals(timeline.GetPlayer().NAME))
+        {
+            timeline.ResetData();
+        }
+        else
+        {
+            List<Timeline> children = timeline.GetChildren();
+            if(children.Count > 0)
+            {
+                foreach(Timeline child in children)
+                {
+                    CheckValidation(child,name);
+                }
+            }
+        }
+    }
+    public void ResetDataInTimeline(Player player)
+    {
+        HandleResetDataInTimeline(_rootTimeline,player.GetCharacterData().NAME);
+    }
 
 
     private void CheckForInteractions(Timeline timeline)
@@ -238,6 +262,8 @@ public class GraphController : Controller
         {
             if(!timeline.GetId().Equals(_currentTimeline.GetId()))
             {
+                //Debug.Log("-----------------------------");
+                timeline.ResetData();
                 _timelinesToHandle.Add(timeline);
             }
         }
