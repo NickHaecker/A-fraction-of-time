@@ -30,7 +30,6 @@ public class GraphController : Controller
     private void HandleMerge(Player player)
     {
         float startPoint = -1;
-        _usedTimneline = null;
         Timeline timeline = GetTimelineOfNewPlayer(player.GetCharacterData());
 
         if(timeline != null)
@@ -74,11 +73,8 @@ public class GraphController : Controller
     }
     private void HandleRemoveOldCharacter(Timeline timeline)
     {
-        //Debug.Log("hier bin ich");
-
         if(timeline.GetLevel() >= _currentTimeline.GetLevel() && !timeline.GetId().Equals(_currentTimeline.GetId()))
         {
-            //Debug.Log("zweiter schritt " +timeline.GetId());
             CharacterData shadow = timeline.GetPlayer();
 
             int children = this.gameObject.transform.childCount;
@@ -88,7 +84,6 @@ public class GraphController : Controller
                 GameObject child = this.gameObject.transform.GetChild(i).gameObject;
                 if(child.name.Contains(shadow.PREFAB_GHOST.name))
                 {
-                    //Debug.Log("dritter schritt " + child.name);
                     Destroy(child);
                 }
             }
@@ -107,19 +102,13 @@ public class GraphController : Controller
     }
     private Timeline GetTimelineOfNewPlayer(CharacterData data)
     {
-        //Timeline t = null;
-
-        //Func<Timeline,CharacterData,TResult> GetTimelineOfNewPlayer = (Timeline timeline, CharacterData data) =>
-        //{
-
-        //}
-
+        _usedTimneline = null;
         HandleGetTimelimeOfNewPlayer(_rootTimeline,data);
         return _usedTimneline;
     }
     private void HandleGetTimelimeOfNewPlayer(Timeline timeline,CharacterData data)
     {
-        //Timeline t = null;
+        
         if(timeline.GetPlayer().NAME.Equals(data.NAME))
         {
             _usedTimneline = timeline;
@@ -135,8 +124,6 @@ public class GraphController : Controller
                 }
             }
         }
-
-        //return t;
     }
     private void HandleAddChild(CharacterData playerData)
     {
@@ -151,11 +138,6 @@ public class GraphController : Controller
     }
     public void HandleGameTime(float gametime)
     {
-        //if(_rootTimeline != null)
-        //{
-        //    CheckForInteractions(gametime,_rootTimeline);
-        //}
-
         PurgeOldTimelines(gametime);
 
         if(_timelinesToHandle != null && _timelinesToHandle.Count > 0)
@@ -175,7 +157,6 @@ public class GraphController : Controller
                         {
                             Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
                             shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
-                            //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
                             timeline.InsertGhost(shadow);
                             shadow.ReconstructRecord(gametime);
                         }
@@ -186,8 +167,7 @@ public class GraphController : Controller
                 {
                     Debug.Log("Zu spät zum tun");
                     _timelinesToHandle.Remove(timeline);
-                    //if(_rootTimeline.)
-                    //if()
+
                 }
 
             }
@@ -214,7 +194,6 @@ public class GraphController : Controller
         }
         else
         {
-            //timeline.GetParent()?.GetChildren().Remove(timeline);
             if(!timeline.IsTimestampStillValid(gametime))
             {
                 timeline.GetParent()?.GetChildren()?.Remove(timeline);
@@ -232,34 +211,22 @@ public class GraphController : Controller
 
     private void CheckValidation(Timeline timeline,string selection)
     {
-        //bool valid = false;
-        //CharacterData data = timeline.GetPlayer();
-        //Debug.Log("Selection " + selection + " Name grad " + data.NAME);
-        //if(data)
-        //{
-        //Debug.Log(data.NAME == selection);
+        timeline.ResetData();
         if(selection.Equals(timeline.GetPlayer().NAME))
         {
-            //valid = true;
-            //return true;
             _splitValidationCheck = true;
         }
         else
         {
             List<Timeline> children = timeline.GetChildren();
-            //Debug.Log(children.Count);
             if(children.Count > 0)
             {
                 foreach(Timeline child in children)
                 {
-                    //Debug.Log(child);
                     CheckValidation(child,selection);
                 }
             }
         }
-        //}
-        //Debug.LO
-        //return valid;
     }
 
 
@@ -271,32 +238,9 @@ public class GraphController : Controller
         {
             if(!timeline.GetId().Equals(_currentTimeline.GetId()))
             {
-                Debug.Log("Referenzierte Timeline: " + timeline.GetId());
                 _timelinesToHandle.Add(timeline);
-                //Shadow ghost = timeline.GetGhost();
-                //if(ghost != null)
-                //{
-                //    ghost.ReconstructRecord(gametime);
-                //}
-                //else
-                //{
-                //    if(timeline.IsTimestampStillValid(gametime))
-                //    {
-                //        if(timeline.GetStartTimestamp() == gametime)
-                //        {
-                //            Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
-                //            shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
-                //            //Debug.Log(shadow.GetCharacterData().NAME + " sollte erstellt worden sein");
-                //            timeline.InsertGhost(shadow);
-                //            //shadow.ReconstructRecord(gametime);
-                //        }
-                //    }
-                //}
             }
         }
-        //else
-        //{
-
 
         List<Timeline> children = timeline.GetChildren();
         if(children.Count > 0)
@@ -306,8 +250,6 @@ public class GraphController : Controller
                 CheckForInteractions(child);
             }
         }
-        //}
-
     }
 
 }

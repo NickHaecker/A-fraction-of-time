@@ -31,10 +31,27 @@ public static class StateManager
 
     public static void SavePlayer(Player player)
     {
+        SavePlayerData savedDataFromPlayer = LoadPlayer(player.GetCharacterData().NAME);
+
+       
+
         GameObjectSaveData gameObjectSaveData = new GameObjectSaveData();
 
         SavePlayerData playerToSafe = new SavePlayerData();
         List<InteractionSaveData> interactions = player.GetInteractions();
+
+        if(savedDataFromPlayer != null)
+        {
+            playerToSafe = savedDataFromPlayer;
+            Debug.Log(1);
+            //List<InteractionSaveData> currentSaved = savedDataFromPlayer.Interactions;
+            //if(currentSaved.Count > 0 && interactions.Count > 0)
+            //{
+                //Debug.Log(2);
+            interactions.AddRange(savedDataFromPlayer.Interactions);
+            //}
+        }
+
         playerToSafe.Interactions = interactions;
         CharacterData characterData = player.GetCharacterData();
         GameObject playerObject = player.gameObject;
@@ -74,6 +91,19 @@ public static class StateManager
 
         Debug.Log("Save - COMPLETED");
 
+    }
+
+    public static void DeleteData(List<string> names)
+    {
+        foreach(string name in names)
+        {
+            string path = Application.persistentDataPath + StateManager.path.Replace("{{player}}",name);
+
+            if(File.Exists(path))
+            {
+                File.Delete(path);
+            }
+        }
     }
 
 }

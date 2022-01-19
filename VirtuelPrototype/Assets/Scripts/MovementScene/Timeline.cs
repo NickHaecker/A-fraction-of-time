@@ -76,6 +76,7 @@ public class Timeline
     {
         _ghost = ghost;
         _ghost.DestroyShadow += DeleteGhost;
+      
     }
     public Shadow GetGhost()
     {
@@ -91,9 +92,12 @@ public class Timeline
         _ghost = null;
 
     }
+    public void ResetData()
+    {
+        _data = null;
+    }
     public bool IsTimestampStillValid(float timestamp)
     {
-        //SavePlayerData shadowData = StateManager.LoadPlayer(_player.NAME);
         if(_data == null)
         {
             _data = StateManager.LoadPlayer(_player.NAME);

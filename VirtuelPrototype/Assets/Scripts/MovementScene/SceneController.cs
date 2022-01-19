@@ -36,6 +36,12 @@ public class SceneController : Controller
         {
             CameraController cameraController = _camRoot.GetComponentInChildren<CameraController>();
             PlayerController playerController = _playerRoot.GetComponent<PlayerController>();
+            List<string> names = new List<string>();
+            foreach(CharacterData data in playerController.GetCharacterData())
+            {
+                names.Add(data.NAME);
+            }
+            StateManager.DeleteData(names);
             playerController.AfterCharacterCreated += cameraController.HandleCreatePlayerCharacter;
             playerController.HandleStart();
         }

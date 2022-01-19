@@ -1304,6 +1304,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 64820798451078254, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
 --- !u!1 &210537830 stripped
@@ -3883,7 +3887,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneRoot: {fileID: 0}
+  _rootTimeline:
+    _level: 0
+    _children: []
+    _startTimestamp: 0
+    _player: {fileID: 0}
+    _ghost: {fileID: 0}
+    _ID: 
+    _startPosition: []
+  _currentTimeline:
+    _level: 0
+    _children: []
+    _startTimestamp: 0
+    _player: {fileID: 0}
+    _ghost: {fileID: 0}
+    _ID: 
+    _startPosition: []
   _playerController: {fileID: 0}
+  _timelinesToHandle: []
 --- !u!1001 &657376528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5201,7 +5222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31980a1d79c346b42b7fcdefaecd8c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneRoot: {fileID: 1714877496}
 --- !u!4 &873527398
 Transform:
   m_ObjectHideFlags: 0
