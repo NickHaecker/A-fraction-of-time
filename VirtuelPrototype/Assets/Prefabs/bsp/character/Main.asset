@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03945d077a59b1e4db31d560f1b05d69, type: 3}
-  m_Name: Kaengu
+  m_Name: Main
   m_EditorClassIdentifier: 
-  NAME: Kaengu
-  UID: Kaengu
-  DESCRIPTION: Kaengu
-  PREFAB: {fileID: 3612152520133917319, guid: 2bc2d342172fd714da0e1fb827cba284, type: 3}
-  PREFAB_GHOST: {fileID: 3344361641079367198, guid: 1c3bee4570495cc4b9e34ab330ea6b80, type: 3}
-  IS_SPLIT_REALITY_ORIGIN: 1
+  NAME: Character
+  UID: Character
+  DESCRIPTION: Character
+  PREFAB: {fileID: 1863831048901680662, guid: fe6c4a1c65978654cadbfd6b4b7b456f, type: 3}
+  PREFAB_GHOST: {fileID: 1863831048901680662, guid: 5d31a6ceea5261d40890e7be158a7e74, type: 3}
+  IS_SPLIT_REALITY_ORIGIN: 0

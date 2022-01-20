@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 1863831048901680663}
   - component: {fileID: 1424263597}
   m_Layer: 0
-  m_Name: Main Character
+  m_Name: Main
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
   _gravity: -9.81
   _jumpHeight: 2
   _fallVelocity: {x: 0, y: 0, z: 0}
-  _isGrounded: 1
+  _isGrounded: 0
 --- !u!114 &1863831048901680660
 MonoBehaviour:
   m_ObjectHideFlags: 0

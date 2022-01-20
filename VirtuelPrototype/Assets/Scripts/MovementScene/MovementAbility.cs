@@ -43,13 +43,13 @@ public class MovementAbility : Ability
 
     private void Update()
     {
-        _isGrounded = Physics.CheckSphere(groundCheck.position,groundDistance,groundMask);
+        /*_isGrounded = Physics.CheckSphere(groundCheck.position,groundDistance,groundMask);
         if(_isGrounded && _fallVelocity.y < 0)
         {
             _fallVelocity.y = -2f;
         }
         _fallVelocity.y += _gravity * Time.deltaTime;
-        _controller.Move(_fallVelocity * Time.deltaTime);
+        _controller.Move(_fallVelocity * Time.deltaTime);*/
     }
 
     protected override void HandleInput()
@@ -61,13 +61,17 @@ public class MovementAbility : Ability
 
         if(direction.magnitude >= 0.1)
         {
-            float targetAngle = Mathf.Atan2(direction.x,direction.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(_playerTransform.eulerAngles.y,targetAngle,ref _turnSmoothVelocity,_turnSmoothTime);
-            _playerTransform.rotation = Quaternion.Euler(0f,angle,0f);
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(_playerTransform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
 
-            Vector3 moveDir = Quaternion.Euler(0f,targetAngle,0f) * Vector3.forward;
+            if (!GetComponent<Animator>().GetBool("isJump"))
+            {
+                _playerTransform.rotation = Quaternion.Euler(0f, angle, 0f);
+            }
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _controller.Move(moveDir.normalized * _speed * Time.deltaTime);
-            SubmitAction(InteractionType.WALK,this.gameObject.GetComponent<Player>(),this.gameObject,this.gameObject.transform,TimeController.Instance.GetGameTime());
+            SubmitAction(InteractionType.WALK, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
+
 
 
         }
