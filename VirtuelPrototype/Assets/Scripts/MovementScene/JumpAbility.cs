@@ -18,12 +18,17 @@ public class JumpAbility : Ability
     [SerializeField]
     private bool _isGrounded = true;
 
+    private Vector3 _jumpDirection;
+
+    private Transform _cam;
+
     private void Start()
     {
         _controller = this.gameObject.GetComponent<CharacterController>();
         _collider = this.gameObject.GetComponent<CapsuleCollider>();
         
         Physics.IgnoreCollision(GetComponent<CharacterController>(), GetComponent<CapsuleCollider>());
+        _cam = SceneController.Instance.GetCamGameObject().transform;
     }
 
     protected override void HandleInput()
@@ -32,6 +37,7 @@ public class JumpAbility : Ability
         // (-0.5) change this value according to your character y position + 1
         {
             _fallVelocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
+            this.JumpDirection();
             GetComponent<AnimationHandler>().jump();
             //SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
             
@@ -74,8 +80,29 @@ public class JumpAbility : Ability
         }*/
     }
 
+    protected void JumpDirection()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        if (direction.magnitude >= 0.1)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
+            _jumpDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            Debug.Log(_jumpDirection);
+        } else
+        {
+            _jumpDirection = new Vector3(0f, 0f, 0f);
+        }
+    }
 
-protected override void HandleCollisionEnter(Collider other)
+    public Vector3 GetJumpdirection()
+    {
+        return _jumpDirection;
+    }
+
+
+    protected override void HandleCollisionEnter(Collider other)
     {
         Debug.Log(other);
         
