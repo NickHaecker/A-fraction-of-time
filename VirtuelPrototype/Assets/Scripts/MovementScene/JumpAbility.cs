@@ -23,7 +23,7 @@ public class JumpAbility : Ability
         _controller = this.gameObject.GetComponent<CharacterController>();
         _collider = this.gameObject.GetComponent<CapsuleCollider>();
         
-        Physics.IgnoreCollision(GetComponent<CharacterController>(), GetComponent<CapsuleCollider>());
+        Physics.IgnoreCollision(_controller,_collider);
     }
 
     protected override void HandleInput()
@@ -32,7 +32,7 @@ public class JumpAbility : Ability
         // (-0.5) change this value according to your character y position + 1
         {
             _fallVelocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
-            GetComponent<AnimationHandler>().jump();
+            this.gameObject.GetComponent<AnimationHandler>().jump();
             //SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
             
         } else
@@ -40,11 +40,11 @@ public class JumpAbility : Ability
             _fallVelocity.y += _gravity * Time.deltaTime;
             if(_isGrounded)
             {
-                GetComponent<AnimationHandler>().stopJump();
+                this.gameObject.GetComponent<AnimationHandler>().stopJump();
             }
             
         }
-        GetComponent<CharacterController>().Move(_fallVelocity * Time.deltaTime);
+        _controller.Move(_fallVelocity * Time.deltaTime);
     
 
 

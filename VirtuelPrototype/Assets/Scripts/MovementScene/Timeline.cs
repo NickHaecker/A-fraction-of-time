@@ -75,6 +75,7 @@ public class Timeline
     public void InsertGhost(Shadow ghost)
     {
         _ghost = ghost;
+        _ghost.gameObject.GetComponent<AnimationHandler>().SetGhostMode(true);
         _ghost.DestroyShadow += DeleteGhost;
       
     }

@@ -34,7 +34,8 @@ public class CameraController : Controller
 
     public void HandleCreatePlayerCharacter(Player player)
     {
-        _target = player.gameObject.transform;
+        ;
+        _target = player.gameObject.transform.GetChild(2).GetChild(2).GetChild(0).GetChild(0).GetChild(1);
         HandleChangeNewTarget();
     }
 }

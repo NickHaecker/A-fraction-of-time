@@ -29,9 +29,11 @@ public class Shadow : Player
             {
                 case InteractionType.WALK:
 
-                    transform.position = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
+                    Vector3 positionVector = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
+                    transform.position = positionVector;
                     transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
                     transform.localScale = new Vector3(interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
+                    gameObject.GetComponent<AnimationHandler>().SetGhostPosition(positionVector);
 
                     break;
                 default:
