@@ -33,6 +33,7 @@ public class JumpAbility : Ability
 
     protected override void HandleInput()
     {
+        
         if (Input.GetKey(KeyCode.Space) && _isGrounded)
         // (-0.5) change this value according to your character y position + 1
         {
@@ -43,41 +44,18 @@ public class JumpAbility : Ability
             
         } else
         {
-            _fallVelocity.y += _gravity * Time.deltaTime;
+            
             if(_isGrounded)
             {
                 this.gameObject.GetComponent<AnimationHandler>().stopJump();
             }
+            if(!_isGrounded)
+            {
+                _fallVelocity.y += _gravity * Time.deltaTime;
+            }
             
         }
         _controller.Move(_fallVelocity * Time.deltaTime);
-    
-
-
-        //Ground checking to see if agent is touching the ground
-        // isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        /*if(_isGrounded && _fallVelocity.y < 0)
-        {
-            _fallVelocity.y = -2f;
-        }
-        if(!_isGrounded && _fallVelocity.y < 0)
-        {
-            Debug.Log("f�llt schneller");
-            _fallVelocity.y += _gravity * Time.deltaTime;
-        }
-
-        _controller.Move(_fallVelocity * Time.deltaTime);
-
-        //if (Input.GetKey(KeyCode.Space)) Debug.Log("Jump");
-
-        //Jumping
-        if (Input.GetKey(KeyCode.Space) && _isGrounded)
-        {
-            Debug.Log("jump");
-            SubmitAction(InteractionType.JUMP,this.gameObject.GetComponent<Player>(),this.gameObject,this.gameObject.transform,TimeController.Instance.GetGameTime());
-            _fallVelocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
-        }*/
     }
 
     protected void JumpDirection()
