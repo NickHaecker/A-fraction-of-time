@@ -370,7 +370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863831048901680662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.183, y: 0.65, z: -0.21969342}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 5945447406294743843}
@@ -415,7 +415,7 @@ CharacterController:
   m_StepOffset: 0
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 8.76, z: 0}
+  m_Center: {x: 0, y: 8.81, z: 0}
 --- !u!114 &1863831048901680661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
   _controller: {fileID: 1863831048901680650}
   _collider: {fileID: 1424263597}
   _gravity: -9.81
-  _jumpHeight: 2
+  _jumpHeight: 0.5
   _fallVelocity: {x: 0, y: 0, z: 0}
   _isGrounded: 0
 --- !u!114 &1863831048901680660
@@ -480,7 +480,7 @@ CapsuleCollider:
   m_Radius: 3.09
   m_Height: 17.2
   m_Direction: 1
-  m_Center: {x: 0, y: 9.43, z: 0}
+  m_Center: {x: 0, y: 6.37, z: 0}
 --- !u!1 &2135234878901291349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033602947577912036}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 1.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5484895547629774374}
