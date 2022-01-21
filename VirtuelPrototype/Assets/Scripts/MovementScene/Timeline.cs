@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
+
 [Serializable]
 public class Timeline
 {
@@ -107,17 +109,8 @@ public class Timeline
         if(_data != null)
         {
             if(_data.Interactions.Count > 0)
-            {
-                float currentT = 0f;
-                ////return _data.Interactions[_data.Interactions.Count - 1].TimeStamp >= timestamp;
-                foreach(InteractionSaveData interaction in _data.Interactions)
-                {
-                    if(interaction.TimeStamp > currentT)
-                    {
-                        currentT = interaction.TimeStamp;
-                    }
-                }
-                return timestamp <= currentT;
+            { 
+                return timestamp <=  _data.Interactions.Max(x => x.TimeStamp);
 
             }
         }

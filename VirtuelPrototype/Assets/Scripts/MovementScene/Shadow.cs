@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
+
 [Serializable]
 public class Shadow : Player
 {
@@ -16,7 +18,7 @@ public class Shadow : Player
     {
         if(_interactions.Count > 0)
         {
-            _lastInteraction = _interactions[_interactions.Count - 1];
+            _lastInteraction  = _interactions.OrderByDescending(item => item.TimeStamp).First();
         }
         InteractionSaveData interaction = _interactions.Find(i => (_lastTimestamp < i.TimeStamp && i.TimeStamp <= timestamp));
 
