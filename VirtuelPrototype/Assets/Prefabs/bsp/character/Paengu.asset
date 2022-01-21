@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NAME: Paengu
   UID: Paengu
-  DESCRIPTION: Paengo 1 ganz tolles
+  DESCRIPTION: This character is really small...thats it.
   PREFAB: {fileID: 6514048515038344988, guid: 2f8c5a7d54d3a7f4083f44c0b33fe081, type: 3}
   PREFAB_GHOST: {fileID: 6514048515038344988, guid: e214c80e302ea5c48b6568ecd65ee112, type: 3}
   IS_SPLIT_REALITY_ORIGIN: 1

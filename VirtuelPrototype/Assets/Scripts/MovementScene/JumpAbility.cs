@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class JumpAbility : Ability
 {
@@ -82,12 +84,18 @@ public class JumpAbility : Ability
 
     protected override void HandleCollisionEnter(Collider other)
     {
-       
-        
+
         if (other.tag == "Ground")
         {
             _isGrounded = true;
            
+        }
+
+        if (other.name == "infoPoint")
+        {
+            GameObject ui = GameObject.Find("----HUD----");
+            ui.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0).GetChild(2).gameObject.SetActive(true);
+            ui.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = other.GetComponent<InfoPoint>()._info;
         }
         // throw new System.NotImplementedException();
     }
@@ -96,6 +104,12 @@ public class JumpAbility : Ability
         if(other.tag == "Ground")
         {
             _isGrounded = false;
+        }
+
+        if (other.name == "infoPoint")
+        {
+            GameObject ui = GameObject.Find("----HUD----");
+            ui.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0).GetChild(2).gameObject.SetActive(false);
         }
         // throw new System.NotImplementedException();
     }

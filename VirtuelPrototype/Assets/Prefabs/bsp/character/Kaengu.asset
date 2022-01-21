@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NAME: Kaengu
   UID: Kaengu
-  DESCRIPTION: Kaengu
+  DESCRIPTION: This character has extraordinary jumping skills...
   PREFAB: {fileID: 7194061979807609837, guid: 68a8ca184f87ac94aa0aac369f4333c4, type: 3}
   PREFAB_GHOST: {fileID: 7194061979807609837, guid: ed0abd2e8f50a4a48973b713ef32161e, type: 3}
   IS_SPLIT_REALITY_ORIGIN: 1

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NAME: Character
   UID: Character
-  DESCRIPTION: Character
+  DESCRIPTION: This character is an ordinary scientist. Pretty useless in an action
+    environment.
   PREFAB: {fileID: 1863831048901680662, guid: fe6c4a1c65978654cadbfd6b4b7b456f, type: 3}
   PREFAB_GHOST: {fileID: 1863831048901680662, guid: 5d31a6ceea5261d40890e7be158a7e74, type: 3}
   IS_SPLIT_REALITY_ORIGIN: 0
