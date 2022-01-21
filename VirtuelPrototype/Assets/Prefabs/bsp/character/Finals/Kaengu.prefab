@@ -1800,7 +1800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da3b629f8403fb4d9f89bdddb547220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6
+  _speed: 4
   _gravity: -9.81
   _fallVelocity: {x: 0, y: 0, z: 0}
   _isGrounded: 0
