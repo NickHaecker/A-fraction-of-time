@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2845,7 +2845,7 @@ MonoBehaviour:
   _spawnPoint: {fileID: 165231354}
   _currentCharacter: {fileID: 0}
   _playableCharacter:
-  - {fileID: 11400000, guid: e28b4b2fcaf6faa498c865a9f01c4096, type: 2}
+  - {fileID: 11400000, guid: 507f83d4450be274b81a75e8abae9fda, type: 2}
   - {fileID: 11400000, guid: ce92ee594b67f7f4a8ffdce256248900, type: 2}
   _currentSelection: 
   _temporalOldPlayer: {fileID: 0}
