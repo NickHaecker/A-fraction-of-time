@@ -3,6 +3,7 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Assets</Path>
       <Path>Library/PackageCache/com.unity.cinemachine@2.6.11</Path>
       <Path>Library/PackageCache/com.unity.collab-proxy@1.13.5</Path>
       <Path>Library/PackageCache/com.unity.ext.nunit@1.0.6</Path>
@@ -12,6 +13,7 @@
       <Path>Library/PackageCache/com.unity.mathematics@1.1.0</Path>
       <Path>Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0</Path>
       <Path>Library/PackageCache/com.unity.postprocessing@2.3.0</Path>
+      <Path>Library/PackageCache/com.unity.postprocessing@3.1.1</Path>
       <Path>Library/PackageCache/com.unity.probuilder@5.0.3</Path>
       <Path>Library/PackageCache/com.unity.progrids@3.0.3-preview.6</Path>
       <Path>Library/PackageCache/com.unity.render-pipelines.core@10.7.0</Path>
