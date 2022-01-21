@@ -158,7 +158,9 @@ public class GraphController : Controller
                         if(timeline.GetStartTimestamp() <= gametime)
                         {
                             Shadow shadow = _playerController.CreateShadow(timeline.GetPlayer());
-                            shadow.gameObject.transform.position = new Vector3(timeline.GetPosition()[0],timeline.GetPosition()[1],timeline.GetPosition()[2]);
+                            Vector3 positionVector = new Vector3(timeline.GetPosition()[0], timeline.GetPosition()[1], timeline.GetPosition()[2]);
+                            shadow.gameObject.transform.position = positionVector;
+                            
                             timeline.InsertGhost(shadow);
                             shadow.ReconstructRecord(gametime);
                         }
