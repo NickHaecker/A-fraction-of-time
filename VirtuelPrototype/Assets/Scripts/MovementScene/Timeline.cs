@@ -69,6 +69,7 @@ public class Timeline
         }
         else
         {
+            Debug.Log("schlechter check");
             _children.Insert(_children.FindIndex(a => a.GetId() == child.GetId()),child);
         }
     }
@@ -95,19 +96,29 @@ public class Timeline
     }
     public void ResetData()
     {
-        _data = null;
+        _data = StateManager.LoadPlayer(_player.NAME);
+    }
+    public SavePlayerData GetPlayerData()
+    {
+        return _data;
     }
     public bool IsTimestampStillValid(float timestamp)
     {
-        if(_data == null)
-        {
-            _data = StateManager.LoadPlayer(_player.NAME);
-        }
         if(_data != null)
         {
             if(_data.Interactions.Count > 0)
             {
-                return _data.Interactions[_data.Interactions.Count - 1].TimeStamp >= timestamp;
+                float currentT = 0f;
+                ////return _data.Interactions[_data.Interactions.Count - 1].TimeStamp >= timestamp;
+                foreach(InteractionSaveData interaction in _data.Interactions)
+                {
+                    if(interaction.TimeStamp > currentT)
+                    {
+                        currentT = interaction.TimeStamp;
+                    }
+                }
+                return timestamp <= currentT;
+
             }
         }
         return false;

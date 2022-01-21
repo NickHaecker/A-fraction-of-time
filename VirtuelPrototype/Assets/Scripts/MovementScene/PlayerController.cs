@@ -245,7 +245,6 @@ public class PlayerController : Controller
         {
             splitSelectionController.SelectCharacter += HandleCharacterSelection;
         }
-
     }
 
     private bool IsMerge()
