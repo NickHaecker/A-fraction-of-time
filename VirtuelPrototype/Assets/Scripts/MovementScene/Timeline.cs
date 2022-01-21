@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
+
 [Serializable]
 public class Timeline
 {
@@ -69,12 +71,14 @@ public class Timeline
         }
         else
         {
+            Debug.Log("schlechter check");
             _children.Insert(_children.FindIndex(a => a.GetId() == child.GetId()),child);
         }
     }
     public void InsertGhost(Shadow ghost)
     {
         _ghost = ghost;
+        _ghost.gameObject.GetComponent<AnimationHandler>().SetGhostMode(true);
         _ghost.DestroyShadow += DeleteGhost;
       
     }
@@ -94,19 +98,20 @@ public class Timeline
     }
     public void ResetData()
     {
-        _data = null;
+        _data = StateManager.LoadPlayer(_player.NAME);
+    }
+    public SavePlayerData GetPlayerData()
+    {
+        return _data;
     }
     public bool IsTimestampStillValid(float timestamp)
     {
-        if(_data == null)
-        {
-            _data = StateManager.LoadPlayer(_player.NAME);
-        }
         if(_data != null)
         {
             if(_data.Interactions.Count > 0)
-            {
-                return _data.Interactions[_data.Interactions.Count - 1].TimeStamp >= timestamp;
+            { 
+                return timestamp <=  _data.Interactions.Max(x => x.TimeStamp);
+
             }
         }
         return false;

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
+
 [Serializable]
 public class Shadow : Player
 {
@@ -16,7 +18,7 @@ public class Shadow : Player
     {
         if(_interactions.Count > 0)
         {
-            _lastInteraction = _interactions[_interactions.Count - 1];
+            _lastInteraction  = _interactions.OrderByDescending(item => item.TimeStamp).First();
         }
         InteractionSaveData interaction = _interactions.Find(i => (_lastTimestamp < i.TimeStamp && i.TimeStamp <= timestamp));
 
@@ -29,9 +31,11 @@ public class Shadow : Player
             {
                 case InteractionType.WALK:
 
-                    transform.position = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
+                    Vector3 positionVector = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
+                    transform.position = positionVector;
                     transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
                     transform.localScale = new Vector3(interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
+                    gameObject.GetComponent<AnimationHandler>().SetGhostPosition(positionVector);
 
                     break;
                 default:

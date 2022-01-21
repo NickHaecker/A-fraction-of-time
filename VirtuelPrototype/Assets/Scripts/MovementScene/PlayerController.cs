@@ -56,7 +56,7 @@ public class PlayerController : Controller
     {
         TimeController.Instance.SetActive(true);
         _currentSelection = name;
-
+        
         if(IsMerge())
         {
             HandleMerge();
@@ -177,10 +177,10 @@ public class PlayerController : Controller
     {
         SavePlayerData shadow = StateManager.LoadPlayer(data.NAME);
         GameObject newShadow = InstantiateCharacter(data.PREFAB_GHOST);
-        Shadow shadwoPlayer = newShadow.AddComponent<Shadow>();
-        shadwoPlayer.Init(data);
-        shadwoPlayer.InsertInteractions(shadow.Interactions);
-        return shadwoPlayer;
+        Shadow shadowPlayer = newShadow.AddComponent<Shadow>();
+        shadowPlayer.Init(data);
+        shadowPlayer.InsertInteractions(shadow.Interactions);
+        return shadowPlayer;
     }
     private void ClearChildren()
     {
@@ -245,7 +245,6 @@ public class PlayerController : Controller
         {
             splitSelectionController.SelectCharacter += HandleCharacterSelection;
         }
-
     }
 
     private bool IsMerge()
@@ -255,7 +254,7 @@ public class PlayerController : Controller
         bool isM = graphController.IsSelectionInTimelineYet(_currentSelection);
 
         if(isM)
-        {
+        {   
             Debug.Log("habe ich grad gemerget: " + isM);
         }
         else
