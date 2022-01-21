@@ -43,7 +43,6 @@ public static class StateManager
         if(savedDataFromPlayer != null)
         {
             playerToSafe = savedDataFromPlayer;
-            Debug.Log(1);
             //List<InteractionSaveData> currentSaved = savedDataFromPlayer.Interactions;
             //if(currentSaved.Count > 0 && interactions.Count > 0)
             //{
