@@ -163,6 +163,7 @@ public class GraphController : Controller
                             
                             timeline.InsertGhost(shadow);
                             shadow.ReconstructRecord(gametime);
+
                         }
                     }
                 }

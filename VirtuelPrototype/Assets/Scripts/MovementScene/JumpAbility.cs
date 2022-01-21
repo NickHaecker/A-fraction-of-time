@@ -67,7 +67,7 @@ public class JumpAbility : Ability
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
             _jumpDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            Debug.Log(_jumpDirection);
+            
         } else
         {
             _jumpDirection = new Vector3(0f, 0f, 0f);
@@ -82,12 +82,12 @@ public class JumpAbility : Ability
 
     protected override void HandleCollisionEnter(Collider other)
     {
-        Debug.Log(other);
+       
         
         if (other.tag == "Ground")
         {
             _isGrounded = true;
-            Debug.Log("grounded");
+           
         }
         // throw new System.NotImplementedException();
     }
