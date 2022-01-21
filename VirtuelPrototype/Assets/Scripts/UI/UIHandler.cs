@@ -11,17 +11,20 @@ public class UIHandler : MonoBehaviour
 
     public GameObject StartMenu;
 
+    private bool infoboxActive = true;
+    private GameObject Cam;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cam = GameObject.Find("----CAM----");
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        GameObject Cam = GameObject.Find("----CAM----");
+        
         if (StartMenu.activeInHierarchy)
         {
             Cam.GetComponent<Transform>().GetChild(0).GetComponent<CinemachineFreeLook>().enabled = false;
@@ -40,11 +43,21 @@ public class UIHandler : MonoBehaviour
             RunTimeUI.SetActive(true);
             ChooseCharacterUI.SetActive(false);
             ShiftIsPressed = true;
-            Cursor.lockState = CursorLockMode.None;
         }
         if(!Input.GetKeyDown(KeyCode.G) && ShiftIsPressed)
         {
             ShiftIsPressed = false;
         }
+
+        if(Time.realtimeSinceStartup > 20 && infoboxActive)
+        {
+            hideWelcomeText();
+            infoboxActive = false; 
+        }
+    }
+
+    private void hideWelcomeText()
+    {
+        RunTimeUI.GetComponent<Transform>().GetChild(2).gameObject.SetActive(false);
     }
 }

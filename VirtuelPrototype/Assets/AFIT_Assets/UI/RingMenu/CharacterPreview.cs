@@ -46,7 +46,7 @@ public class CharacterPreview : MonoBehaviour
 
     private void editPreviewPart(CharacterData d, int i) 
     {
-        switch (d.name)
+        switch (d.NAME)
         {
             case "Character":
                 this.GetComponent<Transform>().GetChild(0).GetChild(i).GetChild(1).GetComponent<Image>().sprite = Icons[0];

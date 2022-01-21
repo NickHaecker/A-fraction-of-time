@@ -18,7 +18,8 @@ public class SplitSelectionController : Controller
     public Action<String> SelectCharacter;
     public void InitCharacterSelection(List<CharacterData> data,Player player)
     {
-        if(_selectionUI)
+        
+        if(_selectionUI.GetComponent<Transform>().parent.gameObject.activeInHierarchy)
         {
             GameObject Cam = GameObject.Find("----CAM----");
             Cam.GetComponent<Transform>().GetChild(0).GetComponent<CinemachineFreeLook>().enabled = false;
@@ -26,6 +27,12 @@ public class SplitSelectionController : Controller
             Cursor.visible = true;
             _selectionUI.GetComponent<RingHandler>().setCharacterData(data, this);
             _selectionUI.SetActive(true);
+        } else if (!_selectionUI.GetComponent<Transform>().parent.gameObject.activeInHierarchy)
+        {
+            GameObject Cam = GameObject.Find("----CAM----");
+            Cam.GetComponent<Transform>().GetChild(0).GetComponent<CinemachineFreeLook>().enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
     private void SetGamePause()

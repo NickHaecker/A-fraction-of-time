@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class RingHandler : MonoBehaviour
     public List<RingButton> RingButtons = new List<RingButton>();
     public List<Sprite> Icons = new List<Sprite>();
     private List<CharacterData> Data;
+    private string CurrentCaracter;
 
     //public GameObject PlayerObject;
 
@@ -93,6 +95,7 @@ public class RingHandler : MonoBehaviour
 
     private void ButtonStyling(RingButton button,string buttonName,string currentCharacterName,SplitSelectionController sSC)
     {
+        this.CurrentCaracter = currentCharacterName;
         if(currentCharacterName != buttonName)
         {
             ColorBlock cb = new ColorBlock();
@@ -116,5 +119,61 @@ public class RingHandler : MonoBehaviour
             button.GetComponentInChildren<Button>().colors = cbBlocked;
             button.GetComponentInChildren<Button>().interactable = false;
         }
+    }
+
+    private void showInfotext(CharacterData d)
+    {
+        this.GetComponent<Transform>().GetChild(4).gameObject.SetActive(true);
+        
+        if(d.NAME != this.CurrentCaracter)
+        {
+            this.GetComponent<Transform>().GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().text = d.DESCRIPTION;
+        } else
+        {
+            this.GetComponent<Transform>().GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().text = "This Character is active";
+        }
+    }
+
+    public void hideInfotext()
+    {
+        this.GetComponent<Transform>().GetChild(4).gameObject.SetActive(false);
+    }
+
+    public void showInfotextMaino()
+    {
+        foreach(CharacterData d in Data)
+        {
+            if(d.NAME == "Character")
+            {
+                showInfotext(d);
+            }
+        }
+    }
+
+    public void showInfotextKaengu()
+    {
+        foreach (CharacterData d in Data)
+        {
+            if (d.NAME == "Kaengu")
+            {
+                showInfotext(d);
+            }
+        }
+    }
+
+    public void showInfotextPaengu()
+    {
+        foreach (CharacterData d in Data)
+        {
+            if (d.NAME == "Paengu")
+            {
+                showInfotext(d);
+            }
+        }
+    }
+
+    public void showInfotextNotPossible()
+    {
+
     }
 }
