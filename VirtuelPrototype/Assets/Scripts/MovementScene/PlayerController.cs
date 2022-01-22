@@ -20,12 +20,16 @@ public class PlayerController : Controller
     private Player _temporalOldPlayer = null;
     [SerializeField]
     private GameObject CharacterPreview = null;
+    [SerializeField]
+    private GameObject _uI = null;
 
     public Action<Player> BeforeCharacterCreated;
     public Action<Player> AfterCharacterCreated;
     public Action<CharacterData> InitTimeline;
     public Action<CharacterData> Split;
     public Action<Player> Merge;
+
+    private bool _selectionIsOpen;
 
     public void HandleStart()
     {
@@ -81,7 +85,15 @@ public class PlayerController : Controller
         {
             TimeController.Instance.SetActive(false);
             SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
-            splitSelectionController.InitCharacterSelection(_playableCharacter,_currentCharacter);
+
+            _selectionIsOpen = _uI.GetComponent<UIHandler>().toggleSelectionUI();
+            if (_selectionIsOpen)
+            {
+                splitSelectionController.InitCharacterSelection(_playableCharacter, _currentCharacter);
+            } else
+            {
+                splitSelectionController.CloseCharacterSelection();
+            }
         }
 
     }

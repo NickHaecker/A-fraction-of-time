@@ -26,20 +26,18 @@ public class SplitSelectionController : Controller
     private bool _firstSplit = true;
     public void InitCharacterSelection(List<CharacterData> data,Player player)
     {
-        
-        if(!_selectionUI.GetComponent<Transform>().parent.gameObject.activeInHierarchy)
-        {
-            _cam.GetComponent<CameraController>()._cinemachineFreeLook.enabled = false;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            _selectionUI.GetComponent<RingHandler>().setCharacterData(data, this);
-            _selectionUI.SetActive(true);
-        } else if (_selectionUI.GetComponent<Transform>().parent.gameObject.activeInHierarchy)
-        {
-            _cam.GetComponent<CameraController>()._cinemachineFreeLook.enabled = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        _cam.GetComponent<CameraController>()._cinemachineFreeLook.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        _selectionUI.GetComponent<RingHandler>().setCharacterData(data, this);
+        _selectionUI.SetActive(true);
+    }
+
+    public void CloseCharacterSelection()
+    {
+        _cam.GetComponent<CameraController>()._cinemachineFreeLook.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     private void SetGamePause()
     {
