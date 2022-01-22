@@ -15,10 +15,7 @@ public class SplitSelectionController : Controller
     private GameObject _selectionUI = null;
     [SerializeField]
     private GameObject _characterPreview = null;
-    [SerializeField]
-    private GameObject _button = null;
-    [SerializeField]
-    private List<GameObject> _createdButtons = new List<GameObject>();
+
     
     
     public Action<String> SelectCharacter;
@@ -27,18 +24,20 @@ public class SplitSelectionController : Controller
     public void InitCharacterSelection(List<CharacterData> data,Player player)
     {
         
-        if(!_selectionUI.GetComponent<Transform>().parent.gameObject.activeInHierarchy)
+        if(_selectionUI.GetComponent<Transform>().parent.gameObject.activeInHierarchy)
         {
             _cam.GetComponent<CameraController>()._cinemachineFreeLook.enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             _selectionUI.GetComponent<RingHandler>().setCharacterData(data, this);
             _selectionUI.SetActive(true);
-        } else if (_selectionUI.GetComponent<Transform>().parent.gameObject.activeInHierarchy)
+        }
+        if(!_selectionUI.GetComponent<Transform>().parent.gameObject.activeInHierarchy)
         {
             _cam.GetComponent<CameraController>()._cinemachineFreeLook.enabled = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            TimeController.Instance.SetActive(true);
         }
     }
     private void SetGamePause()
@@ -55,10 +54,6 @@ public class SplitSelectionController : Controller
         
         if(_selectionUI)
         {
-            foreach(GameObject b in _createdButtons)
-            {
-                Destroy(b);
-            }
             _selectionUI.SetActive(false);
             _cam.GetComponent<CameraController>()._cinemachineFreeLook.enabled = true;
             Cursor.lockState = CursorLockMode.Locked;
