@@ -4332,6 +4332,7 @@ MonoBehaviour:
   _currentSelection: 
   _temporalOldPlayer: {fileID: 0}
   CharacterPreview: {fileID: 1927234824}
+  _uI: {fileID: 2056692782}
 --- !u!4 &374480238
 Transform:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3612152520133917319, guid: 2bc2d342172fd714da0e1fb827cba284, type: 3}
       propertyPath: m_Name
-      value: player Variant Variant
+      value: ghost_kaengu
       objectReference: {fileID: 0}
     - target: {fileID: 4137437209884975165, guid: 2bc2d342172fd714da0e1fb827cba284, type: 3}
       propertyPath: m_RootOrder
@@ -58,6 +58,10 @@ PrefabInstance:
     - target: {fileID: 4137437209884975165, guid: 2bc2d342172fd714da0e1fb827cba284, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037533267820329543, guid: 2bc2d342172fd714da0e1fb827cba284, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4657353753187356802, guid: 2bc2d342172fd714da0e1fb827cba284, type: 3}

@@ -30,30 +30,11 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         
         if (StartMenu.activeInHierarchy)
         {
             Cam.GetComponent<Transform>().GetChild(0).GetComponent<CinemachineFreeLook>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
-        }
-
-        if (Input.GetKeyDown(KeyCode.G) && !ChooseCharacterUI.activeSelf && !ShiftIsPressed)
-        {
-            RunTimeUI.SetActive(false);
-            ChooseCharacterUI.SetActive(true);
-            ShiftIsPressed = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        if (Input.GetKeyDown(KeyCode.G) && ChooseCharacterUI.activeSelf && !ShiftIsPressed)
-        {
-            RunTimeUI.SetActive(true);
-            ChooseCharacterUI.SetActive(false);
-            ShiftIsPressed = true;
-        }
-        if(!Input.GetKeyDown(KeyCode.G) && ShiftIsPressed)
-        {
-            ShiftIsPressed = false;
         }
 
         if(Time.realtimeSinceStartup > infoboxEndTime && infoboxActive)
@@ -75,5 +56,13 @@ public class UIHandler : MonoBehaviour
         infoboxActive = true;
         this.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(2).gameObject.SetActive(true);
         this.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = text;
+    }
+
+    public bool toggleSelectionUI()
+    {
+        ChooseCharacterUI.SetActive(!ChooseCharacterUI.activeSelf);
+        RunTimeUI.SetActive(!RunTimeUI.activeSelf);
+        if (!ChooseCharacterUI.activeSelf) return false;
+        else return true;
     }
 }

@@ -69,7 +69,7 @@ public class MovementAbility : Ability
             }
             if (GetComponent<Animator>().GetBool("isJump"))
             {
-                _controller.Move(GetComponent<JumpAbility>().GetJumpdirection() * _speed * Time.deltaTime);
+                _controller.Move(GetComponent<JumpAbility>().GetJumpdirection() * _speed/3 * Time.deltaTime);
             }
 
             //_controller.Move(moveDir.normalized * _speed * Time.deltaTime);
@@ -78,7 +78,7 @@ public class MovementAbility : Ability
         }
         if (GetComponent<Animator>().GetBool("isJump"))
         {
-            _controller.Move(GetComponent<JumpAbility>().GetJumpdirection() * _speed * Time.deltaTime);
+            _controller.Move(GetComponent<JumpAbility>().GetJumpdirection() * _speed/3 * Time.deltaTime);
         }
     }
 
