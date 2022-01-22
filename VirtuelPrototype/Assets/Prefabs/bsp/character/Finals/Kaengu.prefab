@@ -1785,7 +1785,7 @@ MonoBehaviour:
   _controller: {fileID: 7194061979807609824}
   _collider: {fileID: 7194061979807609836}
   _gravity: -9.81
-  _jumpHeight: 2
+  _jumpHeight: 3
   _fallVelocity: {x: 0, y: 0, z: 0}
   _isGrounded: 0
 --- !u!114 &7194061979807609838
