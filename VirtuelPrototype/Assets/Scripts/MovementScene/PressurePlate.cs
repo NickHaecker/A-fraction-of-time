@@ -5,15 +5,31 @@ using UnityEngine;
 public class PressurePlate : InteractionObject
 {
     [SerializeField]
-    private GameObject _target = null;
+    private List<GameObject> _targets = null;
+
+    [SerializeField]
+    private bool isDoor;
 
     public override void CharacterNearbyAction()
     {
-        _target.SetActive(false);
+        foreach (GameObject target in _targets)
+        {
+            if(isDoor)
+                target.GetComponent<Door>().SetMoving(true);
+            else
+                target.GetComponent<MoveablePlatform>().SetMoving(true);
+        }
+        
     }
 
     public override void CharacterNotNearbyAction()
     {
-        _target.SetActive(true);
+        foreach (GameObject target in _targets)
+        {
+            if (isDoor)
+                target.GetComponent<Door>().SetMoving(false);
+            else
+                target.GetComponent<MoveablePlatform>().SetMoving(false);
+        }
     }
 }

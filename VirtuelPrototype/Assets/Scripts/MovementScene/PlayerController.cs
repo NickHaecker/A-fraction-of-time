@@ -31,7 +31,6 @@ public class PlayerController : Controller
     {
         CharacterData characterData = _playableCharacter[0];
         GameObject character = InstantiateCharacter(characterData.PREFAB);
-        character.tag = "Player";
         Player player = character.AddComponent<Player>();
         player.Init(characterData);
         _currentCharacter = player;
@@ -45,6 +44,7 @@ public class PlayerController : Controller
         if(prefab)
         {
             character = Instantiate(prefab,_spawnPoint.position,prefab.transform.rotation,this.gameObject.transform);
+            character.tag = "Player";
         }
         return character;
     }
