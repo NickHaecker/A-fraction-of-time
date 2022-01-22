@@ -35,18 +35,14 @@ public class JumpAbility : Ability
 
     protected override void HandleInput()
     {
-        
         if (Input.GetKey(KeyCode.Space) && _isGrounded)
-        // (-0.5) change this value according to your character y position + 1
         {
             _fallVelocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
             this.JumpDirection();
             GetComponent<AnimationHandler>().jump();
-            //SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
-            
+            SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
         } else
         {
-            
             if(_isGrounded)
             {
                 this.gameObject.GetComponent<AnimationHandler>().stopJump();
@@ -55,9 +51,12 @@ public class JumpAbility : Ability
             {
                 _fallVelocity.y += _gravity * Time.deltaTime;
             }
-            
         }
-        _controller.Move(_fallVelocity * Time.deltaTime);
+        if(!_isGrounded)
+        {
+            _controller.Move(_fallVelocity * Time.deltaTime);
+        }
+        
     }
 
     protected void JumpDirection()
@@ -84,11 +83,16 @@ public class JumpAbility : Ability
 
     protected override void HandleCollisionEnter(Collider other)
     {
-
+        Debug.Log("Hitted:" + other.name);
+        
         if (other.tag == "Ground")
         {
             _isGrounded = true;
-           
+        }
+
+        if(GetComponent<Animator>().GetBool("isJump"))
+        {
+            GetComponent<Animator>().SetBool("isJump", false);
         }
 
         if (other.name == "infoPoint")
@@ -97,7 +101,7 @@ public class JumpAbility : Ability
             ui.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0).GetChild(2).gameObject.SetActive(true);
             ui.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = other.GetComponent<InfoPoint>()._info;
         }
-        // throw new System.NotImplementedException();
+        
     }
     protected override void HandleCollisionExit(Collider other)
     {
