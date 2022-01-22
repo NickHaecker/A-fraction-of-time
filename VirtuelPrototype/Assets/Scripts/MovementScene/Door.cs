@@ -5,9 +5,10 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField]
+    private Quaternion _addRotation;
+
     private Quaternion _startRotation;
 
-    [SerializeField]
     private Quaternion _endRotation;
 
     [SerializeField]
@@ -17,7 +18,8 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(transform.rotation);
+        _startRotation = transform.rotation;
+        _endRotation = transform.rotation * _addRotation;
     }
 
     // Update is called once per frame

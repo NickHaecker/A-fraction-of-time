@@ -23,18 +23,11 @@ public class AnimationHandler : MonoBehaviour
             vertical = Input.GetAxis("Vertical") * _speed;
 
             animator.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
-
-
-            /* if (Input.GetKeyDown(KeyCode.Space))
-             {
-                 animator.SetBool("isJumping", true);
-             }*/
         }
         else
         {
             if (_newDataAvailable)
             {
-
                 Vector3 direction = new Vector3(_newPosition.x - _oldPosition.x, 0, _newPosition.z - _oldPosition.z);
                 direction = direction.normalized;
                 animator.SetFloat("speed", Mathf.Abs(direction.x * _speed) + Mathf.Abs(direction.z * _speed));
@@ -49,7 +42,6 @@ public class AnimationHandler : MonoBehaviour
     public void jump()
     {
         animator.SetBool("isJump", true);
-        Debug.Log("jump true");
     }
 
     public void stopJump()

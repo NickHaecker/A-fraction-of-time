@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIHandler : MonoBehaviour
@@ -12,12 +13,18 @@ public class UIHandler : MonoBehaviour
     public GameObject StartMenu;
 
     private bool infoboxActive = true;
+    
+    private float infoboxEndTime;
+
     private GameObject Cam;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         Cam = GameObject.Find("----CAM----");
+        showRuntimeInfobox("Welcome to A Fraction of Time! The controls are: WASD for character movement, SPACE for jump, MOUSE for camera movement, and G for splitting and merging. Have Fun!", 15);
     }
 
     // Update is called once per frame
@@ -49,7 +56,7 @@ public class UIHandler : MonoBehaviour
             ShiftIsPressed = false;
         }
 
-        if(Time.realtimeSinceStartup > 20 && infoboxActive)
+        if(Time.realtimeSinceStartup > infoboxEndTime && infoboxActive)
         {
             hideWelcomeText();
             infoboxActive = false; 
@@ -59,5 +66,14 @@ public class UIHandler : MonoBehaviour
     private void hideWelcomeText()
     {
         RunTimeUI.GetComponent<Transform>().GetChild(2).gameObject.SetActive(false);
+    }
+
+    public void showRuntimeInfobox(string text, float time)
+    {
+        float infoboxStartTime = Time.realtimeSinceStartup;
+        infoboxEndTime = infoboxStartTime + time;
+        infoboxActive = true;
+        this.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(2).gameObject.SetActive(true);
+        this.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = text;
     }
 }

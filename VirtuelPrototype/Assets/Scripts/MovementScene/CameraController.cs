@@ -9,7 +9,7 @@ public class CameraController : Controller
     [SerializeField]
     private Transform _target = null;
     [SerializeField]
-    CinemachineFreeLook _cinemachineFreeLook;
+    public CinemachineFreeLook _cinemachineFreeLook;
 
     private void Start()
     {
