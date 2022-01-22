@@ -4303,6 +4303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneRoot: {fileID: 0}
+  _cam: {fileID: 1140314966}
+  _uI: {fileID: 2056692782}
   _selectionUI: {fileID: 1927234823}
   _characterPreview: {fileID: 1927234824}
   _button: {fileID: 1695705158104821949, guid: 82e9b81f27a807c4fb839708b80ca41f, type: 3}
@@ -6565,6 +6567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3416491382250935055, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8810902605114130443, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6825,6 +6831,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _addRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
   speed: 5
+--- !u!1 &2056692782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2555031778987082374, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
+  m_PrefabInstance: {fileID: 1927234821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2063850701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 261218642135178774, guid: 92ccfeeea2b035c4d866db71e597e5ee, type: 3}
