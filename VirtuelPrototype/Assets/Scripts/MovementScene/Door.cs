@@ -39,5 +39,6 @@ public class Door : MonoBehaviour
     public void SetMoving(bool isMoving)
     {
         _isMoving = isMoving;
+        AudioPlayerScript.instance.playSpecificAudio(this.name);
     }
 }

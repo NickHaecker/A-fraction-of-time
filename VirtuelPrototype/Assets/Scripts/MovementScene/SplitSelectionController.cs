@@ -50,6 +50,8 @@ public class SplitSelectionController : Controller
             _firstSplit = false;
             _uI.GetComponent<UIHandler>().showRuntimeInfobox("Everything you do now with a character aside from the main one will be recorded. It will then be replayed once you merge back.", 15);
         }
+
+        AudioPlayerScript.instance.playSpecificAudio("splitting");
         
         if(_selectionUI)
         {
