@@ -6,7 +6,7 @@ using System.Linq;
 
 [Serializable]
 public class Shadow : Player
-{
+{ 
     [SerializeField]
     private bool _isReconstructing = false;
 
@@ -29,18 +29,26 @@ public class Shadow : Player
             InteractionType type = (InteractionType)Enum.Parse(typeof(InteractionType),interaction.Type);
             switch(type)
             {
-                case InteractionType.WALK:
+                case InteractionType.WALK | InteractionType.JUMP:
 
                     Vector3 positionVector = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
-                    //transform.LookAt()
-                    GameObject newTransfrom = new GameObject();
-                    newTransfrom.hideFlags = HideFlags.HideInHierarchy;
-                    newTransfrom.transform.position = positionVector;
-                    newTransfrom.transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
-                    transform.LookAt(newTransfrom.transform);
+                    Vector3 moveVector = new Vector3(positionVector.x - transform.position.x,positionVector.y - transform.position.y,positionVector.z - transform.position.z);
+
+                    GameObject target = new GameObject();
+                    target.hideFlags = HideFlags.HideInHierarchy;
+                   
+                    target.transform.position = positionVector;
+    
+                    transform.rotation.Set(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2],0);
+                    transform.rotation.SetLookRotation(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1] * 10,interaction.Source.Rotation[2]));
+
+
                     transform.position = positionVector;
-                    transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
+
+
+
                     transform.localScale = new Vector3(interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
+                    
                     gameObject.GetComponent<AnimationHandler>().SetGhostPosition(positionVector);
 
                     break;
