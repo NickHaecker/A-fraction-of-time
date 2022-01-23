@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioData : MonoBehaviour
+public class AudioData
 {
     private AudioSource _audio;
     private bool _ends;

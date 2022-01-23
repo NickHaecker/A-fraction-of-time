@@ -31,23 +31,14 @@ public class Shadow : Player
             {
                 case InteractionType.WALK | InteractionType.JUMP:
 
-                    Vector3 positionVector = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
-                    Vector3 moveVector = new Vector3(positionVector.x - transform.position.x,positionVector.y - transform.position.y,positionVector.z - transform.position.z);
+                    Vector3 positionVector = new Vector3(interaction.Target.Position[0],interaction.Target.Position[1],interaction.Target.Position[2]);
+                    Vector3 moveVector = new Vector3(positionVector.x - transform.position.x,0,positionVector.z - transform.position.z);
 
-                    GameObject target = new GameObject();
-                    target.hideFlags = HideFlags.HideInHierarchy;
-                   
-                    target.transform.position = positionVector;
-    
-                    transform.rotation.Set(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2],0);
-                    transform.rotation.SetLookRotation(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1] * 10,interaction.Source.Rotation[2]));
-
+                    transform.forward = moveVector;
 
                     transform.position = positionVector;
 
-
-
-                    transform.localScale = new Vector3(interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
+                    transform.localScale = new Vector3(interaction.Target.Scale[0],interaction.Target.Scale[1],interaction.Target.Scale[2]);
                     
                     gameObject.GetComponent<AnimationHandler>().SetGhostPosition(positionVector);
 

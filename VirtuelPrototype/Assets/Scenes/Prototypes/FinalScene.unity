@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.27963796, g: 0.2528808, b: 0.26406172, a: 1}
+  m_IndirectSpecularColor: {r: 0.2791754, g: 0.2523766, b: 0.26349735, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7319,21 +7319,21 @@ MonoBehaviour:
   _walking: {fileID: 1850527565}
   _splitting: {fileID: 966887081}
   _pressure: {fileID: 401569239}
-  _pressure2: {fileID: 0}
+  _pressure2: {fileID: 1501468355}
   _pressure3: {fileID: 1119022577}
-  _pressure4: {fileID: 0}
+  _pressure4: {fileID: 786214768}
   _pressureSmall: {fileID: 513428568}
   _door: {fileID: 2035608612}
   _door2: {fileID: 1645831346}
   _woodplank1: {fileID: 229128158}
   _woodplank2: {fileID: 229128157}
   _woodplank3: {fileID: 229128156}
-  _woodplank4: {fileID: 0}
-  _woodplank5: {fileID: 0}
-  _woodplank6: {fileID: 0}
-  _woodplank7: {fileID: 0}
-  _woodplank8: {fileID: 0}
-  _woodplank9: {fileID: 0}
+  _woodplank4: {fileID: 229128169}
+  _woodplank5: {fileID: 229128168}
+  _woodplank6: {fileID: 229128167}
+  _woodplank7: {fileID: 229128166}
+  _woodplank8: {fileID: 229128160}
+  _woodplank9: {fileID: 229128159}
   _woodplank10: {fileID: 0}
 --- !u!4 &1335746756
 Transform:
