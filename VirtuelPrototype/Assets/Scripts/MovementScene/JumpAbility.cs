@@ -100,6 +100,7 @@ public class JumpAbility : Ability
             GameObject ui = GameObject.Find("----HUD----");
             ui.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0).GetChild(2).gameObject.SetActive(true);
             ui.GetComponent<Transform>().GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = other.GetComponent<InfoPoint>()._info;
+            AudioPlayerScript.instance.playSpecificAudio("info1");
         }
         
     }
