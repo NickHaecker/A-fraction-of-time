@@ -170,7 +170,6 @@ public class GraphController : Controller
 
                 if(!timeline.IsTimestampStillValid(gametime))
                 {
-                    Debug.Log("Zu spät zum tun");
                     _timelinesToHandle.Remove(timeline);
 
                 }
@@ -265,7 +264,6 @@ public class GraphController : Controller
         {
             if(!timeline.GetId().Equals(_currentTimeline.GetId()))
             {
-                //Debug.Log("-----------------------------");
                 timeline.ResetData();
                 _timelinesToHandle.Add(timeline);
             }

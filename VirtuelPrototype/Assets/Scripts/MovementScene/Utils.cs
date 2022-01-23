@@ -41,9 +41,9 @@ public static class Utils
         target.Scale[1] = interaction.interactionPosition.transform.localScale.y;
         target.Scale[2] = interaction.interactionPosition.transform.localScale.z;
 
-        target.Rotation[0] = interaction.interactionPosition.transform.rotation.x;
-        target.Rotation[1] = interaction.interactionPosition.transform.rotation.y;
-        target.Rotation[2] = interaction.interactionPosition.transform.rotation.z;
+        target.Rotation[0] = interaction.interactionPosition.transform.localRotation.x;
+        target.Rotation[1] = interaction.interactionPosition.transform.localRotation.y;
+        target.Rotation[2] = interaction.interactionPosition.transform.localRotation.z;
         interactionSaveData.Target = target;
 
         interactionSaveData.TimeStamp = interaction.timestamp;
