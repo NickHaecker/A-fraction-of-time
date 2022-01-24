@@ -14,6 +14,8 @@ public class GraphController : Controller
     private PlayerController _playerController = null;
     [SerializeField]
     private List<Timeline> _timelinesToHandle = new List<Timeline>();
+    [SerializeField]
+    private List<LevelCompleteController> _resetLevelIfCompleted = new List<LevelCompleteController>();
 
 
     private bool _splitValidationCheck = false;
@@ -27,6 +29,14 @@ public class GraphController : Controller
         _playerController.Merge += HandleMerge;
         _timelinesToHandle = new List<Timeline>();
         CheckForInteractions(_rootTimeline);
+
+        if(_resetLevelIfCompleted.Count > 0)
+        {
+            foreach(LevelCompleteController lcc in _resetLevelIfCompleted)
+            {
+                lcc.ResetTimeline += HandleResetSplitting;
+            }
+        }
     }
 
     private void Update()
