@@ -36,5 +36,6 @@ public class MoveablePlatform : MonoBehaviour
     public void SetMoving(bool isMoving)
     {
         _isMoving = isMoving;
+        AudioPlayerScript.instance.playSpecificAudio(this.name);
     }
 }

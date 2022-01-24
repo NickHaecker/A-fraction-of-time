@@ -66,6 +66,12 @@ public class MovementAbility : Ability
             {
                 _playerTransform.rotation = Quaternion.Euler(0f, angle, 0f);
                 _controller.Move(moveDir.normalized * _speed * Time.deltaTime);
+
+                if (!_cam.parent.GetChild(2).GetChild(3).GetComponent<AudioSource>().enabled)
+                {
+                    AudioPlayerScript.instance.playSpecificAudio("walking");
+                }
+                
             }
             if (GetComponent<Animator>().GetBool("isJump"))
             {
@@ -75,6 +81,12 @@ public class MovementAbility : Ability
             //_controller.Move(moveDir.normalized * _speed * Time.deltaTime);
             SubmitAction(InteractionType.WALK, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
 
+        } else
+        {
+            if (_cam.parent.GetChild(2).GetChild(3).GetComponent<AudioSource>().enabled)
+            {
+                AudioPlayerScript.instance.stopSpecificAudio("walking");
+            }
         }
         if (GetComponent<Animator>().GetBool("isJump"))
         {

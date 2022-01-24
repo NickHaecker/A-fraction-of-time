@@ -12,6 +12,7 @@ public class PressurePlate : InteractionObject
 
     public override void CharacterNearbyAction()
     {
+        AudioPlayerScript.instance.playSpecificAudio(this.name);
         foreach (GameObject target in _targets)
         {
             if(isDoor)

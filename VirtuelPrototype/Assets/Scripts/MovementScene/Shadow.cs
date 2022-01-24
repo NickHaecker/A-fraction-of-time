@@ -6,7 +6,7 @@ using System.Linq;
 
 [Serializable]
 public class Shadow : Player
-{
+{ 
     [SerializeField]
     private bool _isReconstructing = false;
 
@@ -29,8 +29,19 @@ public class Shadow : Player
             InteractionType type = (InteractionType)Enum.Parse(typeof(InteractionType),interaction.Type);
             switch(type)
             {
-                case InteractionType.WALK:
-                    MoveShadow(interaction.Source);
+                case InteractionType.WALK | InteractionType.JUMP:
+
+                    Vector3 positionVector = new Vector3(interaction.Target.Position[0],interaction.Target.Position[1],interaction.Target.Position[2]);
+                    Vector3 moveVector = new Vector3(positionVector.x - transform.position.x,0,positionVector.z - transform.position.z);
+
+                    transform.forward = moveVector;
+
+                    transform.position = positionVector;
+
+                    transform.localScale = new Vector3(interaction.Target.Scale[0],interaction.Target.Scale[1],interaction.Target.Scale[2]);
+                    
+                    gameObject.GetComponent<AnimationHandler>().SetGhostPosition(positionVector);
+
                     break;
                 case InteractionType.JUMPSTART:
                     MoveShadow(interaction.Source);
