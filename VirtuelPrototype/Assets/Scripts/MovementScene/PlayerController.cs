@@ -195,14 +195,17 @@ public class PlayerController : Controller
         shadowPlayer.InsertInteractions(shadow.Interactions);
         return shadowPlayer;
     }
-    private void ClearChildren()
+    public void ClearShadows()
     {
 
         int children = this.gameObject.transform.childCount;
         for(int i = 0 ; i < children ; i++)
         {
             GameObject child = this.gameObject.transform.GetChild(i).gameObject;
-            Destroy(child);
+            if(!child.name.Equals(_currentCharacter.gameObject.name))
+            {
+                Destroy(child);
+            }
         }
         Debug.Log("deleted all children");
     }

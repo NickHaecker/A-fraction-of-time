@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIHandler : MonoBehaviour
 
     public GameObject StartMenu;
     public GameObject InfoMenu;
+    public GameObject Endscreen;
 
     public GameObject Player;
 
@@ -96,5 +98,19 @@ public class UIHandler : MonoBehaviour
         else minString = "" + minutes;
 
         return minString + ":" + secString;
+    }
+
+    public void ShowEndscreen()
+    {
+        Endscreen.SetActive(true);
+        RunTimeUI.SetActive(false);
+        StartMenu.SetActive(false);
+        ChooseCharacterUI.SetActive(false);
+        InfoMenu.SetActive(false);
+    }
+
+    public void reloadGame()
+    {
+        SceneManager.LoadScene("FinalScene");
     }
 }

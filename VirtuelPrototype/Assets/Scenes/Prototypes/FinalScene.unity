@@ -940,6 +940,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95979c6e400a3f548ab39c0b480d4a3b, type: 2}
+    - target: {fileID: 2842011653336431894, guid: 548aeed3236abfe4086946ba0fe019f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2853373838178947859, guid: 548aeed3236abfe4086946ba0fe019f4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1040,6 +1044,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95979c6e400a3f548ab39c0b480d4a3b, type: 2}
+    - target: {fileID: 4945475237630441268, guid: 548aeed3236abfe4086946ba0fe019f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4980679285671053492, guid: 548aeed3236abfe4086946ba0fe019f4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -8913,6 +8921,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2166703993044844695, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2555031778987082374, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
       propertyPath: m_Name
       value: UI
@@ -8920,6 +8932,12 @@ PrefabInstance:
     - target: {fileID: 3416491382250935055, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801332557245204932, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
+      propertyPath: m_text
+      value: "W,A,S,D -- Character Movement\n\nG -- Toggle Character Menu\n\nSPACE
+        -- Jump\n\nMOUSE -- Camera Movement \n\nI -- Open and Close Information \n\nR
+        -- Reset Timelines and Ghosts"
       objectReference: {fileID: 0}
     - target: {fileID: 8810902605114130443, guid: 068c41ec24c02494e9d7b01cd418cd0a, type: 3}
       propertyPath: m_IsActive

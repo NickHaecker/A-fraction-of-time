@@ -29,6 +29,24 @@ public class GraphController : Controller
         CheckForInteractions(_rootTimeline);
     }
 
+    private void Update()
+    {
+        if(_currentTimeline.GetId().Equals(_rootTimeline.GetId()))
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                this.HandleResetSplitting();
+            }
+        }
+    }
+
+    private void HandleResetSplitting()
+    {
+        _timelinesToHandle = new List<Timeline>();
+        _rootTimeline.ResetChildren();
+        _playerController.ClearShadows();
+    }
+
     private void HandleMerge(Player player)
     {
         float startPoint = -1;
