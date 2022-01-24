@@ -64,8 +64,6 @@ public class AudioPlayerScript : MonoBehaviour
 
     public void playSpecificAudio(string name)
     {
-        Debug.Log("play audio for: " + name);
-        
         switch(name)
         {
             case "background":

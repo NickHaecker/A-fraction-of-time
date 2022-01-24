@@ -11,6 +11,7 @@ public class UIHandler : MonoBehaviour
     private bool ShiftIsPressed = false;
 
     public GameObject StartMenu;
+    public GameObject InfoMenu;
 
     private bool infoboxActive = true;
     
@@ -24,7 +25,7 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         Cam = GameObject.Find("----CAM----");
-        showRuntimeInfobox("Welcome to A Fraction of Time! The controls are: WASD for character movement, SPACE for jump, MOUSE for camera movement, and G for splitting and merging. Have Fun!", 15);
+        showRuntimeInfobox("Welcome to A Fraction of Time! The controls are: WASD for character movement, SPACE for jump, MOUSE for camera movement, G for splitting and merging and I for Controll-Informations. Have Fun!", 15);
     }
 
     // Update is called once per frame
@@ -41,6 +42,11 @@ public class UIHandler : MonoBehaviour
         {
             hideWelcomeText();
             infoboxActive = false; 
+        }
+
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            InfoMenu.SetActive(!InfoMenu.activeInHierarchy);
         }
     }
 
