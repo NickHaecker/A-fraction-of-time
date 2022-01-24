@@ -32,15 +32,17 @@ public class Shadow : Player
                 case InteractionType.WALK:
                     MoveShadow(interaction.Target);
                     break;
+
                 case InteractionType.JUMPSTART:
                     MoveShadow(interaction.Source);
                     gameObject.GetComponent<AnimationHandler>().jump();
                     break;
+
                 case InteractionType.JUMPSTOP:
                     MoveShadow(interaction.Source);
                     gameObject.GetComponent<AnimationHandler>().stopJump();
-                    Debug.Log("stopped jumping reconstructed!");
                     break;
+
                 default:
                     break;
             }
