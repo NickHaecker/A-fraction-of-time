@@ -13,6 +13,8 @@ public class AnimationHandler : MonoBehaviour
     private Vector3 _newPosition = new Vector3(0f,0f, 0f);
     private Vector3 _oldPosition = new Vector3(0f, 0f, 0f);
     private const float _speed = 6.0f;
+    private const float _animationResetTimer = 0.3f;
+    private float _lastAnimTimeStamp = 0f;
 
     // Update is called once per frame
     void Update()
@@ -33,6 +35,11 @@ public class AnimationHandler : MonoBehaviour
                 animator.SetFloat("speed", Mathf.Abs(direction.x * _speed) + Mathf.Abs(direction.z * _speed));
                 _oldPosition = new Vector3(_newPosition.x, _newPosition.y, _newPosition.z);
                 _newDataAvailable = false;
+                _lastAnimTimeStamp = TimeController.Instance.GetGameTime();
+            }
+            else if(_lastAnimTimeStamp > 0f && (_lastAnimTimeStamp + _animationResetTimer) <= TimeController.Instance.GetGameTime())
+            {
+                animator.SetFloat("speed", 0f);
             }
 
         }

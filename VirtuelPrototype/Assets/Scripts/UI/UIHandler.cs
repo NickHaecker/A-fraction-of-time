@@ -11,6 +11,11 @@ public class UIHandler : MonoBehaviour
     private bool ShiftIsPressed = false;
 
     public GameObject StartMenu;
+    public GameObject InfoMenu;
+
+    public GameObject Player;
+
+    public TextMeshProUGUI time;
 
     private bool infoboxActive = true;
     
@@ -24,7 +29,10 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         Cam = GameObject.Find("----CAM----");
-        showRuntimeInfobox("Welcome to A Fraction of Time! The controls are: WASD for character movement, SPACE for jump, MOUSE for camera movement, and G for splitting and merging. Have Fun!", 15);
+        showRuntimeInfobox("Welcome to A Fraction of Time! The controls are: WASD for character movement, SPACE for jump, MOUSE for camera movement, G for splitting and merging and I for Controll-Informations. Have Fun!", 15);
+        
+        Player = GameObject.Find("----PLAYER----");
+
     }
 
     // Update is called once per frame
@@ -42,6 +50,13 @@ public class UIHandler : MonoBehaviour
             hideWelcomeText();
             infoboxActive = false; 
         }
+
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            InfoMenu.SetActive(!InfoMenu.activeInHierarchy);
+        }
+
+        time.text = computeSeconds(Player.GetComponent<TimeController>().GetGameTime());
     }
 
     private void hideWelcomeText()
@@ -64,5 +79,22 @@ public class UIHandler : MonoBehaviour
         RunTimeUI.SetActive(!RunTimeUI.activeSelf);
         if (!ChooseCharacterUI.activeSelf) return false;
         else return true;
+    }
+
+    private string computeSeconds(float seconds)
+    {
+        int s = Mathf.RoundToInt(seconds);
+
+        int minutes = s / 60;
+        int sec = s % 60;
+        string secString = "";
+        string minString = "";
+
+        if (sec < 10) secString = "0" + sec;
+        else secString = "" + sec;
+        if (minutes < 10) minString = "0" + minutes;
+        else minString = "" + minutes;
+
+        return minString + ":" + secString;
     }
 }

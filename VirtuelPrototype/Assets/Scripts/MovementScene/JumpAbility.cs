@@ -20,6 +20,8 @@ public class JumpAbility : Ability
     [SerializeField]
     private bool _isGrounded = true;
 
+    private bool _wasJumping = false;
+
     private Vector3 _jumpDirection;
 
     private Transform _cam;
@@ -40,12 +42,19 @@ public class JumpAbility : Ability
             _fallVelocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
             this.JumpDirection();
             GetComponent<AnimationHandler>().jump();
-            SubmitAction(InteractionType.JUMP, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
+            SubmitAction(InteractionType.JUMPSTART, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
         } else
         {
             if(_isGrounded)
             {
                 this.gameObject.GetComponent<AnimationHandler>().stopJump();
+                if (_wasJumping)
+                {
+                    SubmitAction(InteractionType.JUMPSTOP, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
+                    Debug.Log("stopped jumping");
+                    _wasJumping = false;
+                }
+
             }
             if(!_isGrounded)
             {
@@ -83,7 +92,7 @@ public class JumpAbility : Ability
 
     protected override void HandleCollisionEnter(Collider other)
     {
-        Debug.Log("Hitted:" + other.name);
+       
         
         if (other.tag == "Ground")
         {
@@ -93,6 +102,8 @@ public class JumpAbility : Ability
         if(GetComponent<Animator>().GetBool("isJump"))
         {
             GetComponent<Animator>().SetBool("isJump", false);
+            _wasJumping = true;
+           
         }
 
         if (other.name == "infoPoint")

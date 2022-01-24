@@ -120,5 +120,8 @@ public class Timeline
     {
         return _startPosition;
     }
-
+    public void ResetChildren()
+    {
+        _children = new List<Timeline>();
+    }
 }

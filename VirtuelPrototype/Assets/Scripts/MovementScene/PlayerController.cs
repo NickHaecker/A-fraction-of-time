@@ -116,6 +116,7 @@ public class PlayerController : Controller
     {
         BeforeCharacterCreated?.Invoke(_currentCharacter);
         ChangeSpawnPoint(_currentCharacter);
+        
         Destroy(_currentCharacter.gameObject);
 
         CharacterData newCharacter = GetCharacterData(_currentSelection);
@@ -129,7 +130,7 @@ public class PlayerController : Controller
             Split?.Invoke(player.GetCharacterData());
         }
         GameObject shadow = InstantiateCharacter(_temporalOldPlayer.GetCharacterData().PREFAB_GHOST);
-
+        shadow.GetComponent<AnimationHandler>().SetGhostMode(true);
         _temporalOldPlayer = null;
 
 
@@ -194,14 +195,17 @@ public class PlayerController : Controller
         shadowPlayer.InsertInteractions(shadow.Interactions);
         return shadowPlayer;
     }
-    private void ClearChildren()
+    public void ClearShadows()
     {
 
         int children = this.gameObject.transform.childCount;
         for(int i = 0 ; i < children ; i++)
         {
             GameObject child = this.gameObject.transform.GetChild(i).gameObject;
-            Destroy(child);
+            if(!child.name.Equals(_currentCharacter.gameObject.name))
+            {
+                Destroy(child);
+            }
         }
         Debug.Log("deleted all children");
     }
