@@ -20,8 +20,7 @@ public class Shadow : Player
         {
             _lastInteraction  = _interactions.OrderByDescending(item => item.TimeStamp).First();
         }
-        InteractionSaveData interaction = _interactions.Find(i => (_lastTimestamp < i.TimeStamp && i.TimeStamp <= timestamp));
-
+        InteractionSaveData interaction = _interactions.Find(i => (float.Equals(i.TimeStamp,timestamp)));
         SetLastTimestamp(timestamp);
 
         if(interaction != null)
