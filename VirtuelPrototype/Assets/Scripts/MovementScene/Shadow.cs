@@ -30,19 +30,16 @@ public class Shadow : Player
             switch(type)
             {
                 case InteractionType.WALK:
-
-                    Vector3 positionVector = new Vector3(interaction.Source.Position[0],interaction.Source.Position[1],interaction.Source.Position[2]);
-                    //transform.LookAt()
-                    GameObject newTransfrom = new GameObject();
-                    newTransfrom.hideFlags = HideFlags.HideInHierarchy;
-                    newTransfrom.transform.position = positionVector;
-                    newTransfrom.transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
-                    transform.LookAt(newTransfrom.transform);
-                    transform.position = positionVector;
-                    transform.rotation = Quaternion.Euler(new Vector3(interaction.Source.Rotation[0],interaction.Source.Rotation[1],interaction.Source.Rotation[2]));
-                    transform.localScale = new Vector3(interaction.Source.Scale[0],interaction.Source.Scale[1],interaction.Source.Scale[2]);
-                    gameObject.GetComponent<AnimationHandler>().SetGhostPosition(positionVector);
-
+                    MoveShadow(interaction.Source);
+                    break;
+                case InteractionType.JUMPSTART:
+                    MoveShadow(interaction.Source);
+                    gameObject.GetComponent<AnimationHandler>().jump();
+                    break;
+                case InteractionType.JUMPSTOP:
+                    MoveShadow(interaction.Source);
+                    gameObject.GetComponent<AnimationHandler>().stopJump();
+                    Debug.Log("stopped jumping reconstructed!");
                     break;
                 default:
                     break;
@@ -54,6 +51,22 @@ public class Shadow : Player
             DestroyShadow?.Invoke();
         }
     }
+
+    private void MoveShadow(GameObjectSaveData source)
+    {
+        Vector3 positionVector = new Vector3(source.Position[0], source.Position[1], source.Position[2]);
+        //transform.LookAt()
+        GameObject newTransfrom = new GameObject();
+        newTransfrom.hideFlags = HideFlags.HideInHierarchy;
+        newTransfrom.transform.position = positionVector;
+        newTransfrom.transform.rotation = Quaternion.Euler(new Vector3(source.Rotation[0], source.Rotation[1], source.Rotation[2]));
+        transform.LookAt(newTransfrom.transform);
+        transform.position = positionVector;
+        transform.rotation = Quaternion.Euler(new Vector3(source.Rotation[0], source.Rotation[1], source.Rotation[2]));
+        transform.localScale = new Vector3(source.Scale[0], source.Scale[1], source.Scale[2]);
+        gameObject.GetComponent<AnimationHandler>().SetGhostPosition(positionVector);
+
+    }
     public void SetLastTimestamp(float timestamp)
     {
         _lastTimestamp = timestamp;
@@ -63,4 +76,6 @@ public class Shadow : Player
     {
         _isReconstructing = state;
     }
+
+
 }
