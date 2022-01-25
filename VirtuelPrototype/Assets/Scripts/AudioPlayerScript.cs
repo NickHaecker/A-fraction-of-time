@@ -29,6 +29,7 @@ public class AudioPlayerScript : MonoBehaviour
     public AudioSource _woodplank8;
     public AudioSource _woodplank9;
     public AudioSource _woodplank10;
+    public AudioSource _bridge1;
 
 
     private List<AudioData> _runningAudios;
@@ -133,6 +134,9 @@ public class AudioPlayerScript : MonoBehaviour
                 playAudio(_woodplank9, true);
                 break;
             case "Woodplank.009":
+                playAudio(_woodplank10, true);
+                break;
+            case "Bridge.001":
                 playAudio(_woodplank10, true);
                 break;
         }
