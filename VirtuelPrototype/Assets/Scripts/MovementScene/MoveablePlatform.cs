@@ -15,11 +15,6 @@ public class MoveablePlatform : MonoBehaviour
 
     private bool _isMoving;
 
-    private void Start()
-    {
-        //Debug.Log(transform.position + gameObject.name);
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
