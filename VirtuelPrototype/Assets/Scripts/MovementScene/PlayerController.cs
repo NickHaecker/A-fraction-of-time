@@ -93,6 +93,7 @@ public class PlayerController : Controller
             } else
             {
                 splitSelectionController.CloseCharacterSelection();
+                TimeController.Instance.SetActive(true);
             }
         }
 
