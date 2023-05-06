@@ -23,17 +23,16 @@ public class Timeline
     private string _ID;
     [SerializeField]
     private float[] _startPosition = new float[3];
-
     private SavePlayerData _data = null;
 
-    public Timeline(int level,float timestamp,CharacterData playerData,Timeline timeline, Transform startPosition)
+    public Timeline(int level, float timestamp, CharacterData playerData, Timeline timeline, Transform startPosition)
     {
         _level = level;
         _startTimestamp = timestamp;
         _player = playerData;
         _parent = timeline;
         string parentId = "";
-        if(timeline != null)
+        if (timeline != null)
         {
             parentId = timeline.GetId();
         }
@@ -65,14 +64,14 @@ public class Timeline
     }
     public void InsertChild(Timeline child)
     {
-        if(!_children.Contains(child))
+        if (!_children.Contains(child))
         {
             _children.Add(child);
         }
         else
         {
             Debug.Log("schlechter check");
-            _children.Insert(_children.FindIndex(a => a.GetId() == child.GetId()),child);
+            _children.Insert(_children.FindIndex(a => a.GetId() == child.GetId()), child);
         }
     }
     public void InsertGhost(Shadow ghost)
@@ -80,7 +79,7 @@ public class Timeline
         _ghost = ghost;
         _ghost.gameObject.GetComponent<AnimationHandler>().SetGhostMode(true);
         _ghost.DestroyShadow += DeleteGhost;
-      
+
     }
     public Shadow GetGhost()
     {
@@ -106,11 +105,11 @@ public class Timeline
     }
     public bool IsTimestampStillValid(float timestamp)
     {
-        if(_data != null)
+        if (_data != null)
         {
-            if(_data.Interactions.Count > 0)
-            { 
-                return timestamp <=  _data.Interactions.Max(x => x.TimeStamp);
+            if (_data.Interactions.Count > 0)
+            {
+                return timestamp <= _data.Interactions.Max(x => x.TimeStamp);
 
             }
         }

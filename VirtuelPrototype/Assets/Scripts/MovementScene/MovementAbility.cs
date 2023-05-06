@@ -39,24 +39,13 @@ public class MovementAbility : Ability
         _cam = SceneController.Instance.GetCamGameObject().transform;
     }
 
-    private void Update()
-    {
-        /*_isGrounded = Physics.CheckSphere(groundCheck.position,groundDistance,groundMask);
-        if(_isGrounded && _fallVelocity.y < 0)
-        {
-            _fallVelocity.y = -2f;
-        }
-        _fallVelocity.y += _gravity * Time.deltaTime;
-        _controller.Move(_fallVelocity * Time.deltaTime);*/
-    }
-
     protected override void HandleInput()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if(direction.magnitude >= 0.1)
+        if (direction.magnitude >= 0.1)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(_playerTransform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
@@ -71,17 +60,18 @@ public class MovementAbility : Ability
                 {
                     AudioPlayerScript.instance.playSpecificAudio("walking");
                 }
-                
+
             }
             if (GetComponent<Animator>().GetBool("isJump"))
             {
-                _controller.Move(GetComponent<JumpAbility>().GetJumpdirection() * _speed/3 * Time.deltaTime);
+                _controller.Move(GetComponent<JumpAbility>().GetJumpdirection() * _speed / 3 * Time.deltaTime);
             }
 
             //_controller.Move(moveDir.normalized * _speed * Time.deltaTime);
             SubmitAction(InteractionType.WALK, this.gameObject.GetComponent<Player>(), this.gameObject, this.gameObject.transform, TimeController.Instance.GetGameTime());
 
-        } else
+        }
+        else
         {
             if (_cam.parent.GetChild(2).GetChild(3).GetComponent<AudioSource>().enabled)
             {
@@ -90,7 +80,7 @@ public class MovementAbility : Ability
         }
         if (GetComponent<Animator>().GetBool("isJump"))
         {
-            _controller.Move(GetComponent<JumpAbility>().GetJumpdirection() * _speed/3 * Time.deltaTime);
+            _controller.Move(GetComponent<JumpAbility>().GetJumpdirection() * _speed / 3 * Time.deltaTime);
         }
     }
 

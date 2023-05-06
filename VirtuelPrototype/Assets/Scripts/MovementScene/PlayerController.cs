@@ -45,9 +45,9 @@ public class PlayerController : Controller
     private GameObject InstantiateCharacter(GameObject prefab)
     {
         GameObject character = null;
-        if(prefab)
+        if (prefab)
         {
-            character = Instantiate(prefab,_spawnPoint.position,prefab.transform.rotation,this.gameObject.transform);
+            character = Instantiate(prefab, _spawnPoint.position, prefab.transform.rotation, this.gameObject.transform);
             character.tag = "Player";
         }
         return character;
@@ -60,8 +60,8 @@ public class PlayerController : Controller
     {
         TimeController.Instance.SetActive(true);
         _currentSelection = name;
-        
-        if(IsMerge())
+
+        if (IsMerge())
         {
             HandleMerge();
         }
@@ -81,7 +81,7 @@ public class PlayerController : Controller
     private void HandleInput()
     {
 
-        if(Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             TimeController.Instance.SetActive(false);
             SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
@@ -90,7 +90,8 @@ public class PlayerController : Controller
             if (_selectionIsOpen)
             {
                 splitSelectionController.InitCharacterSelection(_playableCharacter, _currentCharacter);
-            } else
+            }
+            else
             {
                 splitSelectionController.CloseCharacterSelection();
                 TimeController.Instance.SetActive(true);
@@ -101,14 +102,14 @@ public class PlayerController : Controller
     private void AddInteractionsListener(Player player)
     {
         //Debug.Log(player);
-        foreach(Ability ability in player.gameObject.GetComponents<Ability>())
+        foreach (Ability ability in player.gameObject.GetComponents<Ability>())
         {
             ability.SubmitInteraction += HandleInteractionListener;
         }
     }
     private void RemoveInteractionsListener(Player player)
     {
-        foreach(Ability ability in player.gameObject.GetComponents<Ability>())
+        foreach (Ability ability in player.gameObject.GetComponents<Ability>())
         {
             ability.SubmitInteraction -= HandleInteractionListener;
         }
@@ -117,11 +118,9 @@ public class PlayerController : Controller
     {
         BeforeCharacterCreated?.Invoke(_currentCharacter);
         ChangeSpawnPoint(_currentCharacter);
-        
         Destroy(_currentCharacter.gameObject);
-
         CharacterData newCharacter = GetCharacterData(_currentSelection);
-        if(newCharacter)
+        if (newCharacter)
         {
             RemoveShadow(newCharacter);
             GameObject playerObject = InstantiateCharacter(newCharacter.PREFAB);
@@ -133,19 +132,16 @@ public class PlayerController : Controller
         GameObject shadow = InstantiateCharacter(_temporalOldPlayer.GetCharacterData().PREFAB_GHOST);
         shadow.GetComponent<AnimationHandler>().SetGhostMode(true);
         _temporalOldPlayer = null;
-
-
-
     }
     public void RemoveShadow(CharacterData character)
     {
         int count = this.gameObject.transform.childCount;
 
-        for(int i = 0 ; i < count ; i++)
+        for (int i = 0; i < count; i++)
         {
 
             GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
-            if(gO.name.Contains(character.PREFAB_GHOST.name))
+            if (gO.name.Contains(character.PREFAB_GHOST.name))
             {
                 Destroy(gO);
             }
@@ -155,11 +151,11 @@ public class PlayerController : Controller
     {
         int count = this.gameObject.transform.childCount;
 
-        for(int i = 0 ; i < count ; i++)
+        for (int i = 0; i < count; i++)
         {
 
             GameObject gO = this.gameObject.transform.GetChild(i).gameObject;
-            if(gO.name.Contains(character.PREFAB.name))
+            if (gO.name.Contains(character.PREFAB.name))
             {
                 Destroy(gO);
             }
@@ -168,9 +164,9 @@ public class PlayerController : Controller
     private CharacterData GetCharacterData(String uid)
     {
         CharacterData data = null;
-        foreach(CharacterData c in _playableCharacter)
+        foreach (CharacterData c in _playableCharacter)
         {
-            if(c.NAME == uid)
+            if (c.NAME == uid)
             {
                 data = c;
             }
@@ -180,7 +176,7 @@ public class PlayerController : Controller
     private void ChangeSpawnPoint(Player player)
     {
         Transform transform = player.gameObject.transform;
-        transform.localScale = new Vector3(1,1,1);
+        transform.localScale = new Vector3(1, 1, 1);
         transform.rotation = new Quaternion();
         _spawnPoint = transform;
 
@@ -200,10 +196,10 @@ public class PlayerController : Controller
     {
 
         int children = this.gameObject.transform.childCount;
-        for(int i = 0 ; i < children ; i++)
+        for (int i = 0; i < children; i++)
         {
             GameObject child = this.gameObject.transform.GetChild(i).gameObject;
-            if(!child.name.Equals(_currentCharacter.gameObject.name))
+            if (!child.name.Equals(_currentCharacter.gameObject.name))
             {
                 Destroy(child);
             }
@@ -213,7 +209,7 @@ public class PlayerController : Controller
     private void HandleTemporalOldPlayerSave(Player player)
     {
         _temporalOldPlayer = player;
-        
+
     }
     private void HandleMerge()
     {
@@ -224,26 +220,18 @@ public class PlayerController : Controller
         RemoveShadow(playerData);
         GameObject newSpawn = new GameObject();
         newSpawn.hideFlags = HideFlags.HideInHierarchy;
-
         float[] position = player.Position.Position;
         float[] rotation = player.Position.Rotation;
-        newSpawn.transform.position = new Vector3(position[0],position[1],position[2]);
-        newSpawn.transform.rotation = Quaternion.Euler(new Vector3(rotation[0],rotation[1],rotation[2]));
-        newSpawn.transform.localScale = new Vector3(1,1,1);
+        newSpawn.transform.position = new Vector3(position[0], position[1], position[2]);
+        newSpawn.transform.rotation = Quaternion.Euler(new Vector3(rotation[0], rotation[1], rotation[2]));
+        newSpawn.transform.localScale = new Vector3(1, 1, 1);
         _spawnPoint = newSpawn.transform;
-
-
-
         GameObject newPlayer = InstantiateCharacter(playerData.PREFAB);
         Player newPlayerScript = newPlayer.AddComponent<Player>();
         newPlayerScript.Init(playerData);
         Merge?.Invoke(newPlayerScript);
-
-
         AfterCharacterCreated?.Invoke(newPlayerScript);
-
         _temporalOldPlayer = null;
-
     }
 
     private void Start()
@@ -253,12 +241,12 @@ public class PlayerController : Controller
         BeforeCharacterCreated += RemoveInteractionsListener;
         AfterCharacterCreated += ChangeCurrentCharacter;
         AfterCharacterCreated += AddInteractionsListener;
-        if(_playerRoot == null)
+        if (_playerRoot == null)
         {
             _playerRoot = this.gameObject;
         }
         SplitSelectionController splitSelectionController = this.gameObject.GetComponent<SplitSelectionController>();
-        if(splitSelectionController)
+        if (splitSelectionController)
         {
             splitSelectionController.SelectCharacter += HandleCharacterSelection;
         }
@@ -266,12 +254,12 @@ public class PlayerController : Controller
 
     private bool IsMerge()
     {
-        
+
         GraphController graphController = this.gameObject.GetComponent<GraphController>();
         bool isM = graphController.IsSelectionInTimelineYet(_currentSelection);
 
-        if(isM)
-        {   
+        if (isM)
+        {
             Debug.Log("habe ich grad gemerget: " + isM);
         }
         else
